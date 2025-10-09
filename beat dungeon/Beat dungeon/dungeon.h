@@ -9,18 +9,21 @@ using namespace std;
 
 class Dungeon {
 public:
+    //constructor
     Dungeon(int width, int height, SDL_Renderer* sdlrenderer);
     ~Dungeon();
 
+    //read the specified text file for the level
     void read_file(string fileName);
 
-    void load();
-
+    //draw the map each frame
     void render();
 
 private:
+    //game renderer
     SDL_Renderer* renderer;
+    //storing the dungeon as chars
     vector<vector<char>> outline;
-    int dungeon_width;
-    int dungeon_height;
+    //dungeon size
+    int dungeon_width, dungeon_height;
 };
