@@ -52,3 +52,8 @@ void Player::render() {
 	SDL_FRect character{ x, y, 20, 20 };
 	SDL_RenderFillRect(renderer, &character);
 }
+
+vector<int> Player::getPos() {
+	vector<int> pos = { x,y };
+	return pos;
+}

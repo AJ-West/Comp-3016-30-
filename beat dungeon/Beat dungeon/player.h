@@ -11,12 +11,14 @@ public:
 	//constructor
 	Player(int start_x, int start_y, SDL_Renderer* SDL_renderer);
 	~Player();
-	//update the playermove
+	//update the player position
 	void move(SDL_Keycode key);
 	 
 	void handle_input(SDL_Event input);
 	//draw player
 	void render();
+
+	vector<int> getPos();
 
 private:
 	// player position

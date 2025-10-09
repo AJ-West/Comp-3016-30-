@@ -9,6 +9,7 @@
 
 #include "dungeon.h"
 #include "player.h"
+#include "monster.h"
 
 using namespace std;
 
@@ -56,11 +57,12 @@ void init_environment() {
 }
 
 //renderer the game each frame 
-void render(Dungeon dung, Player player) {
+void render(Dungeon dung, Player player, Monster monster) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
     dung.render();
     player.render();
+    monster.render();
     SDL_RenderPresent(renderer);
 }
 
@@ -71,10 +73,12 @@ int main(int argc, char* argv[])
     //temp initiation of dungeon and player
     Dungeon dung(10, 10, renderer);
     Player player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, renderer);
+    //Monster(int start_x, int start_y, SDL_Renderer* SDL_renderer, Player* player_point, int s_speed):
+    Monster monster(0, 0, renderer, &player, 0.025);
     //reads the test level
     dung.read_file("levels/level1.txt");
     while (isRunning) {
-        render(dung, player);
+        render(dung, player, monster);
         //handle input
         SDL_Event event;
         while (SDL_PollEvent(&event) != 0) {
@@ -85,6 +89,7 @@ int main(int argc, char* argv[])
                 player.handle_input(event);
             }
         }
+        monster.move();
     }
 
     return 0;
