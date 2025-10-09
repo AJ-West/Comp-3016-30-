@@ -71,16 +71,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -141,6 +141,14 @@
   <ItemGroup>
     <ClCompile Include="dungeon.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="..\..\..\comp 3016 labs\Snake\Snake\Freedom-10eM.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="dungeon.h" />
+    <ClInclude Include="player.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\SDL\SDL\SDL\VisualC\SDL\SDL.vcxproj">
@@ -149,12 +157,6 @@
     <ProjectReference Include="..\..\..\..\SDL\SDL\SDL_ttf\VisualC\SDL_ttf.vcxproj">
       <Project>{dddbd07d-dc76-4af6-8d02-3e2deb6ee255}</Project>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Font Include="..\..\..\comp 3016 labs\Snake\Snake\Freedom-10eM.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="dungeon.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

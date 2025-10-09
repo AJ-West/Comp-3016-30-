@@ -21,6 +21,9 @@
     <ClCompile Include="dungeon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\comp 3016 labs\Snake\Snake\Freedom-10eM.ttf">
@@ -29,6 +32,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dungeon.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

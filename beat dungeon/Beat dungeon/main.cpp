@@ -5,7 +5,10 @@
 #include <string>
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
+
+
 #include "dungeon.h"
+#include "player.h"
 
 using namespace std;
 
@@ -50,26 +53,30 @@ void init_environment() {
     isRunning = true;
 }
 
-void render(Dungeon dung) {
+void render(Dungeon dung, Player player) {
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     SDL_RenderClear(renderer);
     dung.load();
+    player.render();
     SDL_RenderPresent(renderer);
 }
 
 
 int main(int argc, char* argv[])
 {
-    system("pause");
     init_environment();
     Dungeon dung(10, 10, renderer);
+    Player player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, renderer);
     dung.read_file("levels/level1.txt");
     while (isRunning) {
-        render(dung);
+        render(dung, player);
         SDL_Event event;
         while (SDL_PollEvent(&event) != 0) {
             if (event.type == SDL_EVENT_QUIT) {
                 isRunning = false;
+            }
+            else if (event.type == SDL_EVENT_KEY_UP) {
+                player.handle_input(event);
             }
         }
     }
