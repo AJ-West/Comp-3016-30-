@@ -1,5 +1,6 @@
 #include "monster.h"
 
+Monster::Monster(){}
 Monster::Monster(float start_x, float start_y, SDL_Renderer* SDL_renderer, Player* player_point, float s_speed): x(start_x), y(start_y), renderer(SDL_renderer), player(player_point), speed(s_speed) {}
 Monster::~Monster() {}
 

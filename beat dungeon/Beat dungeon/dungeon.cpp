@@ -43,7 +43,7 @@ void Dungeon::render() {
 				SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 				break;
 			case '2':
-				SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+				SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 				break;
 			case '3':
 				SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
@@ -51,7 +51,7 @@ void Dungeon::render() {
 			default:
 				SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 			}
-			SDL_FRect textRect{ x * wall_size, y * wall_size, wall_size, wall_size };
+			SDL_FRect textRect{ dungeon_x + x * wall_size, dungeon_y + y * wall_size, wall_size, wall_size };
 			SDL_RenderFillRect(renderer, &textRect);
 			x++;
 		}

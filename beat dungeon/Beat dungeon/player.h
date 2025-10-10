@@ -10,6 +10,8 @@
 
 using namespace std;
 
+class Dungeon;
+
 class Player {
 public:
 	//constructor

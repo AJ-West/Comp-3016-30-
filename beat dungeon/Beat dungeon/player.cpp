@@ -1,6 +1,6 @@
 #include "player.h"
 
-Player::Player(int start_x, int start_y, SDL_Renderer* SDL_renderer,Dungeon* dungeon): x(start_x), y(start_y), renderer(SDL_renderer), dung(dungeon) {
+Player::Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* dungeon): x(start_x), y(start_y), renderer(SDL_renderer), dung(dungeon) {
 	// Sets up the default movement keys for the player
 	movement_keys.resize(4, vector<SDL_Keycode>(1, 0));
 	movement_keys[0][0] = SDLK_W;
@@ -80,8 +80,8 @@ vector<int> Player::getPos() {
 // check if the player is within a wall
 void Player::checkCollision(int index) {
 	// get the cell index for each corner of the player
-	pair<int, int> x_bounds(div(x, dung->getWallSize()).quot, div(x + player_width-1, dung->getWallSize()).quot);
-	pair<int, int> y_bounds(div(y, dung->getWallSize()).quot, div(y + player_height-1, dung->getWallSize()).quot);
+	pair<int, int> x_bounds(div(x-dung->getDungeonX(), dung->getWallSize()).quot, div(x - dung->getDungeonX() + player_width - 1, dung->getWallSize()).quot);
+	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + player_height-1, dung->getWallSize()).quot);
 
 	// check if any corners of the player is within a wall and undo the move if so
 	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '1') {

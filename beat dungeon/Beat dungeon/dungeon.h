@@ -5,6 +5,8 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <vector>
 
+#include "monster.h"
+
 using namespace std;
 
 class Dungeon {
@@ -21,6 +23,8 @@ public:
 
     vector<vector<char>> getOutline() { return outline; }
 
+    int getDungeonX() { return dungeon_x; }
+    int getDungeonY() { return dungeon_x; }
     int getWallSize() { return wall_size; }
 
 private:
@@ -28,7 +32,8 @@ private:
     SDL_Renderer* renderer;
     //storing the dungeon as chars
     vector<vector<char>> outline;
-    //dungeon size
+    //dungeon features
+    int dungeon_x = 100, dungeon_y = 100;
     int dungeon_width, dungeon_height;
     int wall_size = 60;
 };
