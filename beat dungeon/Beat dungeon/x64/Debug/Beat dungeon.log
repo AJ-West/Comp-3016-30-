@@ -1,6 +1,10 @@
-﻿  main.cpp
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(28,17): warning C4804: '<': unsafe use of type 'bool' in operation
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(33,24): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(50,45): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(77,46): warning C4305: 'argument': truncation from 'double' to 'float'
-  Beat dungeon.vcxproj -> C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe
+﻿  player.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(70,23): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(70,23): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(70,26): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(70,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(70,29): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(70,29): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(70,43): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(70,43): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Beat dungeon.vcxproj -> C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe

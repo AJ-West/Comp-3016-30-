@@ -72,9 +72,9 @@ int main(int argc, char* argv[])
     init_environment();
     //temp initiation of dungeon and player
     Dungeon dung(10, 10, renderer);
-    Player player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, renderer);
+    Player player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, renderer, &dung);
     //Monster(int start_x, int start_y, SDL_Renderer* SDL_renderer, Player* player_point, int s_speed):
-    Monster monster(0, 0, renderer, &player, 0.025);
+    Monster monster(0, 0, renderer, &player, 0.01);
     //reads the test level
     dung.read_file("levels/level1.txt");
     while (isRunning) {

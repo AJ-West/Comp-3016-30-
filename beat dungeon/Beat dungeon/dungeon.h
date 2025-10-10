@@ -19,6 +19,10 @@ public:
     //draw the map each frame
     void render();
 
+    vector<vector<char>> getOutline() { return outline; }
+
+    int getWallSize() { return wall_size; }
+
 private:
     //game renderer
     SDL_Renderer* renderer;
@@ -26,4 +30,5 @@ private:
     vector<vector<char>> outline;
     //dungeon size
     int dungeon_width, dungeon_height;
+    int wall_size = 60;
 };
