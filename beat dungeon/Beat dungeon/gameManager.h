@@ -4,6 +4,11 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
 #include <string>
+#include <vector>
+#include <cstdlib>
+
+#include "button.h"
+#include "dungeon.h"
 
 using namespace std;
 
@@ -14,6 +19,12 @@ public:
 
 	void render();
 
+	void handleInput(SDL_Event& event);
+
+	void setUpHome();
+	void setUpLevelSelect();
+
+	void loadLevel(int level);
 
 private:
 	SDL_Renderer* renderer;
@@ -22,4 +33,6 @@ private:
 	SDL_Texture* level_screen = nullptr;
 	enum screens{home = 1, levels = 2};
 	screens screen = home;
+
+	vector<Button> buttons;
 };

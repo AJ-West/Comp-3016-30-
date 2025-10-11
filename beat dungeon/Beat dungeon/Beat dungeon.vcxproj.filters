@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\generic">
+      <UniqueIdentifier>{266fe6ee-4038-43fb-8bca-351b59d11a6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -29,6 +32,9 @@
     </ClCompile>
     <ClCompile Include="gameManager.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Source Files\generic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -48,6 +54,9 @@
     </ClInclude>
     <ClInclude Include="gameManager.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Source Files\generic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

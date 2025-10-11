@@ -104,6 +104,8 @@ int main(int argc, char* argv[])
 {
     init_environment();
     GameManager manager(renderer, window);
+
+    manager.setUpHome();
    
     while (isRunning) {
         manager.render();
@@ -112,6 +114,9 @@ int main(int argc, char* argv[])
         while (SDL_PollEvent(&event) != 0) {
             if (event.type == SDL_EVENT_QUIT) {
                 isRunning = false;
+            }
+            else {
+                manager.handleInput(event);
             }
         }
     }

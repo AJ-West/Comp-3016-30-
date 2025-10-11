@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="dungeon.cpp" />
     <ClCompile Include="gameManager.cpp" />
     <ClCompile Include="main.cpp" />
@@ -149,6 +150,7 @@
     <Font Include="..\..\..\comp 3016 labs\Snake\Snake\Freedom-10eM.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="button.h" />
     <ClInclude Include="dungeon.h" />
     <ClInclude Include="gameManager.h" />
     <ClInclude Include="monster.h" />
