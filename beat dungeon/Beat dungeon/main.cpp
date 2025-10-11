@@ -23,7 +23,6 @@ SDL_Renderer* renderer;
 TTF_Font* font;
 int FONT_SIZE = 30;
 bool isRunning;
-vector<Monster> monsters;
 
 //creates the window, renderer and font for the game
 void init_environment() {
@@ -58,48 +57,6 @@ void init_environment() {
     isRunning = true;
 }
 
-//renderer the game each frame 
-/*void render(Dungeon dung, Player player) {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    SDL_FRect background{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
-    SDL_RenderFillRect(renderer, &background);
-    SDL_RenderClear(renderer);
-    dung.render();
-    player.render();
-    for (auto& monster : monsters) {
-        monster.render();
-    }
-    SDL_RenderPresent(renderer);
-}*/
-
-// move every monster
-void moveMonsters() {
-    for (auto& monst : monsters) {
-        monst.move();
-    }
-}
-
-void spawn_monsters(Dungeon dung, Player* player) {
-    int i = 0;
-    int x = 0;
-    int y = 0;
-    vector<vector<char>> layout = dung.getOutline();
-    for (const auto& row : layout) {
-        x = 0;
-        for (const auto& column : row) {
-            if (column == '2') {
-                monsters.resize(i+1);
-                Monster monster(x*dung.getWallSize() + dung.getDungeonX(), y * dung.getWallSize() + dung.getDungeonY(), renderer, player, 0.0025);
-                monsters[i] = monster;
-                i++;
-            }
-            x++;
-        }
-        y++;
-    }
-}
-
-
 int main(int argc, char* argv[])
 {
     init_environment();
@@ -119,31 +76,8 @@ int main(int argc, char* argv[])
                 manager.handleInput(event);
             }
         }
+        manager.update();
     }
-    
-    
-    /*//temp initiation of dungeon and player
-    Dungeon dung(10, 10, renderer);
-    Player player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, renderer, &dung);
-    //Monster(int start_x, int start_y, SDL_Renderer* SDL_renderer, Player* player_point, int s_speed):
-    //Monster monster(130, 0, renderer, &player, 0.0025);
-    //reads the test level
-    dung.read_file("levels/level1.txt");
-    spawn_monsters(dung, &player);
-    while (isRunning) {
-        render(dung, player);
-        //handle input
-        SDL_Event event;
-        while (SDL_PollEvent(&event) != 0) {
-            if (event.type == SDL_EVENT_QUIT) {
-                isRunning = false;
-            }
-            else if (event.type == SDL_EVENT_KEY_UP) {
-                player.handle_input(event);
-            }
-        }
-        moveMonsters();
-    }*/
 
     return 0;
 }

@@ -15,6 +15,7 @@ class Dungeon;
 class Player {
 public:
 	//constructor
+	Player(){}
 	Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* dungeon);
 	~Player();
 	//update the player position

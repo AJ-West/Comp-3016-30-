@@ -1,11 +1,12 @@
 #include "dungeon.h"
 
-Dungeon::Dungeon(int width, int height, SDL_Renderer* sdlRenderer): dungeon_width(width), dungeon_height(height), renderer(sdlRenderer) {
-	outline.resize(dungeon_height, vector<char>(dungeon_width, 0));
+Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRenderer), levelNum(levelNumber) {
+	read_file();
 }
 Dungeon::~Dungeon(){}
 
-void Dungeon::read_file(string fileName) {
+void Dungeon::read_file() {
+	string fileName = "levels/level" + to_string(levelNum) + ".txt";
 	//retrieve text file for the sppecified level
 	ifstream f(fileName);
 	if (!f.is_open()) {
@@ -16,20 +17,26 @@ void Dungeon::read_file(string fileName) {
 	char ch;
 	int line = 0;
 	int col = 0;
+	vector<char> row;
 	//get next char
 	while (f.get(ch)) {
 		cout << ch;
 		//if end of line got to start of next
 		if (ch == '\n') {
-			line++;
-			col = 0;
+			outline.push_back(row);
+			row.clear();
+			//line++;
+			//col = 0;
 		}
 		else{
+			row.push_back(ch);
 			//assign value to vector
-			outline[line][col] = ch;
-			col++;
+			//outline[line][col] = ch;
+			//col++;
 		}
 	}
+	outline.push_back(row);
+	spawn_entities();
 }
 
 void Dungeon::render() {
@@ -43,7 +50,7 @@ void Dungeon::render() {
 				SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 				break;
 			case '2':
-				SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+				SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 				break;
 			case '3':
 				SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
@@ -58,5 +65,42 @@ void Dungeon::render() {
 		x = 0;
 		y++;
 	}
+	player->render();
+	for (auto& monster : monsters) {
+		monster.render();
+	}
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+}
+
+
+void Dungeon::moveMonsters() {
+	for (auto& monst : monsters) {
+		monst.move();
+	}
+}
+
+void Dungeon::spawn_entities() {
+	int i = 0;
+	int x = 0;
+	int y = 0;
+	for (const auto& row : outline) {
+		x = 0;
+		for (const auto& column : row) {
+			if (column == '2') {
+				monsters.resize(i + 1);
+				Monster monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, player, 0.0025);
+				monsters[i] = monster;
+				i++;
+			}
+			if (column == '4') {
+				player = new Player(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, this);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+void Dungeon::handleInput(SDL_Event input) {
+	player->handle_input(input);
 }

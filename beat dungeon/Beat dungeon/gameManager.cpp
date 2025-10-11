@@ -42,6 +42,7 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
 GameManager::~GameManager(){}
 
 void GameManager::render() {
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
     SDL_RenderClear(renderer);
     switch (screen) {
     case home:
@@ -49,6 +50,9 @@ void GameManager::render() {
         break;
     case levels:
         SDL_RenderTexture(renderer, level_screen, NULL, NULL);
+        break;
+    case inLevel:
+        dung->render();
         break;
     }
     for (auto& button : buttons) {
@@ -120,9 +124,10 @@ void GameManager::setUpLevelSelect() {
 }
 
 void GameManager::loadLevel(int level) {
-    cout << "loadlevel";
+    buttons.resize(0);
+    screen = inLevel;
     cout << level;
-    cout << "loadedlevel";
+    dung = new Dungeon(renderer, level);
 }
 
 void GameManager::handleInput(SDL_Event& event) {
@@ -140,4 +145,11 @@ void GameManager::handleInput(SDL_Event& event) {
             }
         }
     }
+    else if (dung && event.type == SDL_EVENT_KEY_UP) {
+        dung->handleInput(event);
+    }
+}
+
+void GameManager::update() {
+    if (dung) { dung->moveMonsters(); }
 }
