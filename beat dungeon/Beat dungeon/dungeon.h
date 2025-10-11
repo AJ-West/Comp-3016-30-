@@ -23,6 +23,7 @@ public:
 
     vector<vector<char>> getOutline() { return outline; }
 
+    //getters
     int getDungeonX() { return dungeon_x; }
     int getDungeonY() { return dungeon_x; }
     int getWallSize() { return wall_size; }

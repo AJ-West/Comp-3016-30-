@@ -38,6 +38,7 @@ void Player::move(SDL_Keycode key) {
 	}
 	// if the player is now inside a wall it undoes the move
 	checkCollision(index); 
+	checkEnd();
 }
 
 void Player::undoMove(int index) {
@@ -72,11 +73,6 @@ void Player::render() {
 	SDL_RenderFillRect(renderer, &character);
 }
 
-vector<int> Player::getPos() {
-	vector<int> pos = { x,y };
-	return pos;
-}
-
 // check if the player is within a wall
 void Player::checkCollision(int index) {
 	// get the cell index for each corner of the player
@@ -96,4 +92,42 @@ void Player::checkCollision(int index) {
 	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '1') {
 		undoMove(index);
 	}
+}
+
+// check if the player is within a wall
+void Player::checkEnd() {
+	// get the cell index for each corner of the player
+	pair<int, int> x_bounds(div(x - dung->getDungeonX(), dung->getWallSize()).quot, div(x - dung->getDungeonX() + player_width - 1, dung->getWallSize()).quot);
+	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + player_height - 1, dung->getWallSize()).quot);
+
+	// check if any corners of the player is within an exit and completes the level if so
+	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '3') {
+		win();
+	}
+	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '3') {
+		win();
+	}
+	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '3') {
+		win();
+	}
+	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '3') {
+		win();
+	}
+}
+
+void Player::win() {
+	cout << "level completed";
+}
+
+
+
+//getters
+pair<int, int> Player::getPos() {
+	pair<int, int> pos = { x,y };
+	return pos;
+}
+
+pair<int, int> Player::getDimensions() {
+	pair<int, int> pos = { player_width, player_height };
+	return pos;
 }

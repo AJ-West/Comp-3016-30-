@@ -24,10 +24,15 @@ public:
 	//draw player
 	void render();
 
-	vector<int> getPos();
-
 	//checks wall collision
 	void checkCollision(int index);
+	void checkEnd();
+
+	void win();
+
+	//getters
+	pair<int, int> getPos();
+	pair<int, int> getDimensions();
 
 private:
 	// player position

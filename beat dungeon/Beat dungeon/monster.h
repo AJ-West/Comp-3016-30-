@@ -22,10 +22,15 @@ public:
 	//draw monster
 	void render();
 
+	void checkPlayerCollision(vector<pair<int, int>> player_corners);
+	void checkCorner(int corner_x, int corner_y, vector<pair<int, int>> player_corners);
+
 private:
 	// monster position
 	float x, y;
-	vector<int> target_pos{ 0,0 };
+	float width = 20, height = 20;
+	pair<int,int> target_pos{ 0,0 };
+	pair<int, int> player_dimen;
 	float speed;
 	//game renderer
 	SDL_Renderer* renderer;
