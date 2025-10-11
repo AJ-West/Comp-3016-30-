@@ -10,6 +10,7 @@
 
 #include "dungeon.h"
 #include "player.h"
+#include "gameManager.h"
 
 using namespace std;
 
@@ -58,7 +59,7 @@ void init_environment() {
 }
 
 //renderer the game each frame 
-void render(Dungeon dung, Player player) {
+/*void render(Dungeon dung, Player player) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     SDL_FRect background{ 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT };
     SDL_RenderFillRect(renderer, &background);
@@ -69,7 +70,7 @@ void render(Dungeon dung, Player player) {
         monster.render();
     }
     SDL_RenderPresent(renderer);
-}
+}*/
 
 // move every monster
 void moveMonsters() {
@@ -101,9 +102,22 @@ void spawn_monsters(Dungeon dung, Player* player) {
 
 int main(int argc, char* argv[])
 {
-    system("pause");
     init_environment();
-    //temp initiation of dungeon and player
+    GameManager manager(renderer, window);
+   
+    while (isRunning) {
+        manager.render();
+        //handle input
+        SDL_Event event;
+        while (SDL_PollEvent(&event) != 0) {
+            if (event.type == SDL_EVENT_QUIT) {
+                isRunning = false;
+            }
+        }
+    }
+    
+    
+    /*//temp initiation of dungeon and player
     Dungeon dung(10, 10, renderer);
     Player player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2, renderer, &dung);
     //Monster(int start_x, int start_y, SDL_Renderer* SDL_renderer, Player* player_point, int s_speed):
@@ -124,7 +138,7 @@ int main(int argc, char* argv[])
             }
         }
         moveMonsters();
-    }
+    }*/
 
     return 0;
 }

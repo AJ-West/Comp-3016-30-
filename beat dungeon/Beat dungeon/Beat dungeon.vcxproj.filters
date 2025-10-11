@@ -27,6 +27,9 @@
     <ClCompile Include="monster.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\comp 3016 labs\Snake\Snake\Freedom-10eM.ttf">
@@ -41,6 +44,9 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="monster.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="gameManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
