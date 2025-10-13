@@ -87,9 +87,10 @@ void Dungeon::spawn_entities() {
 		x = 0;
 		for (const auto& column : row) {
 			if (column == '2') {
-				monsters.resize(i + 1);
+				//monsters.resize(i + 1);
 				Monster monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, player, 0.0025);
-				monsters[i] = monster;
+				monsters.push_back(monster);
+				//monsters[i] = monster;
 				i++;
 			}
 			if (column == '4') {

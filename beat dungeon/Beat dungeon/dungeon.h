@@ -8,6 +8,7 @@
 
 #include "player.h"
 #include "monster.h"
+#include "KeyTime.h"
 
 using namespace std;
 
@@ -54,4 +55,6 @@ private:
     Player* player;
 
     vector<Monster> monsters;
+
+    //vector<KeyTime*> current_keys;
 };

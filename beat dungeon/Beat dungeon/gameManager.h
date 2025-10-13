@@ -9,6 +9,7 @@
 
 #include "button.h"
 #include "dungeon.h"
+#include "KeyTime.h"
 
 using namespace std;
 

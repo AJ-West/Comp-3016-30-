@@ -36,6 +36,9 @@
     <ClCompile Include="button.cpp">
       <Filter>Source Files\generic</Filter>
     </ClCompile>
+    <ClCompile Include="KeyTime.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\comp 3016 labs\Snake\Snake\Freedom-10eM.ttf">
@@ -57,6 +60,9 @@
     </ClInclude>
     <ClInclude Include="button.h">
       <Filter>Source Files\generic</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyTime.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

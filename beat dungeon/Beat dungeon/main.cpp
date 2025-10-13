@@ -11,6 +11,7 @@
 #include "dungeon.h"
 #include "player.h"
 #include "gameManager.h"
+#include "KeyTime.h"
 
 using namespace std;
 
@@ -59,6 +60,7 @@ void init_environment() {
 
 int main(int argc, char* argv[])
 {
+    system("pause");
     init_environment();
     GameManager manager(renderer, window);
 
