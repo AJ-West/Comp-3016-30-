@@ -5,6 +5,8 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <vector>
 #include <string>
+#include <ctime>
+#include <cstdlib>
 
 #include "player.h"
 #include "monster.h"
@@ -14,6 +16,7 @@ using namespace std;
 
 class Player;
 class Monster;
+class KeyTime;
 
 class Dungeon {
 public:
@@ -36,6 +39,8 @@ public:
 
     void spawn_entities();
 
+    void update();
+
     //getters
     int getDungeonX() { return dungeon_x; }
     int getDungeonY() { return dungeon_x; }
@@ -56,5 +61,7 @@ private:
 
     vector<Monster> monsters;
 
-    //vector<KeyTime*> current_keys;
+    vector<KeyTime*> current_keys;
+
+    time_t last_time = time(0);
 };

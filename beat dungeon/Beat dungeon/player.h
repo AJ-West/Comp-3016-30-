@@ -34,6 +34,7 @@ public:
 	//getters
 	pair<int, int> getPos();
 	pair<int, int> getDimensions();
+	vector<vector<SDL_Keycode>> getMovementKeys() { return movement_keys; }
 
 private:
 	// player position

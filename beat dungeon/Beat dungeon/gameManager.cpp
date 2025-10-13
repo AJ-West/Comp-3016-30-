@@ -126,7 +126,6 @@ void GameManager::setUpLevelSelect() {
 void GameManager::loadLevel(int level) {
     buttons.resize(0);
     screen = inLevel;
-    cout << level;
     dung = new Dungeon(renderer, level);
 }
 
@@ -151,5 +150,5 @@ void GameManager::handleInput(SDL_Event& event) {
 }
 
 void GameManager::update() {
-    if (dung) { dung->moveMonsters(); }
+    if (dung) { dung->update(); }
 }

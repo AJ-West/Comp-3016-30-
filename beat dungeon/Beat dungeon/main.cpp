@@ -49,7 +49,7 @@ void init_environment() {
         isRunning = false;
         return;
     }
-    font = TTF_OpenFont("Freedom-10eM.ttf", FONT_SIZE);
+    font = TTF_OpenFont("PixelEmulator-xq08.ttf", FONT_SIZE);
     if (font == nullptr) {
         cerr << "Font cannot be loaded: TTF_ERROR" << SDL_GetError() << endl;
         isRunning = false;

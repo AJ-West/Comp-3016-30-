@@ -20,7 +20,6 @@ void Dungeon::read_file() {
 	vector<char> row;
 	//get next char
 	while (f.get(ch)) {
-		cout << ch;
 		//if end of line got to start of next
 		if (ch == '\n') {
 			outline.push_back(row);
@@ -69,6 +68,9 @@ void Dungeon::render() {
 	for (auto& monster : monsters) {
 		monster.render();
 	}
+	for (auto& key : current_keys) {
+		key->render(renderer);
+	}
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
@@ -103,5 +105,41 @@ void Dungeon::spawn_entities() {
 }
 
 void Dungeon::handleInput(SDL_Event input) {
-	player->handle_input(input);
+	SDL_Keycode key = input.key.key;
+	// if a key for movement
+	if (key != SDLK_SPACE) {
+		for (auto& keyT : current_keys) {
+			if (keyT->getKey() == key) {
+				if (keyT->inZone()) {
+					player->move(key);
+				}
+			}
+		}
+	}
+}
+
+void Dungeon::update() {
+	time_t current_time = time(0);
+	if (current_time - last_time >= 1) {
+		vector<vector<SDL_Keycode>> options = player->getMovementKeys();
+		int random_direction = rand() % 4;
+		SDL_Keycode code = options[random_direction][rand() % size(options[random_direction])];
+		current_keys.push_back(new KeyTime(code));
+		last_time = current_time;
+	}
+	int index = 0;
+	vector<int> to_delete;
+	for (auto& key : current_keys) {
+		if (key->time_elapsed()) {
+			to_delete.push_back(index);
+		}
+		index++;
+	}
+	int count = 0;
+	for (auto& ind : to_delete) {
+		delete current_keys[ind];
+		current_keys.erase(current_keys.begin() + ind - count);
+		count++;
+	}
+	moveMonsters();
 }
