@@ -27,6 +27,10 @@ public:
 	//getters
 	//int getCountdown() { return countdown; }
 	SDL_Keycode getKey() { return key; }
+	bool getUsed() { return used; }
+
+	//setters
+	void setUsed(bool use) { used = use; }
 
 private:
 	//Player* player;
@@ -35,6 +39,8 @@ private:
 	int x;
 	int y;
 	int size = 100;
+
+	bool used = false;
 
 	TTF_Font* font;
 

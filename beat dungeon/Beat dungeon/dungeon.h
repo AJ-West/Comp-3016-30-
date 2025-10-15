@@ -8,6 +8,7 @@
 #include <string>
 #include <ctime>
 #include <cstdlib>
+#include <chrono>
 
 #include "player.h"
 #include "monster.h"
@@ -64,7 +65,7 @@ private:
 
     vector<KeyTime*> current_keys;
 
-    time_t last_time = time(0);
+    double last_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
 
     SDL_Texture* key_outline;
     SDL_Texture* key_dot;
