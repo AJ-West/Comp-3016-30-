@@ -1,8 +1,10 @@
 #pragma once
 #include <iostream>
-#include <cstdlib>
 #include <ctime>
 #include <chrono>
+#include <cmath>
+
+#include <SDL3_image/SDL_image.h>
 
 #include "player.h"
 
@@ -16,7 +18,7 @@ public:
 
 	bool time_elapsed();
 
-	void render(SDL_Renderer* renderer);
+	void render(SDL_Renderer* renderer, SDL_Texture* key_outline, SDL_Texture* key_dot);
 
 	bool inZone();
 
@@ -32,6 +34,7 @@ private:
 	double time_expired;
 	int x;
 	int y;
+	int size = 100;
 
 	TTF_Font* font;
 

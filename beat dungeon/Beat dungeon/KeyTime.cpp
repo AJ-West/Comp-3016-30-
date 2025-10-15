@@ -5,8 +5,19 @@ KeyTime::KeyTime(SDL_Keycode key_char): key(key_char) {
 	// this is in miniseconds since epoch to allow for smooth increase on progress bar
 	time_made = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
 	time_expired = 1000 + (rand() % 5000);
-	x = rand() % 800;
-	y = rand() % 800;
+	x = 20 + rand() % 760;
+	if (x < 80 || x > 720) {
+		y = rand() % 700;
+	}
+	else {
+		if (rand() % 2 == 0) {
+			y = 0;
+		}
+		else {
+			y = 700;
+		}
+	}
+	
 	font = TTF_OpenFont("PixelEmulator-xq08.ttf", 100);
 	if (font == nullptr) {
 		cerr << "Font cannot be loaded: TTF_ERROR" << SDL_GetError() << endl;
@@ -28,24 +39,26 @@ bool KeyTime::time_elapsed() {
 	return false;
 }
 
-void KeyTime::render(SDL_Renderer* renderer) {
-	// draw the player at its position
-	SDL_SetRenderDrawColor(renderer, 255, 0, 255, 255);
-	SDL_FRect background{ x, y, 20, 100 };
-	SDL_RenderFillRect(renderer, &background);
-
+void KeyTime::render(SDL_Renderer* renderer, SDL_Texture* key_outline, SDL_Texture* key_dot) {
 	SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
-	SDL_FRect target{ x, y+80, 20, 20 };
-	SDL_RenderFillRect(renderer, &target);
+	SDL_FRect target{ x, y, size, size };
+	//SDL_RenderFillRect(renderer, &target);
+	SDL_RenderTexture(renderer, key_outline, NULL, &target);
+
+	double progress_angle = progress();
+	double progress_x, progress_y;
+	progress_x = (x + size / 2) + sin(360 * 3.14159 / 180.0 * progress_angle / 100 +3.14159)*size/2;
+	progress_y = (y + size / 2) + cos(360 * 3.14159 / 180.0 * progress_angle / 100 + 3.14159)*size/2;
+
 
 	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
-	SDL_FRect progress_bar{ x, y+progress(), 20, 2};
-	SDL_RenderFillRect(renderer, &progress_bar);
+	SDL_FRect progress_bar{ progress_x, progress_y, size/15, size / 15 };
+	SDL_RenderTexture(renderer, key_dot, NULL, &progress_bar);
 
 	char text = static_cast<char>(key);
 	SDL_Surface* surface = TTF_RenderText_Solid(font, &text, 1, { 255,0,0,0 });
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
-	SDL_FRect textRect{ x, y + 80, 20, 20 };
+	SDL_FRect textRect{ x+size/4, y +size/4, size/2, size/2 };
 	SDL_RenderTexture(renderer, texture, NULL, &textRect);
 	SDL_DestroySurface(surface);
 	SDL_DestroyTexture(texture);

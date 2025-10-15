@@ -3,6 +3,7 @@
 #include <fstream>
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
+#include <SDL3_image/SDL_image.h>
 #include <vector>
 #include <string>
 #include <ctime>
@@ -64,4 +65,7 @@ private:
     vector<KeyTime*> current_keys;
 
     time_t last_time = time(0);
+
+    SDL_Texture* key_outline;
+    SDL_Texture* key_dot;
 };

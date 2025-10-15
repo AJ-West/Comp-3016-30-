@@ -2,6 +2,32 @@
 
 Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRenderer), levelNum(levelNumber) {
 	read_file();
+
+	SDL_Surface* scaleSurface = IMG_Load("images/outline.png");
+	if (!scaleSurface) {
+		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+		return;
+	}
+
+	key_outline = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+	if (!key_outline) {
+		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+		return;
+	}
+
+	scaleSurface = IMG_Load("images/progress dot.png");
+	if (!scaleSurface) {
+		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+		return;
+	}
+
+	key_dot = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+	if (!key_outline) {
+		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+		return;
+	}
 }
 Dungeon::~Dungeon(){}
 
@@ -69,7 +95,7 @@ void Dungeon::render() {
 		monster.render();
 	}
 	for (auto& key : current_keys) {
-		key->render(renderer);
+		key->render(renderer, key_outline, key_dot);
 	}
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
@@ -108,19 +134,29 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
+		int index = 0;
+		vector<int> to_delete;
 		for (auto& keyT : current_keys) {
 			if (keyT->getKey() == key) {
 				if (keyT->inZone()) {
 					player->move(key);
+					to_delete.push_back(index);
 				}
 			}
+			index++;
+		}
+		int count = 0;
+		for (auto& ind : to_delete) {
+			delete current_keys[ind];
+			current_keys.erase(current_keys.begin() + ind - count);
+			count++;
 		}
 	}
 }
 
 void Dungeon::update() {
 	time_t current_time = time(0);
-	if (current_time - last_time >= 1) {
+	if (current_time - last_time >= 2) {
 		vector<vector<SDL_Keycode>> options = player->getMovementKeys();
 		int random_direction = rand() % 4;
 		SDL_Keycode code = options[random_direction][rand() % size(options[random_direction])];
