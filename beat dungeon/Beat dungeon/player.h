@@ -19,14 +19,14 @@ public:
 	Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* dungeon);
 	~Player();
 	//update the player position
-	void move(SDL_Keycode key);
+	void move();
+	void change_direction(SDL_Keycode key);
 	 
-	void handle_input(SDL_Event input);
 	//draw player
 	void render();
 
 	//checks wall collision
-	void checkCollision(int index);
+	bool checkCollision();
 	void checkEnd();
 
 	void win();
@@ -38,9 +38,11 @@ public:
 
 private:
 	// player position
-	int x, y;
+	float x, y;
+	float speed = 0.035;
 	int player_width = 20;
 	int player_height = 20;
+	int direction = NULL;
 	// the keys for movement may change as the game goes on so storing them in arrays to check what the current movement keys are
 	vector<vector<SDL_Keycode>> movement_keys;
 	//game renderer
@@ -48,5 +50,5 @@ private:
 	Dungeon* dung;
 
 	//undoes latest move for the player
-	void undoMove(int index);
+	void undoMove();
 };

@@ -1,4 +1,7 @@
 ﻿  dungeon.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(42,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'dungeon.cpp')
+  
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(68,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(68,121): warning C4244:         with
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(68,121): warning C4244:         [

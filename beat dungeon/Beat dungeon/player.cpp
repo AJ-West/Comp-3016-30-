@@ -10,7 +10,7 @@ Player::Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* du
 }
 Player::~Player() {}
 
-void Player::move(SDL_Keycode key) {
+void Player::change_direction(SDL_Keycode key) {
 	int index = 0;
 	// checks which row the key is in
 	// row 0 is up, row 1 is left, row 2 is down, row 3 is right
@@ -21,28 +21,34 @@ void Player::move(SDL_Keycode key) {
 		}
 		index++;
 	}
-	// move the player in that direction
-	switch (index) {
-	case 0:
-		y -= 20;
-		break;
-	case 1:
-		x -= 20;
-		break;
-	case 2:
-		y += 20;
-		break;
-	case 3:
-		x += 20;
-		break;
-	}
+	direction = index;
+}
+
+void Player::move() {
 	// if the player is now inside a wall it undoes the move
-	checkCollision(index); 
+	if (!checkCollision()) {
+		// move the player in that direction
+		switch (direction) {
+		case 0:
+			y -= speed;
+			break;
+		case 1:
+			x -= speed;
+			break;
+		case 2:
+			y += speed;
+			break;
+		case 3:
+			x += speed;
+			break;
+		}
+	}
+	
 	checkEnd();
 }
 
-void Player::undoMove(int index) {
-	switch (index) {
+void Player::undoMove() {
+	switch (direction) {
 	case 0:
 		y += 20;
 		break;
@@ -55,14 +61,6 @@ void Player::undoMove(int index) {
 	case 3:
 		x -= 20;
 		break;
-	}
-}
-
-void Player::handle_input(SDL_Event input) {
-	SDL_Keycode key = input.key.key;
-	// if a key for movement
-	if (key != SDLK_SPACE) {
-		move(key);
 	}
 }
 
@@ -74,24 +72,42 @@ void Player::render() {
 }
 
 // check if the player is within a wall
-void Player::checkCollision(int index) {
+bool Player::checkCollision() {
+	float pot_x = x;
+	float pot_y = y;
+
+	switch (direction) {
+	case 0:
+		pot_y -= speed;
+		break;
+	case 1:
+		pot_x -= speed;
+		break;
+	case 2:
+		pot_y += speed;
+		break;
+	case 3:
+		pot_x += speed;
+		break;
+	}
 	// get the cell index for each corner of the player
-	pair<int, int> x_bounds(div(x-dung->getDungeonX(), dung->getWallSize()).quot, div(x - dung->getDungeonX() + player_width - 1, dung->getWallSize()).quot);
-	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + player_height-1, dung->getWallSize()).quot);
+	pair<int, int> x_bounds(div(pot_x -dung->getDungeonX(), dung->getWallSize()).quot, div(pot_x - dung->getDungeonX() + player_width - 1, dung->getWallSize()).quot);
+	pair<int, int> y_bounds(div(pot_y - dung->getDungeonY(), dung->getWallSize()).quot, div(pot_y - dung->getDungeonY() + player_height-1, dung->getWallSize()).quot);
 
 	// check if any corners of the player is within a wall and undo the move if so
 	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '1') {
-		undoMove(index);
+		return true;
 	}
 	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '1') {
-		undoMove(index);
+		return true;
 	}
 	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '1') {
-		undoMove(index);
+		return true;
 	}
 	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '1') {
-		undoMove(index);
+		return true;
 	}
+	return false;
 }
 
 // check if the player is within a wall

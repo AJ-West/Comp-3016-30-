@@ -137,7 +137,7 @@ void Dungeon::handleInput(SDL_Event input) {
 		for (auto& keyT : current_keys) {
 			if (keyT->getKey() == key) {
 				if (keyT->inZone()) {
-					player->move(key);
+					player->change_direction(key);
 					keyT->setUsed(true);
 					break;
 				}
@@ -148,21 +148,23 @@ void Dungeon::handleInput(SDL_Event input) {
 
 void Dungeon::update() {
 	double current_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
-	if (current_time - last_time >= 1000) {
+	if (current_time - last_time >= 750) {
 		vector<vector<SDL_Keycode>> options = player->getMovementKeys();
 		int random_direction = rand() % 4;
 		SDL_Keycode code = options[random_direction][rand() % size(options[random_direction])];
 		current_keys.push_back(new KeyTime(code));
-		code = options[random_direction][rand() % size(options[random_direction])];
-		current_keys.push_back(new KeyTime(code));
+		//code = options[random_direction][rand() % size(options[random_direction])];
+		//current_keys.push_back(new KeyTime(code));
 		last_time = current_time;
 	}
 	//removes used keys or timed out keys
 	int index = 0;
 	vector<int> to_delete;
+	vector<SDL_Keycode> keyCodes;
 	for (auto& key : current_keys) {
 		if (key->time_elapsed() || key->getUsed()) {
 			to_delete.push_back(index);
+			keyCodes.push_back(key->getKey());
 		}
 		index++;
 	}
@@ -170,7 +172,9 @@ void Dungeon::update() {
 	for (auto& ind : to_delete) {
 		delete current_keys[ind];
 		current_keys.erase(current_keys.begin() + ind - count);
+		//current_keys.push_back(new KeyTime(keyCodes[count]));
 		count++;
 	}
 	moveMonsters();
+	player->move();
 }

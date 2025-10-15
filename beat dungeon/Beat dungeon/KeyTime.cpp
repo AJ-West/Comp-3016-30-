@@ -4,7 +4,7 @@ KeyTime::KeyTime(SDL_Keycode key_char): key(key_char) {
 	//time_made = time(0);
 	// this is in miniseconds since epoch to allow for smooth increase on progress bar
 	time_made = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
-	time_expired = 750 + (rand() % 3000);
+	time_expired = 750 + (rand() % 2000);
 	x = 0 + rand() % 700;
 	if (x < 100) {
 		x = 0;
