@@ -4,35 +4,37 @@
 #include <vector>
 #include <algorithm>
 
-#include "player.h"
+#include "monster.h"
+#include "dungeon.h"
 
 using namespace std;
 
+class Dungeon;
 class Player;
+//class Monster;
 
-class Monster {
+class Minotaur : public Monster {
 public:
 	//constructor
-	Monster();
-	Monster(float start_x, float start_y, SDL_Renderer* SDL_renderer, Player* player_point, float s_speed);
-	~Monster();
+	Minotaur() {};
+	Minotaur(float start_x, float start_y, SDL_Renderer* SDL_renderer, Player* player_point, float s_speed, Dungeon* dungeon) {};
+	~Minotaur() {};
+
 	//update the monster position
-	void move();
+	virtual void move();
 
-	//draw monster
-	void render();
+	virtual void attack();
 
-	void checkPlayerCollision(vector<pair<int, int>> player_corners);
-	void checkCorner(int corner_x, int corner_y, vector<pair<int, int>> player_corners);
+	virtual void checkAttackCollision();
+
+	void charge();
+	void checkChargeCollision();
+	void checkWallCollision();
+	void crash();
 
 private:
-	// monster position
-	float x, y;
-	float width = 20, height = 20;
-	pair<int, int> target_pos{ 0,0 };
-	pair<int, int> player_dimen;
-	float speed;
-	//game renderer
-	SDL_Renderer* renderer;
-	Player* player;
-}; #pragma once
+	int charge_range = 500;
+	bool charging = false;
+	pair<float, float> charge_target_dir{ 0,0 };
+	Dungeon* dung;
+};

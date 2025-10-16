@@ -17,21 +17,29 @@ public:
 	Monster(float start_x, float start_y, SDL_Renderer* SDL_renderer, Player* player_point, float s_speed);
 	~Monster();
 	//update the monster position
-	void move();
+	virtual void move() = 0;
+	virtual void attack() = 0;
+
+	virtual void checkAttackCollision() = 0;
+
+	void updateTargetPos();
 
 	//draw monster
 	void render();
 
-	void checkPlayerCollision(vector<pair<int, int>> player_corners);
-	void checkCorner(int corner_x, int corner_y, vector<pair<int, int>> player_corners);
+	bool checkPlayerCollision(vector<pair<int, int>> player_corners, int range);
+	bool checkCorner(int corner_x, int corner_y, vector<pair<int, int>> player_corners, int range);
 
-private:
+protected:
 	// monster position
 	float x, y;
 	float width = 20, height = 20;
-	pair<int,int> target_pos{ 0,0 };
+	pair<int, int> target_pos{ 0,0 };
 	pair<int, int> player_dimen;
 	float speed;
+	float attackRange = 10;
+
+private:
 	//game renderer
 	SDL_Renderer* renderer;
 	Player* player;

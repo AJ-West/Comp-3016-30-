@@ -6,17 +6,8 @@ Monster::Monster(float start_x, float start_y, SDL_Renderer* SDL_renderer, Playe
 }
 Monster::~Monster() {}
 
-//moves the monster towards the players position
-void Monster::move() {
+void Monster::updateTargetPos() {
 	target_pos = player->getPos();
-	vector<float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
-	vector<float> target_dir = { float_target[0] - x, float_target[1] - y };
-	x += target_dir[0] / (sqrt(target_dir[0] * target_dir[0])) * speed;
-	y += target_dir[1] / (sqrt(target_dir[1] * target_dir[1])) * speed;
-	vector<pair<int, int>> player_corners;
-	player_corners.push_back({ target_pos.first - player_dimen.first / 2, target_pos.second - player_dimen.second / 2 });
-	player_corners.push_back({ target_pos.first + player_dimen.first / 2, target_pos.second + player_dimen.second / 2 });
-	checkPlayerCollision(player_corners);
 }
 
 void Monster::render() {
@@ -27,17 +18,25 @@ void Monster::render() {
 }
 
 
-void Monster::checkPlayerCollision(vector<pair<int, int>> player_corners) {
-	checkCorner(x, y, player_corners);
-	checkCorner(x, y + height, player_corners);
-	checkCorner(x+width, y, player_corners);
-	checkCorner(x+width, y+height, player_corners);
+bool Monster::checkPlayerCollision(vector<pair<int, int>> player_corners, int range) {
+	if (checkCorner(x, y, player_corners, range)) { return true; }
+	if (checkCorner(x, y + height, player_corners, range)) { return true; }
+	if (checkCorner(x+width, y, player_corners, range)) { return true; }
+	if (checkCorner(x+width, y+height, player_corners, range)) { return true; }
+	return false;
 }
 
-void Monster::checkCorner(int corner_x, int corner_y, vector<pair<int, int>> player_corners) {
-	if (player_corners[0].first < corner_x && corner_x < player_corners[1].first) {
+bool Monster::checkCorner(int corner_x, int corner_y, vector<pair<int, int>> player_corners, int range) {
+	int x_dist = player_corners[0].first - corner_x;
+	int y_dist = player_corners[0].second - corner_y;
+	if (x_dist*x_dist + y_dist*y_dist < range * range) {
+		return true;
+		cout << "game over";
+	}
+	return false;
+	/*if (player_corners[0].first < corner_x && corner_x < player_corners[1].first) {
 		if (player_corners[0].second < corner_y && corner_y < player_corners[1].second) {
 			cout << "game over";
 		}
-	}
+	}*/
 }

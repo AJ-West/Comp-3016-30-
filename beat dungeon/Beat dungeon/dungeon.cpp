@@ -135,7 +135,14 @@ void Dungeon::spawn_entities() {
 		for (const auto& column : row) {
 			if (column == '2') {
 				//monsters.resize(i + 1);
-				Monster monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, player, 0.0025);
+				Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, player, 0.0025);
+				monsters.push_back(monster);
+				//monsters[i] = monster;
+				i++;
+			}
+			if (column == '5') {
+				//monsters.resize(i + 1);
+				Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, player, 0.0025, this);
 				monsters.push_back(monster);
 				//monsters[i] = monster;
 				i++;

@@ -13,12 +13,15 @@
 #include "player.h"
 #include "monster.h"
 #include "KeyTime.h"
+#include "Skeleton.h"
+#include "Minotaur.h"
 
 using namespace std;
 
 class Player;
-class Monster;
+//class Monster;
 class KeyTime;
+class Minotaur;
 
 class Dungeon {
 public:
