@@ -71,16 +71,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include;C:\Users\gamin\Documents\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include;C:\Users\gamin\Documents\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\include;C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include;C:\Users\gamin\Documents\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include;C:\Users\gamin\Documents\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\include;C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include;C:\Users\gamin\Documents\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include;C:\Users\gamin\Documents\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\include;C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include;C:\Users\gamin\Documents\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\include</IncludePath>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);C:\Users\User\Documents\SDL\SDL\SDL_ttf\include;C:\Users\User\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL\include;C:\Users\gamin\Documents\SDL\SDL\SDL_ttf\include;C:\Users\gamin\Documents\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\include;C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -144,22 +144,26 @@
     <ClCompile Include="gameManager.cpp" />
     <ClCompile Include="KeyTime.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Minotaur.cpp" />
     <ClCompile Include="monster.cpp" />
     <ClCompile Include="player.cpp" />
+    <ClCompile Include="Skeleton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="button.h" />
     <ClInclude Include="dungeon.h" />
     <ClInclude Include="gameManager.h" />
     <ClInclude Include="KeyTime.h" />
+    <ClInclude Include="Minotaur.h" />
     <ClInclude Include="monster.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="Skeleton.h" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\SDL\SDL\SDL\VisualC\SDL\SDL.vcxproj">
       <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\..\SDL\SDL\SDL_image-release-3.2.4\SDL_image-release-3.2.4\VisualC\SDL_image.vcxproj">
+    <ProjectReference Include="..\..\..\..\SDL\SDL\SDL_image-release-3.2.4\VisualC\SDL_image.vcxproj">
       <Project>{2bd5534e-00e2-4bea-ac96-d9a92ea24696}</Project>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\SDL\SDL\SDL_ttf\VisualC\SDL_ttf.vcxproj">

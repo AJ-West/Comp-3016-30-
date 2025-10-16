@@ -1,28 +1,29 @@
 ﻿  dungeon.cpp
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(42,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(42,16): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'dungeon.cpp')
   
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(68,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(68,121): warning C4244:         with
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(68,121): warning C4244:         [
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(68,121): warning C4244:             _Rep=__int64
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(68,121): warning C4244:         ]
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(79,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(79,121): warning C4244:         with
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(79,121): warning C4244:         [
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(79,121): warning C4244:             _Rep=__int64
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(79,121): warning C4244:         ]
   (compiling source file 'dungeon.cpp')
   
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(86,34): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(86,34): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(86,61): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(86,61): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(86,78): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(86,78): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(86,89): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(86,89): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(119,93): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(119,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(119,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(150,22): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(150,22): warning C4244:         with
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(150,22): warning C4244:         [
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(150,22): warning C4244:             _Rep=__int64
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(150,22): warning C4244:         ]
-  Beat dungeon.vcxproj -> C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(5,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,34): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,34): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,61): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,61): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,78): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,78): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,89): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,89): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(138,93): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(138,62): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(138,35): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(200,22): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(200,22): warning C4244:         with
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(200,22): warning C4244:         [
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(200,22): warning C4244:             _Rep=__int64
+C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(200,22): warning C4244:         ]
+  Beat dungeon.vcxproj -> C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe

@@ -2,6 +2,7 @@
 
 Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRenderer), levelNum(levelNumber) {
 	read_file();
+	srand(time(0));
 
 	SDL_Surface* scaleSurface = IMG_Load("images/outline.png");
 	if (!scaleSurface) {
@@ -16,6 +17,19 @@ Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRender
 		return;
 	}
 
+	scaleSurface = IMG_Load("images/badoutline.png");
+	if (!scaleSurface) {
+		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+		return;
+	}
+
+	key_bad_outline = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+	if (!key_bad_outline) {
+		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+		return;
+	}
+
 	scaleSurface = IMG_Load("images/progress dot.png");
 	if (!scaleSurface) {
 		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
@@ -24,7 +38,7 @@ Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRender
 
 	key_dot = SDL_CreateTextureFromSurface(renderer, scaleSurface);
 	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
-	if (!key_outline) {
+	if (!key_dot) {
 		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
 		return;
 	}
@@ -95,7 +109,12 @@ void Dungeon::render() {
 		monster.render();
 	}
 	for (auto& key : current_keys) {
-		key->render(renderer, key_outline, key_dot);
+		if (key->getGood()) {
+			key->render(renderer, key_outline, key_dot);
+		}
+		else {
+			key->render(renderer, key_bad_outline, key_dot);
+		}
 	}
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
@@ -147,24 +166,22 @@ void Dungeon::handleInput(SDL_Event input) {
 }
 
 void Dungeon::update() {
-	double current_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
-	if (current_time - last_time >= 750) {
-		vector<vector<SDL_Keycode>> options = player->getMovementKeys();
-		int random_direction = rand() % 4;
-		SDL_Keycode code = options[random_direction][rand() % size(options[random_direction])];
-		current_keys.push_back(new KeyTime(code));
-		//code = options[random_direction][rand() % size(options[random_direction])];
-		//current_keys.push_back(new KeyTime(code));
-		last_time = current_time;
-	}
+	spawn_key();
 	//removes used keys or timed out keys
 	int index = 0;
 	vector<int> to_delete;
 	vector<SDL_Keycode> keyCodes;
 	for (auto& key : current_keys) {
-		if (key->time_elapsed() || key->getUsed()) {
+		if ((key->time_elapsed() || key->getUsed()) && key->getGood()) {
 			to_delete.push_back(index);
 			keyCodes.push_back(key->getKey());
+		}
+		else if (key->time_elapsed() && !key->getGood()) {
+			cout << "level failed";
+			to_delete.push_back(index);
+		}
+		else if (key->getUsed() && !key->getGood()){
+			to_delete.push_back(index);
 		}
 		index++;
 	}
@@ -177,4 +194,23 @@ void Dungeon::update() {
 	}
 	moveMonsters();
 	player->move();
+}
+
+void Dungeon::spawn_key() {
+	double current_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
+	if (current_time - last_time >= 750) {
+		vector<vector<SDL_Keycode>> options = player->getMovementKeys();
+		int random_direction = rand() % 5;
+		if (random_direction != 4) {
+			SDL_Keycode code = options[random_direction][rand() % size(options[random_direction])];
+			current_keys.push_back(new KeyTime(code, true));
+		}
+		else {
+			SDL_Keycode code = all_keys[rand() % size(all_keys)];
+			current_keys.push_back(new KeyTime(code, false));
+		}
+		//code = options[random_direction][rand() % size(options[random_direction])];
+		//current_keys.push_back(new KeyTime(code));
+		last_time = current_time;
+	}
 }

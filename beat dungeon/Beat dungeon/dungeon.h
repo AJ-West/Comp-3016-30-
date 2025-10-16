@@ -43,6 +43,8 @@ public:
 
     void update();
 
+    void spawn_key();
+
     //getters
     int getDungeonX() { return dungeon_x; }
     int getDungeonY() { return dungeon_x; }
@@ -65,8 +67,18 @@ private:
 
     vector<KeyTime*> current_keys;
 
+    vector<SDL_Keycode> all_keys{
+        //numbers
+        SDLK_0, SDLK_1, SDLK_2, SDLK_3, SDLK_4, SDLK_5, SDLK_6, SDLK_7, SDLK_8, SDLK_9,
+        //letters
+        SDLK_A, SDLK_B, SDLK_C, SDLK_D, SDLK_E, SDLK_F, SDLK_G, SDLK_H, SDLK_I, SDLK_J, SDLK_K, SDLK_L, SDLK_M, SDLK_N, SDLK_O, SDLK_P, SDLK_Q, SDLK_R, SDLK_S, SDLK_T, SDLK_U, SDLK_V, SDLK_W, SDLK_X, SDLK_Y, SDLK_Z,
+        //misc
+        SDLK_SPACE, SDLK_UP, SDLK_LEFT, SDLK_RIGHT, SDLK_DOWN
+    };
+
     double last_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
 
     SDL_Texture* key_outline;
+    SDL_Texture* key_bad_outline;
     SDL_Texture* key_dot;
 };

@@ -1,10 +1,14 @@
 #include "KeyTime.h"
 
-KeyTime::KeyTime(SDL_Keycode key_char): key(key_char) {
+KeyTime::KeyTime(SDL_Keycode key_char, bool is_good): key(key_char), good(is_good) {
 	//time_made = time(0);
 	// this is in miniseconds since epoch to allow for smooth increase on progress bar
 	time_made = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
 	time_expired = 750 + (rand() % 2000);
+	if (!good) {
+		time_expired += 1000;
+		text_col = { 255,0,0,0 };
+	}
 	x = 0 + rand() % 700;
 	if (x < 100) {
 		x = 0;
@@ -25,10 +29,6 @@ KeyTime::KeyTime(SDL_Keycode key_char): key(key_char) {
 	}
 }
 
-/*KeyTime::KeyTime(Player* play) : player(play) {
-	max = 1 + rand() % 100;
-	countdown = max;
-}*/
 KeyTime::~KeyTime() {}
 
 bool KeyTime::time_elapsed() {
@@ -56,7 +56,7 @@ void KeyTime::render(SDL_Renderer* renderer, SDL_Texture* key_outline, SDL_Textu
 	SDL_RenderTexture(renderer, key_dot, NULL, &progress_bar);
 
 	char text = static_cast<char>(key);
-	SDL_Surface* surface = TTF_RenderText_Solid(font, &text, 1, { 255,0,0,0 });
+	SDL_Surface* surface = TTF_RenderText_Solid(font, &text, 1, text_col);
 	SDL_Texture* texture = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_FRect textRect{ x+size/4, y +size/4, size/2, size/2 };
 	SDL_RenderTexture(renderer, texture, NULL, &textRect);

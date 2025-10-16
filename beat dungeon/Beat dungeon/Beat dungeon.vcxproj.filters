@@ -16,6 +16,9 @@
     <Filter Include="Source Files\generic">
       <UniqueIdentifier>{266fe6ee-4038-43fb-8bca-351b59d11a6b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\monsters">
+      <UniqueIdentifier>{a9c8bf7b-a5c9-421b-88a5-0707d947c3e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,6 +42,12 @@
     <ClCompile Include="KeyTime.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Skeleton.cpp">
+      <Filter>Source Files\monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="Minotaur.cpp">
+      <Filter>Source Files\monsters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dungeon.h">
@@ -58,6 +67,12 @@
     </ClInclude>
     <ClInclude Include="KeyTime.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Skeleton.h">
+      <Filter>Source Files\monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="Minotaur.h">
+      <Filter>Source Files\monsters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
