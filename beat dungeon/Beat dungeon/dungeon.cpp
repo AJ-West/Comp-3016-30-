@@ -2,7 +2,6 @@
 
 Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRenderer), levelNum(levelNumber) {
 	read_file();
-	srand(time(0));
 
 	SDL_Surface* scaleSurface = IMG_Load("images/outline.png");
 	if (!scaleSurface) {
@@ -106,23 +105,27 @@ void Dungeon::render() {
 	}
 	player->render();
 	for (auto& monster : monsters) {
-		monster.render();
+		monster->render(renderer);
 	}
+	cout << size(current_keys) << '\n';
 	for (auto& key : current_keys) {
+		key->render(key_dot);
+	}
+	/*for (auto& key : current_keys) {
 		if (key->getGood()) {
 			key->render(renderer, key_outline, key_dot);
 		}
 		else {
 			key->render(renderer, key_bad_outline, key_dot);
 		}
-	}
+	}*/
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
 
 void Dungeon::moveMonsters() {
-	for (auto& monst : monsters) {
-		monst.move();
+	for (const auto& monst : monsters) {
+		monst->move();
 	}
 }
 
@@ -135,15 +138,15 @@ void Dungeon::spawn_entities() {
 		for (const auto& column : row) {
 			if (column == '2') {
 				//monsters.resize(i + 1);
-				Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, player, 0.0025);
-				monsters.push_back(monster);
+				//Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025);
+				monsters.push_back(make_unique<Skeleton>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025));
 				//monsters[i] = monster;
 				i++;
 			}
 			if (column == '5') {
 				//monsters.resize(i + 1);
-				Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, player, 0.0025, this);
-				monsters.push_back(monster);
+				//Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this);
+				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this));
 				//monsters[i] = monster;
 				i++;
 			}
@@ -210,11 +213,11 @@ void Dungeon::spawn_key() {
 		int random_direction = rand() % 5;
 		if (random_direction != 4) {
 			SDL_Keycode code = options[random_direction][rand() % size(options[random_direction])];
-			current_keys.push_back(new KeyTime(code, true));
+			current_keys.push_back(new KeyTime(code, true, key_outline, renderer));
 		}
 		else {
 			SDL_Keycode code = all_keys[rand() % size(all_keys)];
-			current_keys.push_back(new KeyTime(code, false));
+			current_keys.push_back(new KeyTime(code, false, key_bad_outline, renderer));
 		}
 		//code = options[random_direction][rand() % size(options[random_direction])];
 		//current_keys.push_back(new KeyTime(code));

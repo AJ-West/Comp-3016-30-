@@ -1,7 +1,11 @@
 #include "monster.h"
+#include "player.h"
 
-Monster::Monster(){}
-Monster::Monster(float start_x, float start_y, SDL_Renderer* SDL_renderer, Player* player_point, float s_speed): x(start_x), y(start_y), renderer(SDL_renderer), player(player_point), speed(s_speed) {
+Monster::Monster(float start_x, float start_y, Player* player_point, float s_speed) {
+	x = start_x;
+	y = start_y;
+	player = player_point;
+	speed = s_speed;
 	player_dimen = player->getDimensions();
 }
 Monster::~Monster() {}
@@ -10,7 +14,7 @@ void Monster::updateTargetPos() {
 	target_pos = player->getPos();
 }
 
-void Monster::render() {
+void Monster::render(SDL_Renderer* renderer) {
 	// draw the player at its position
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 	SDL_FRect character{ x, y, 20, 20 };
@@ -34,9 +38,4 @@ bool Monster::checkCorner(int corner_x, int corner_y, vector<pair<int, int>> pla
 		cout << "game over";
 	}
 	return false;
-	/*if (player_corners[0].first < corner_x && corner_x < player_corners[1].first) {
-		if (player_corners[0].second < corner_y && corner_y < player_corners[1].second) {
-			cout << "game over";
-		}
-	}*/
 }

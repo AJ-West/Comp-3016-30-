@@ -7,11 +7,8 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <vector>
 
-
-#include "dungeon.h"
-#include "player.h"
 #include "gameManager.h"
-#include "KeyTime.h"
+
 
 using namespace std;
 
@@ -61,6 +58,7 @@ void init_environment() {
 int main(int argc, char* argv[])
 {
     system("pause");
+    srand(time(0));
     init_environment();
     GameManager manager(renderer, window);
 

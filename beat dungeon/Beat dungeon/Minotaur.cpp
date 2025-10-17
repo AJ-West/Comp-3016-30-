@@ -1,18 +1,21 @@
 #include "Minotaur.h"
+#include "dungeon.h"
 
 //moves the monster towards the players position
 void Minotaur::move() {
-	updateTargetPos();
-	if (charging) {
-		charge();
+	if (!stunned) {
+		updateTargetPos();
+		if (charging) {
+			charge();
+		}
+		else {
+			vector<float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
+			vector<float> target_dir = { float_target[0] - x, float_target[1] - y };
+			x += target_dir[0] / (sqrt(target_dir[0] * target_dir[0])) * speed;
+			y += target_dir[1] / (sqrt(target_dir[1] * target_dir[1])) * speed;
+		}
+		checkAttackCollision();
 	}
-	else {
-		vector<float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
-		vector<float> target_dir = { float_target[0] - x, float_target[1] - y };
-		x += target_dir[0] / (sqrt(target_dir[0] * target_dir[0])) * speed;
-		y += target_dir[1] / (sqrt(target_dir[1] * target_dir[1])) * speed;
-	}
-	checkAttackCollision();
 }
 
 void Minotaur::attack() {
@@ -21,7 +24,10 @@ void Minotaur::attack() {
 	player_corners.push_back({ target_pos.first - player_dimen.first / 2, target_pos.second - player_dimen.second / 2 });
 	player_corners.push_back({ target_pos.first + player_dimen.first / 2, target_pos.second + player_dimen.second / 2 });
 	if (checkPlayerCollision(player_corners, attackRange)) {
+		canAttack = false;
 		cout << "game over";
+		this_thread::sleep_for(chrono::seconds(2));
+		canAttack = true;
 	}
 }
 
@@ -43,7 +49,9 @@ void Minotaur::charge() {
 }
 
 void Minotaur::checkChargeCollision() {
-	attack();
+	if (canAttack) {
+		attack();
+	}
 	checkWallCollision();
 }
 
@@ -68,6 +76,16 @@ void Minotaur::checkWallCollision() {
 }
 
 void Minotaur::crash() {
+	stunned = false;
 	cout << "pause";
 	charging = false;
+	this_thread::sleep_for(chrono::seconds(3));
+	stunned = true;
+}
+
+void Minotaur::render(SDL_Renderer* renderer) {
+	// draw the player at its position
+	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+	SDL_FRect character{ x, y, 40, 40 };
+	SDL_RenderFillRect(renderer, &character);
 }

@@ -1,23 +1,16 @@
 #pragma once
-#include <iostream>
-#include <SDL3/SDL.h>
-#include <vector>
-#include <algorithm>
 
 #include "monster.h"
-#include "dungeon.h"
 
 using namespace std;
 
 class Dungeon;
 class Player;
-//class Monster;
 
 class Minotaur : public Monster {
 public:
 	//constructor
-	Minotaur() {};
-	Minotaur(float start_x, float start_y, SDL_Renderer* SDL_renderer, Player* player_point, float s_speed, Dungeon* dungeon) {};
+	Minotaur(float start_x, float start_y, Player* player_point, float s_speed, Dungeon* dungeon): Monster(start_x, start_y, player_point, s_speed) {};
 	~Minotaur() {};
 
 	//update the monster position
@@ -26,6 +19,8 @@ public:
 	virtual void attack();
 
 	virtual void checkAttackCollision();
+
+	virtual void render(SDL_Renderer* renderer);
 
 	void charge();
 	void checkChargeCollision();
@@ -37,4 +32,5 @@ private:
 	bool charging = false;
 	pair<float, float> charge_target_dir{ 0,0 };
 	Dungeon* dung;
+	bool stunned = true;
 };

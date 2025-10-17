@@ -16,7 +16,10 @@ void Skeleton::attack() {
 	player_corners.push_back({ target_pos.first - player_dimen.first / 2, target_pos.second - player_dimen.second / 2 });
 	player_corners.push_back({ target_pos.first + player_dimen.first / 2, target_pos.second + player_dimen.second / 2 });
 	if (checkPlayerCollision(player_corners, attackRange)) {
+		canAttack = false;
 		cout << "game over";
+		this_thread::sleep_for(chrono::seconds(2));
+		canAttack = true;
 	}
 }
 
@@ -24,7 +27,7 @@ void Skeleton::checkAttackCollision() {
 	vector<pair<int, int>> player_corners;
 	player_corners.push_back({ target_pos.first - player_dimen.first / 2, target_pos.second - player_dimen.second / 2 });
 	player_corners.push_back({ target_pos.first + player_dimen.first / 2, target_pos.second + player_dimen.second / 2 });
-	if (checkPlayerCollision(player_corners, range)) {
+	if (checkPlayerCollision(player_corners, range) && canAttack) {
 		attack();
 	}
 }

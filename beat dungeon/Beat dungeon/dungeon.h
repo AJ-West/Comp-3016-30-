@@ -9,6 +9,7 @@
 #include <ctime>
 #include <cstdlib>
 #include <chrono>
+#include <memory>
 
 #include "player.h"
 #include "monster.h"
@@ -19,9 +20,9 @@
 using namespace std;
 
 class Player;
-//class Monster;
+class Monster;
 class KeyTime;
-class Minotaur;
+//class Minotaur;
 
 class Dungeon {
 public:
@@ -29,7 +30,7 @@ public:
     Dungeon() {};
     Dungeon(SDL_Renderer* sdlrenderer, int levelNumber);
     ~Dungeon();
-
+    
     //read the specified text file for the level
     void read_file();
 
@@ -66,7 +67,7 @@ private:
 
     Player* player;
 
-    vector<Monster> monsters;
+    vector<unique_ptr<Monster>> monsters;
 
     vector<KeyTime*> current_keys;
 

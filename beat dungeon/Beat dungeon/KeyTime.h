@@ -12,13 +12,13 @@ using namespace std;
 
 class KeyTime {
 public:
-	KeyTime(SDL_Keycode key_char, bool is_good);
+	KeyTime(SDL_Keycode key_char, bool is_good, SDL_Texture* SDL_Texture, SDL_Renderer* SDL_renderer);
 	//KeyTime(Player* play);
 	~KeyTime();
 
 	bool time_elapsed();
 
-	void render(SDL_Renderer* renderer, SDL_Texture* key_outline, SDL_Texture* key_dot);
+	void render(SDL_Texture* key_dot);
 
 	bool inZone();
 
@@ -49,4 +49,9 @@ private:
 	SDL_Keycode key;
 
 	SDL_Color text_col{ 255,255,255,0 };
+
+	SDL_Texture* texture;
+	SDL_Texture* text;
+
+	SDL_Renderer* renderer;
 };
