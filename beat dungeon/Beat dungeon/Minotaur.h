@@ -10,7 +10,7 @@ class Player;
 class Minotaur : public Monster {
 public:
 	//constructor
-	Minotaur(float start_x, float start_y, Player* player_point, float s_speed, Dungeon* dungeon): Monster(start_x, start_y, player_point, s_speed) {};
+	Minotaur(float start_x, float start_y, Player* player_point, float s_speed, Dungeon* dungeon) : Monster(start_x, start_y, player_point, s_speed), dung(dungeon) {};
 	~Minotaur() {};
 
 	//update the monster position
@@ -22,15 +22,21 @@ public:
 
 	virtual void render(SDL_Renderer* renderer);
 
+	void stun();
+	void attackDelay();
+
 	void charge();
 	void checkChargeCollision();
 	void checkWallCollision();
 	void crash();
 
 private:
-	int charge_range = 500;
+	int charge_range = 250;
 	bool charging = false;
 	pair<float, float> charge_target_dir{ 0,0 };
 	Dungeon* dung;
-	bool stunned = true;
+	bool stunned = false;
+	float width = 40, height = 40;
+
+	thread* async;
 };

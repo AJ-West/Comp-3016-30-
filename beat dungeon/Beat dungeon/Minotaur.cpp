@@ -7,14 +7,15 @@ void Minotaur::move() {
 		updateTargetPos();
 		if (charging) {
 			charge();
+			checkChargeCollision();
 		}
 		else {
 			vector<float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
 			vector<float> target_dir = { float_target[0] - x, float_target[1] - y };
 			x += target_dir[0] / (sqrt(target_dir[0] * target_dir[0])) * speed;
 			y += target_dir[1] / (sqrt(target_dir[1] * target_dir[1])) * speed;
+			checkAttackCollision();
 		}
-		checkAttackCollision();
 	}
 }
 
@@ -26,8 +27,8 @@ void Minotaur::attack() {
 	if (checkPlayerCollision(player_corners, attackRange)) {
 		canAttack = false;
 		cout << "game over";
-		this_thread::sleep_for(chrono::seconds(2));
-		canAttack = true;
+		async = new thread(&Minotaur::attackDelay, this);
+		async->detach();
 	}
 }
 
@@ -38,13 +39,17 @@ void Minotaur::checkAttackCollision() {
 	if (checkPlayerCollision(player_corners, charge_range)) {
 		pair<float, float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
 		charge_target_dir = { float_target.first - x, float_target.second - y };
+		charge_target_dir = { charge_target_dir.first / (sqrt(charge_target_dir.first * charge_target_dir.first)), charge_target_dir.second / (sqrt(charge_target_dir.second * charge_target_dir.second)) };
+		speed = 0.075;
 		charging = true;
+		cout << "charge";
 	}
 }
 
 void Minotaur::charge() {
-	x += charge_target_dir.first / (sqrt(charge_target_dir.first * charge_target_dir.first)) * speed;
-	y += charge_target_dir.first / (sqrt(charge_target_dir.first * charge_target_dir.first)) * speed;
+	cout << "charging";
+	x += charge_target_dir.first * speed;
+	y += charge_target_dir.second * speed;
 	checkChargeCollision();
 }
 
@@ -61,26 +66,27 @@ void Minotaur::checkWallCollision() {
 	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + height - 1, dung->getWallSize()).quot);
 
 	// check if any corners of the player is within an exit and crashes the minotaur is so
-	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '3') {
+	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '1') {
 		crash();
 	}
-	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '3') {
+	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '1') {
 		crash();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '3') {
+	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '1') {
 		crash();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '3') {
+	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '1') {
 		crash();
 	}
 }
 
 void Minotaur::crash() {
-	stunned = false;
-	cout << "pause";
-	charging = false;
-	this_thread::sleep_for(chrono::seconds(3));
 	stunned = true;
+	cout << "pause";
+	speed = 0.005;
+	charging = false;
+	async = new thread(&Minotaur::stun, this);
+	async->detach();
 }
 
 void Minotaur::render(SDL_Renderer* renderer) {
@@ -88,4 +94,14 @@ void Minotaur::render(SDL_Renderer* renderer) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_FRect character{ x, y, 40, 40 };
 	SDL_RenderFillRect(renderer, &character);
+}
+
+void Minotaur::stun() {
+	this_thread::sleep_for(chrono::seconds(3));
+	stunned = false;
+}
+
+void Minotaur::attackDelay() {
+	this_thread::sleep_for(chrono::seconds(3));
+	canAttack = true;
 }

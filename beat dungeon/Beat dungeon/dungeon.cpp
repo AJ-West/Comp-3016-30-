@@ -107,7 +107,6 @@ void Dungeon::render() {
 	for (auto& monster : monsters) {
 		monster->render(renderer);
 	}
-	cout << size(current_keys) << '\n';
 	for (auto& key : current_keys) {
 		key->render(key_dot);
 	}
@@ -139,14 +138,14 @@ void Dungeon::spawn_entities() {
 			if (column == '2') {
 				//monsters.resize(i + 1);
 				//Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025);
-				monsters.push_back(make_unique<Skeleton>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025));
+				monsters.push_back(make_unique<Skeleton>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005));
 				//monsters[i] = monster;
 				i++;
 			}
 			if (column == '5') {
 				//monsters.resize(i + 1);
 				//Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this);
-				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this));
+				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, this));
 				//monsters[i] = monster;
 				i++;
 			}
@@ -163,7 +162,8 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		for (auto& keyT : current_keys) {
+		//code for game
+		/*for (auto& keyT : current_keys) {
 			if (keyT->getKey() == key) {
 				if (keyT->inZone()) {
 					player->change_direction(key);
@@ -171,7 +171,9 @@ void Dungeon::handleInput(SDL_Event input) {
 					break;
 				}
 			}
-		}
+		}*/
+		// for testing purposes
+		player->change_direction(key);
 	}
 }
 
