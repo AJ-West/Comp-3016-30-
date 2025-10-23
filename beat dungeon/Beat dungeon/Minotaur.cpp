@@ -39,15 +39,15 @@ void Minotaur::checkAttackCollision() {
 	if (checkPlayerCollision(player_corners, charge_range)) {
 		pair<float, float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
 		charge_target_dir = { float_target.first - x, float_target.second - y };
-		charge_target_dir = { charge_target_dir.first / (sqrt(charge_target_dir.first * charge_target_dir.first)), charge_target_dir.second / (sqrt(charge_target_dir.second * charge_target_dir.second)) };
+		// used to scale the travel direction to allow for constant speed
+		float mag = charge_target_dir.first + charge_target_dir.second;
+		charge_target_dir = { charge_target_dir.first / sqrt(mag*mag), charge_target_dir.second / sqrt(mag*mag) };
 		speed = 0.075;
 		charging = true;
-		cout << "charge";
 	}
 }
 
 void Minotaur::charge() {
-	cout << "charging";
 	x += charge_target_dir.first * speed;
 	y += charge_target_dir.second * speed;
 	checkChargeCollision();
@@ -82,7 +82,6 @@ void Minotaur::checkWallCollision() {
 
 void Minotaur::crash() {
 	stunned = true;
-	cout << "pause";
 	speed = 0.005;
 	charging = false;
 	async = new thread(&Minotaur::stun, this);
