@@ -22,6 +22,9 @@ public:
 	void renderKeys();
 	void checkTimes();
 
+	void keyDown(SDL_Keycode key);
+	void keyUp(SDL_Keycode key);
+
 private:
 	Player* player;
 

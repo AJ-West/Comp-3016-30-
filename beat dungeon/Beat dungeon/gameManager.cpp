@@ -144,7 +144,7 @@ void GameManager::handleInput(SDL_Event& event) {
             }
         }
     }
-    else if (dung && event.type == SDL_EVENT_KEY_UP) {
+    else if (dung && (event.type == SDL_EVENT_KEY_UP || event.type == SDL_EVENT_KEY_DOWN)) {
         dung->handleInput(event);
     }
 }

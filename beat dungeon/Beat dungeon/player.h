@@ -20,7 +20,7 @@ public:
 	~Player();
 	//update the player position
 	void move();
-	void change_direction(SDL_Keycode key);
+	void change_direction(SDL_Keycode key, bool down);
 	 
 	//draw player
 	void render();

@@ -10,18 +10,23 @@ Player::Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* du
 }
 Player::~Player() {}
 
-void Player::change_direction(SDL_Keycode key) {
-	int index = 0;
-	// checks which row the key is in
-	// row 0 is up, row 1 is left, row 2 is down, row 3 is right
-	for (const auto& row : movement_keys) {
-		auto it = find(row.begin(), row.end(), key);
-		if (it != row.end()) {
-			break;
+void Player::change_direction(SDL_Keycode key, bool down) {
+	if (down) {
+		int index = 0;
+		// checks which row the key is in
+		// row 0 is up, row 1 is left, row 2 is down, row 3 is right
+		for (const auto& row : movement_keys) {
+			auto it = find(row.begin(), row.end(), key);
+			if (it != row.end()) {
+				break;
+			}
+			index++;
 		}
-		index++;
+		direction = index;
 	}
-	direction = index;
+	else {
+		direction = 5;
+	}
 }
 
 void Player::move() {

@@ -105,13 +105,13 @@ void KeyHandler::spawnKey(){
 		SDL_Surface* surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,255,255,0 });
 		text = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_DestroySurface(surface);
-		all_keys[pos] = new KeyTime(text, true, key_outline, locations[pos]);
+		all_keys[pos] = new KeyTime(code, text, true, key_outline, locations[pos]);
 	}
 	else {
 		SDL_Surface* surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,0,0,0 });
 		text = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_DestroySurface(surface);
-		all_keys[pos] = new KeyTime(text, false, key_bad_outline, locations[pos]);
+		all_keys[pos] = new KeyTime(code, text, false, key_bad_outline, locations[pos]);
 	}
 }
 
@@ -126,6 +126,9 @@ void KeyHandler::checkTimes() {
 	for (auto& key : all_keys) {
 		if (key != nullptr) {
 			if ((key->time_elapsed() || key->getUsed()) && key->getGood()) {
+				if (key->getIsDown()) {
+					player->change_direction(key->getKey(), false);
+				}
 				delete key;
 				key = nullptr;
 			}
@@ -137,6 +140,36 @@ void KeyHandler::checkTimes() {
 			else if (key->getUsed() && !key->getGood()) {
 				delete key;
 				key = nullptr;
+			}
+		}
+	}
+}
+
+void KeyHandler::keyDown(SDL_Keycode key) {
+	//code for game
+	for (auto& keyT : all_keys) {
+		if (keyT != nullptr) {
+			if (keyT->getKey() == key) {
+				if (keyT->inZone()) {
+					player->change_direction(key, true);
+					keyT->setIsDown(true);
+					break;
+				}
+			}
+		}
+	}
+}
+
+void KeyHandler::keyUp(SDL_Keycode key) {
+	for (auto& keyT : all_keys) {
+		if (keyT != nullptr) {
+			if (keyT->getKey() == key) {
+				if (keyT->inZone()) {
+					player->change_direction(key, false);
+					keyT->setIsDown(false);
+					keyT->setUsed(true);
+					break;
+				}
 			}
 		}
 	}

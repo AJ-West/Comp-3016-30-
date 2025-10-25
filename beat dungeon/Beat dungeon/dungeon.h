@@ -57,6 +57,8 @@ public:
     int getWallSize() { return wall_size; }
 
 private:
+    bool current_Key = false;
+
     //game renderer
     SDL_Renderer* renderer;
     //storing the dungeon as chars

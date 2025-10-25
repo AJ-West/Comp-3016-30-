@@ -12,7 +12,7 @@ using namespace std;
 
 class KeyTime {
 public:
-	KeyTime(SDL_Texture* key_text, bool is_good, SDL_Texture* SDL_Texture, pair<int,int> pos);
+	KeyTime(SDL_Keycode KeyT, SDL_Texture* key_text, bool is_good, SDL_Texture* SDL_Texture, pair<int,int> pos);
 	//KeyTime(Player* play);
 	~KeyTime();
 
@@ -28,10 +28,12 @@ public:
 	//int getCountdown() { return countdown; }
 	SDL_Keycode getKey() { return key; }
 	bool getUsed() { return used; }
+	bool getIsDown() { return isDown; }
 	bool getGood() { return good; }
 
 	//setters
 	void setUsed(bool use) { used = use; }
+	void setIsDown(bool down) { isDown = down; }
 
 private:
 	//Player* player;
@@ -42,6 +44,7 @@ private:
 
 	bool good;
 	bool used = false;
+	bool isDown = false;
 
 	TTF_Font* font;
 

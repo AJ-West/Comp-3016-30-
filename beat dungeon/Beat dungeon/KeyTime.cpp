@@ -1,12 +1,12 @@
 #include "KeyTime.h"
 
-KeyTime::KeyTime(SDL_Texture* key_text, bool is_good, SDL_Texture* SDL_Texture, pair<int, int> pos): text(key_text), good(is_good), texture(SDL_Texture), position(pos) {
+KeyTime::KeyTime(SDL_Keycode KeyT, SDL_Texture* key_text, bool is_good, SDL_Texture* SDL_Texture, pair<int, int> pos): key(KeyT), text(key_text), good(is_good), texture(SDL_Texture), position(pos) {
 	//time_made = time(0);
 	// this is in miniseconds since epoch to allow for smooth increase on progress bar
 	time_made = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
-	time_expired = 750 + (rand() % 2000);
+	time_expired = 1500 + (rand() % 2000);
 	if (!good) {
-		time_expired += 1000;
+		time_expired -= 1000;
 	}
 }
 
@@ -48,7 +48,7 @@ void KeyTime::render(SDL_Texture* key_dot, SDL_Renderer* renderer) {
 }
 
 bool KeyTime::inZone() {
-	return progress() >= 80;
+	return progress() >= 75;
 }
 
 double KeyTime::progress() {

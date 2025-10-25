@@ -122,18 +122,16 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		//code for game
-		/*for (auto& keyT : current_keys) {
-			if (keyT->getKey() == key) {
-				if (keyT->inZone()) {
-					player->change_direction(key);
-					keyT->setUsed(true);
-					break;
-				}
-			}
-		}*/
+		if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
+			keyHandler->keyDown(key);
+			current_Key = true;
+		}
+		else if (input.type == SDL_EVENT_KEY_UP && current_Key) {
+			keyHandler->keyUp(key);
+			current_Key = false;
+		}
 		// for testing purposes
-		player->change_direction(key);
+		//player->change_direction(key);
 	}
 }
 
@@ -149,7 +147,7 @@ void Dungeon::update() {
 
 void Dungeon::spawn_key() {
 	double current_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
-	if (current_time - last_time >= 750) {
+	if (current_time - last_time >= 1500) {
 		keyHandler->spawnKey();
 		last_time = current_time;
 	}
