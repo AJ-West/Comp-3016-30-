@@ -2,45 +2,7 @@
 
 Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRenderer), levelNum(levelNumber) {
 	read_file();
-
-	SDL_Surface* scaleSurface = IMG_Load("images/outline.png");
-	if (!scaleSurface) {
-		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
-		return;
-	}
-
-	key_outline = SDL_CreateTextureFromSurface(renderer, scaleSurface);
-	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
-	if (!key_outline) {
-		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
-		return;
-	}
-
-	scaleSurface = IMG_Load("images/badoutline.png");
-	if (!scaleSurface) {
-		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
-		return;
-	}
-
-	key_bad_outline = SDL_CreateTextureFromSurface(renderer, scaleSurface);
-	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
-	if (!key_bad_outline) {
-		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
-		return;
-	}
-
-	scaleSurface = IMG_Load("images/progress dot.png");
-	if (!scaleSurface) {
-		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
-		return;
-	}
-
-	key_dot = SDL_CreateTextureFromSurface(renderer, scaleSurface);
-	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
-	if (!key_dot) {
-		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
-		return;
-	}
+	keyHandler = new KeyHandler(renderer, player);
 }
 Dungeon::~Dungeon(){}
 
@@ -107,9 +69,7 @@ void Dungeon::render() {
 	for (auto& monster : monsters) {
 		monster->render(renderer);
 	}
-	for (auto& key : current_keys) {
-		key->render(key_dot);
-	}
+	keyHandler->renderKeys();
 	/*for (auto& key : current_keys) {
 		if (key->getGood()) {
 			key->render(renderer, key_outline, key_dot);
@@ -211,18 +171,7 @@ void Dungeon::update() {
 void Dungeon::spawn_key() {
 	double current_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();;
 	if (current_time - last_time >= 750) {
-		vector<vector<SDL_Keycode>> options = player->getMovementKeys();
-		int random_direction = rand() % 5;
-		if (random_direction != 4) {
-			SDL_Keycode code = options[random_direction][rand() % size(options[random_direction])];
-			current_keys.push_back(new KeyTime(code, true, key_outline, renderer));
-		}
-		else {
-			SDL_Keycode code = all_keys[rand() % size(all_keys)];
-			current_keys.push_back(new KeyTime(code, false, key_bad_outline, renderer));
-		}
-		//code = options[random_direction][rand() % size(options[random_direction])];
-		//current_keys.push_back(new KeyTime(code));
+		keyHandler->spawnKey();
 		last_time = current_time;
 	}
 }

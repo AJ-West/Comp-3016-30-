@@ -16,12 +16,14 @@
 #include "KeyTime.h"
 #include "Skeleton.h"
 #include "Minotaur.h"
+#include "KeyHandler.h"
 
 using namespace std;
 
 class Player;
 class Monster;
 class KeyTime;
+class KeyHandler;
 //class Minotaur;
 
 class Dungeon {
@@ -82,7 +84,5 @@ private:
 
     double last_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
 
-    SDL_Texture* key_outline;
-    SDL_Texture* key_bad_outline;
-    SDL_Texture* key_dot;
+    KeyHandler* keyHandler;
 };

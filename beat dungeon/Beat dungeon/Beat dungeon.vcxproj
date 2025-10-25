@@ -142,6 +142,7 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="dungeon.cpp" />
     <ClCompile Include="gameManager.cpp" />
+    <ClCompile Include="KeyHandler.cpp" />
     <ClCompile Include="KeyTime.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Minotaur.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="button.h" />
     <ClInclude Include="dungeon.h" />
     <ClInclude Include="gameManager.h" />
+    <ClInclude Include="KeyHandler.h" />
     <ClInclude Include="KeyTime.h" />
     <ClInclude Include="Minotaur.h" />
     <ClInclude Include="monster.h" />

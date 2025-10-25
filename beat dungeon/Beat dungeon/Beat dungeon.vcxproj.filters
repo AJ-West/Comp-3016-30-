@@ -19,6 +19,9 @@
     <Filter Include="Source Files\monsters">
       <UniqueIdentifier>{a9c8bf7b-a5c9-421b-88a5-0707d947c3e0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\keys">
+      <UniqueIdentifier>{b229d030-e2d5-41a7-97dc-68ffeac51c31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -39,14 +42,17 @@
     <ClCompile Include="button.cpp">
       <Filter>Source Files\generic</Filter>
     </ClCompile>
-    <ClCompile Include="KeyTime.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Skeleton.cpp">
       <Filter>Source Files\monsters</Filter>
     </ClCompile>
     <ClCompile Include="Minotaur.cpp">
       <Filter>Source Files\monsters</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyTime.cpp">
+      <Filter>Source Files\keys</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyHandler.cpp">
+      <Filter>Source Files\keys</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -65,14 +71,17 @@
     <ClInclude Include="button.h">
       <Filter>Source Files\generic</Filter>
     </ClInclude>
-    <ClInclude Include="KeyTime.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="Skeleton.h">
       <Filter>Source Files\monsters</Filter>
     </ClInclude>
     <ClInclude Include="Minotaur.h">
       <Filter>Source Files\monsters</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyTime.h">
+      <Filter>Source Files\keys</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyHandler.h">
+      <Filter>Source Files\keys</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
