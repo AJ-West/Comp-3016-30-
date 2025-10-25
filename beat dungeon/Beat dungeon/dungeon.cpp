@@ -142,28 +142,7 @@ void Dungeon::update() {
 	//removes used keys or timed out keys
 	int index = 0;
 	vector<int> to_delete;
-	vector<SDL_Keycode> keyCodes;
-	for (auto& key : current_keys) {
-		if ((key->time_elapsed() || key->getUsed()) && key->getGood()) {
-			to_delete.push_back(index);
-			keyCodes.push_back(key->getKey());
-		}
-		else if (key->time_elapsed() && !key->getGood()) {
-			cout << "level failed";
-			to_delete.push_back(index);
-		}
-		else if (key->getUsed() && !key->getGood()){
-			to_delete.push_back(index);
-		}
-		index++;
-	}
-	int count = 0;
-	for (auto& ind : to_delete) {
-		delete current_keys[ind];
-		current_keys.erase(current_keys.begin() + ind - count);
-		//current_keys.push_back(new KeyTime(keyCodes[count]));
-		count++;
-	}
+	keyHandler->checkTimes();
 	moveMonsters();
 	player->move();
 }

@@ -20,6 +20,7 @@ public:
 
 	void spawnKey();
 	void renderKeys();
+	void checkTimes();
 
 private:
 	Player* player;

@@ -101,14 +101,16 @@ void KeyHandler::spawnKey(){
 	}
 	
 	char key_text = static_cast<char>(code);
-	SDL_Surface* surface = TTF_RenderText_Solid(font, &key_text, 1, {255,255,255,0});
-	text = SDL_CreateTextureFromSurface(renderer, surface);
-	SDL_DestroySurface(surface);
-
 	if (good) {
+		SDL_Surface* surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,255,255,0 });
+		text = SDL_CreateTextureFromSurface(renderer, surface);
+		SDL_DestroySurface(surface);
 		all_keys[pos] = new KeyTime(text, true, key_outline, locations[pos]);
 	}
 	else {
+		SDL_Surface* surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,0,0,0 });
+		text = SDL_CreateTextureFromSurface(renderer, surface);
+		SDL_DestroySurface(surface);
 		all_keys[pos] = new KeyTime(text, false, key_bad_outline, locations[pos]);
 	}
 }
@@ -117,5 +119,25 @@ void KeyHandler::renderKeys() {
 	for (auto& key : all_keys) {
 		if(key != nullptr)
 			key->render(key_dot, renderer);
+	}
+}
+
+void KeyHandler::checkTimes() {
+	for (auto& key : all_keys) {
+		if (key != nullptr) {
+			if ((key->time_elapsed() || key->getUsed()) && key->getGood()) {
+				delete key;
+				key = nullptr;
+			}
+			else if (key->time_elapsed() && !key->getGood()) {
+				cout << "level failed";
+				delete key;
+				key = nullptr;
+			}
+			else if (key->getUsed() && !key->getGood()) {
+				delete key;
+				key = nullptr;
+			}
+		}
 	}
 }
