@@ -1,21 +1,21 @@
 ﻿  Minotaur.cpp
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(42,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(42,16): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'Minotaur.cpp')
   
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244:         with
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244:         [
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244:             _Rep=__int64
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244:         ]
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(83,121): warning C4244:         ]
   (compiling source file 'Minotaur.cpp')
   
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(27,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(47,11): warning C4305: '=': truncation from 'double' to 'float'
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(69,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(69,118): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(70,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(70,119): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(90,10): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(27,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(45,11): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(65,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(65,118): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(66,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(66,119): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(85,10): warning C4305: '=': truncation from 'double' to 'float'
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
@@ -28,14 +28,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
   (compiling source file 'Minotaur.cpp')
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
   the template instantiation context (the oldest one first) is
-  	C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(36,38):
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(36,38):
   	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
           with
           [
               _Other1=int,
               _Other2=int
           ]
-  		C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(36,38):
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(36,38):
   		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
@@ -49,4 +49,4 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
   (compiling source file 'Minotaur.cpp')
   
-  Beat dungeon.vcxproj -> C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe
+  Beat dungeon.vcxproj -> C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe

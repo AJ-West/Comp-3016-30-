@@ -40,8 +40,8 @@ void Minotaur::checkAttackCollision() {
 		pair<float, float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
 		charge_target_dir = { float_target.first - x, float_target.second - y };
 		// used to scale the travel direction to allow for constant speed
-		float mag = charge_target_dir.first + charge_target_dir.second;
-		charge_target_dir = { charge_target_dir.first / sqrt(mag*mag), charge_target_dir.second / sqrt(mag*mag) };
+		float mag = charge_target_dir.first* charge_target_dir.first + charge_target_dir.second* charge_target_dir.second;
+		charge_target_dir = { charge_target_dir.first / sqrt(mag), charge_target_dir.second / sqrt(mag) };
 		speed = 0.075;
 		charging = true;
 	}
