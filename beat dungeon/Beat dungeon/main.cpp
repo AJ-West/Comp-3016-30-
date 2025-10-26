@@ -6,11 +6,12 @@
 #include <SDL3/SDL.h>
 #include <SDL3_ttf/SDL_ttf.h>
 #include <vector>
-
+#include <irrKlang.h>
 #include "gameManager.h"
 
 
 using namespace std;
+using namespace irrklang;
 
 //screen size
 #define SCREEN_WIDTH 800
@@ -19,12 +20,13 @@ using namespace std;
 SDL_Window* window;
 SDL_Renderer* renderer;
 TTF_Font* font;
+ISoundEngine* engine;
 int FONT_SIZE = 30;
 bool isRunning;
 
 //creates the window, renderer and font for the game
 void init_environment() {
-    if (SDL_Init(SDL_INIT_VIDEO) < 0) {
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) < 0) {
         cerr << "SDL could not initialize: SDL_ERROR" << SDL_GetError() << endl;
         isRunning = false;
         return;
@@ -52,6 +54,15 @@ void init_environment() {
         isRunning = false;
         return;
     }
+
+    engine = createIrrKlangDevice();
+    if (!engine) {
+        std::cerr << "Failed to load irrKlang DLL or initialize sound engine." << std::endl;
+        return;
+    }
+
+    engine->play2D("background track.mp3", true); // looped playback
+    engine->setSoundVolume(1.0f);
     isRunning = true;
 }
 
@@ -78,6 +89,7 @@ int main(int argc, char* argv[])
         }
         manager.update();
     }
+    engine->drop(); // clean up
 
     return 0;
 }

@@ -33,9 +33,6 @@
     <ClCompile Include="player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="monster.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="gameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -54,15 +51,15 @@
     <ClCompile Include="KeyHandler.cpp">
       <Filter>Source Files\keys</Filter>
     </ClCompile>
+    <ClCompile Include="monster.cpp">
+      <Filter>Source Files\monsters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dungeon.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="player.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="monster.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="gameManager.h">
@@ -82,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="KeyHandler.h">
       <Filter>Source Files\keys</Filter>
+    </ClInclude>
+    <ClInclude Include="monster.h">
+      <Filter>Source Files\monsters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
