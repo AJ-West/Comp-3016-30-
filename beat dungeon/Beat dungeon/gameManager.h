@@ -6,12 +6,14 @@
 #include <string>
 #include <vector>
 #include <cstdlib>
+#include <irrKlang.h>
 
 #include "button.h"
 #include "dungeon.h"
 #include "KeyTime.h"
 
 using namespace std;
+using namespace irrklang;
 
 class GameManager {
 public:
@@ -39,4 +41,6 @@ private:
 	vector<Button> buttons;
 
 	Dungeon* dung;
+
+	ISoundEngine* music;
 };

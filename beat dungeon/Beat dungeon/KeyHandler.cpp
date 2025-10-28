@@ -76,6 +76,12 @@ KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, Player* play): renderer(SDL_r
 		cerr << "Font cannot be loaded: TTF_ERROR" << SDL_GetError() << endl;
 		return;
 	}
+
+	sound = createIrrKlangDevice();
+	if (!sound) {
+		std::cerr << "Failed to load irrKlang DLL or initialize sound engine." << std::endl;
+		return;
+	}
 }
 KeyHandler::~KeyHandler(){}
 
@@ -128,12 +134,15 @@ void KeyHandler::checkTimes() {
 			if ((key->time_elapsed() || key->getUsed()) && key->getGood()) {
 				if (key->getIsDown()) {
 					player->change_direction(key->getKey(), false);
+					int rand = std::rand() % 5;
+					sound->play2D(key_sounds[rand], false);
 				}
 				delete key;
 				key = nullptr;
 			}
 			else if (key->time_elapsed() && !key->getGood()) {
 				cout << "level failed";
+				sound->play2D("sound effects/missed.wav", false);
 				delete key;
 				key = nullptr;
 			}
@@ -168,6 +177,8 @@ void KeyHandler::keyUp(SDL_Keycode key) {
 					player->change_direction(key, false);
 					keyT->setIsDown(false);
 					keyT->setUsed(true);
+					int rand = std::rand() % 5;
+					sound->play2D(key_sounds[rand], false);
 					break;
 				}
 			}

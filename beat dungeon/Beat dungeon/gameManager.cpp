@@ -38,6 +38,12 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
         SDL_Quit();
         return;
     }
+
+    music = createIrrKlangDevice();
+    if (!music) {
+        std::cerr << "Failed to load irrKlang DLL or initialize sound engine." << std::endl;
+        return;
+    }
 }
 GameManager::~GameManager(){}
 

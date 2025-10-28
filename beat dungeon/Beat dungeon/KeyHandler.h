@@ -3,13 +3,15 @@
 #include <ctime>
 #include <chrono>
 #include <cmath>
-
+#include <cstdlib>
+#include <irrKlang.h>
 #include <SDL3_image/SDL_image.h>
 
 #include "player.h"
 #include "KeyTime.h"
 
 using namespace std;
+using namespace irrklang;
 
 class KeyTime;
 
@@ -33,6 +35,8 @@ private:
 	vector<pair<int, int>> locations;
 	vector<KeyTime*> all_keys;
 
+	vector<const char*> key_sounds{ "sound effects/keys/1.wav" ,"sound effects/keys/2.wav","sound effects/keys/3.wav","sound effects/keys/4.wav" ,"sound effects/keys/5.wav" };
+
 	vector<SDL_Keycode> keyboard{
 		//numbers
 		SDLK_0, SDLK_1, SDLK_2, SDLK_3, SDLK_4, SDLK_5, SDLK_6, SDLK_7, SDLK_8, SDLK_9,
@@ -48,4 +52,6 @@ private:
 	SDL_Texture* key_outline;
 	SDL_Texture* key_bad_outline;
 	SDL_Texture* key_dot;
+
+	ISoundEngine* sound;
 };
