@@ -92,7 +92,8 @@ void Minotaur::render(SDL_Renderer* renderer) {
 	// draw the player at its position
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_FRect character{ x, y, 40, 40 };
-	SDL_RenderFillRect(renderer, &character);
+	SDL_RenderTexture(renderer, sprite, &edge_remove, &character);
+	//SDL_RenderFillRect(renderer, &character);
 }
 
 void Minotaur::stun() {

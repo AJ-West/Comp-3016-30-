@@ -99,6 +99,7 @@ void Dungeon::spawn_entities() {
 				//monsters.resize(i + 1);
 				//Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025);
 				monsters.push_back(make_unique<Skeleton>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005));
+				monsters[i]->loadTexture(renderer, "images/skeleton.png");
 				//monsters[i] = monster;
 				i++;
 			}
@@ -106,6 +107,7 @@ void Dungeon::spawn_entities() {
 				//monsters.resize(i + 1);
 				//Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this);
 				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, this));
+				monsters[i]->loadTexture(renderer, "images/minotaur.png");
 				//monsters[i] = monster;
 				i++;
 			}

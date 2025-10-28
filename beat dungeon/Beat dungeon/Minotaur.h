@@ -37,6 +37,7 @@ private:
 	Dungeon* dung;
 	bool stunned = false;
 	float width = 40, height = 40;
+	SDL_FRect edge_remove{ 6, 1, 20, 26 };
 
 	thread* async;
 };

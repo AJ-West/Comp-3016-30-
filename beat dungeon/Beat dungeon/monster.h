@@ -26,6 +26,8 @@ public:
 
 	void updateTargetPos();
 
+	void loadTexture(SDL_Renderer* renderer, const char* file);
+
 	//draw monster
 	virtual void render(SDL_Renderer* SDL_renderer);
 
@@ -41,6 +43,9 @@ protected:
 	float speed;
 	float attackRange = 10;
 	bool canAttack = true;
+
+	SDL_Texture* sprite = nullptr;
+	SDL_FRect edge_remove{ 6, 0, 20, 32 };
 
 private:
 	Player* player;

@@ -40,14 +40,17 @@ private:
 	// player position
 	float x, y;
 	float speed = 0.035;
-	int player_width = 20;
-	int player_height = 20;
+	int player_width = 40;
+	int player_height = 40;
+	SDL_FRect edge_remove{ 6, 0, 20, 23 };
 	int direction = NULL;
 	// the keys for movement may change as the game goes on so storing them in arrays to check what the current movement keys are
 	vector<vector<SDL_Keycode>> movement_keys;
 	//game renderer
 	SDL_Renderer* renderer;
 	Dungeon* dung;
+
+	SDL_Texture* sprite;
 
 	//undoes latest move for the player
 	void undoMove();

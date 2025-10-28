@@ -7,6 +7,21 @@ Player::Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* du
 	movement_keys[1][0] = SDLK_A;
 	movement_keys[2][0] = SDLK_S;
 	movement_keys[3][0] = SDLK_D;
+
+	SDL_Surface* scaleSurface = IMG_Load("images/Knight.png");
+	if (!scaleSurface) {
+		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+		SDL_Quit();
+		return;
+	}
+
+	sprite = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+	if (!sprite) {
+		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+		SDL_Quit();
+		return;
+	}
 }
 Player::~Player() {}
 
@@ -73,7 +88,8 @@ void Player::render() {
 	// draw the player at its position
 	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 	SDL_FRect character{ x, y, player_width, player_height };
-	SDL_RenderFillRect(renderer, &character);
+	//SDL_RenderFillRect(renderer, &character);
+	SDL_RenderTexture(renderer, sprite, &edge_remove, &character);
 }
 
 // check if the player is within a wall

@@ -18,7 +18,8 @@ void Monster::render(SDL_Renderer* renderer) {
 	// draw the player at its position
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 	SDL_FRect character{ x, y, 20, 20 };
-	SDL_RenderFillRect(renderer, &character);
+	SDL_RenderTexture(renderer, sprite, &edge_remove, &character);
+	//SDL_RenderFillRect(renderer, &character);
 }
 
 
@@ -38,4 +39,21 @@ bool Monster::checkCorner(int corner_x, int corner_y, vector<pair<int, int>> pla
 		cout << "game over";
 	}
 	return false;
+}
+
+void Monster::loadTexture(SDL_Renderer* renderer, const char* file) {
+	SDL_Surface* scaleSurface = IMG_Load(file);
+	if (!scaleSurface) {
+		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+		SDL_Quit();
+		return;
+	}
+
+	sprite = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+	if (!sprite) {
+		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+		SDL_Quit();
+		return;
+	}
 }
