@@ -30,6 +30,8 @@ public:
 	void checkWallCollision();
 	void crash();
 
+	bool checkLineOfSight();
+
 
 private:
 	int charge_range = 250;

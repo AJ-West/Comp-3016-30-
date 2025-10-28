@@ -37,7 +37,8 @@ void Minotaur::checkAttackCollision() {
 	vector<pair<int, int>> player_corners;
 	player_corners.push_back({ target_pos.first - player_dimen.first / 2, target_pos.second - player_dimen.second / 2 });
 	player_corners.push_back({ target_pos.first + player_dimen.first / 2, target_pos.second + player_dimen.second / 2 });
-	if (checkPlayerCollision(player_corners, charge_range)) {
+	if (checkPlayerCollision(player_corners, charge_range) && checkLineOfSight()) {
+		cout << "charging";
 		pair<float, float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
 		charge_target_dir = { float_target.first - x, float_target.second - y };
 		// used to scale the travel direction to allow for constant speed
@@ -93,4 +94,69 @@ void Minotaur::stun() {
 void Minotaur::attackDelay() {
 	this_thread::sleep_for(chrono::seconds(3));
 	canAttack = true;
+}
+
+
+bool Minotaur::checkLineOfSight() { // help from https://www.youtube.com/watch?v=NbSee-XM7WA
+	pair<float, float> direction{ (target_pos.first + player_dimen.first / 2) - (x +width/2), (target_pos.second + player_dimen.second / 2) - (y+height/2)};
+	float magnitude = sqrt(direction.first * direction.first + direction.second * direction.second);
+	pair<float, float> dir_norm{ direction.first / magnitude, direction.second / magnitude };
+	//distance moved along x and y in a cell
+	pair<float, float> dir_cell{ dir_norm.first * dung->getWallSize(), dir_norm.second * dung->getWallSize() }; //times cell width/height
+	float dx;
+	float dy;
+
+	pair<float, float> length{ 0,0 };
+
+	//quot is cell and rem is where in cell
+	div_t x_div = div(x + width / 2 - dung->getDungeonX(), dung->getWallSize());
+	div_t y_div = div(y + height / 2 - dung->getDungeonY(), dung->getWallSize());
+
+	pair<int, int> target_cell{ div(target_pos.first + player_dimen.first / 2 - dung->getDungeonX(), dung->getWallSize()).quot , div(target_pos.second + player_dimen.second / 2 - dung->getDungeonY(), dung->getWallSize()).quot };
+
+	float cx = x_div.quot;
+	float cy = y_div.quot;
+
+	// Establish Starting Conditions
+	if (direction.first < 0)
+	{
+		dx = -1;
+		length.first = (x_div.rem) * dir_cell.first;
+	}
+	else
+	{
+		dx = 1;
+		length.first = (1 - x_div.rem) * dir_cell.first;
+	}
+
+	if (direction.second < 0)
+	{
+		dy = -1;
+		length.second = (y_div.rem) * dir_cell.second;
+	}
+	else
+	{
+		dy = 1;
+		length.second = (1-y_div.rem) * dir_cell.second;
+	}
+
+	bool collided = false;
+	while (!collided) {
+		//see if colliding with wall moving through the x or the y axis (left/right or top/bottom)
+		if (length.first < length.second) {
+			cx += dx;
+			length.first += dir_cell.first;
+		}
+		else {
+			cy += dy;
+			length.second += dir_cell.second;
+		}
+
+		if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[cy][cx]) != wallTypes.end()) { return false; }
+		if (cx == target_cell.first && cy == target_cell.second) { return true; }
+	}
+
+
+	int check_points = magnitude / 1;
+
 }
