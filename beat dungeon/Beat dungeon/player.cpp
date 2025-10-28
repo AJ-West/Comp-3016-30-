@@ -111,27 +111,10 @@ bool Player::checkCollision() {
 		pot_x += speed;
 		break;
 	}
-	// get the cell index for each corner of the player
-	//pair<int, int> x_bounds(div(pot_x -dung->getDungeonX(), dung->getWallSize()).quot, div(pot_x - dung->getDungeonX() + player_width - 1, dung->getWallSize()).quot);
-	//pair<int, int> y_bounds(div(pot_y - dung->getDungeonY(), dung->getWallSize()).quot, div(pot_y - dung->getDungeonY() + player_height-1, dung->getWallSize()).quot);
 
-	// check if any corners of the player is within a wall and undo the move if so
-	/*if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.first][x_bounds.first]) != wallTypes.end()) {
-		return true;
-	}
-	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.first][x_bounds.second]) != wallTypes.end()) {
-		return true;
-	}
-	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.second][x_bounds.first]) != wallTypes.end()) {
-		return true;
-	}
-	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.second][x_bounds.second]) != wallTypes.end()) {
-		return true;
-	}*/
+	pair<int, int> centre(div(pot_x -dung->getDungeonX(), dung->getWallSize()).quot, div(pot_y - dung->getDungeonY(), dung->getWallSize()).quot);
 
-	pair<int, int> x_bounds(div(pot_x -dung->getDungeonX(), dung->getWallSize()).quot, div(pot_y - dung->getDungeonY(), dung->getWallSize()).quot);
-
-	if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[x_bounds.second][x_bounds.first]) != wallTypes.end()) {
+	if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[centre.second][centre.first]) != wallTypes.end()) {
 		return true;
 	}
 	return false;
@@ -161,8 +144,6 @@ void Player::checkEnd() {
 void Player::levelComplete() {
 	win = true;
 }
-
-
 
 //getters
 pair<int, int> Player::getPos() {

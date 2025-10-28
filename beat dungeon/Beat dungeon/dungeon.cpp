@@ -160,6 +160,9 @@ void Dungeon::render() {
 void Dungeon::moveMonsters() {
 	for (const auto& monst : monsters) {
 		monst->move();
+		if (monst->getHit()) {
+			restart = true;
+		}
 	}
 }
 
@@ -225,6 +228,9 @@ bool Dungeon::update() {
 	if (player->getWin()) {
 		cout << "level complete";
 		complete = true;
+		return true;
+	}
+	if (restart) {
 		return true;
 	}
 	return false;

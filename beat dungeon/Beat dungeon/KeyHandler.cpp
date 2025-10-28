@@ -83,7 +83,9 @@ KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, Player* play): renderer(SDL_r
 		return;
 	}
 }
-KeyHandler::~KeyHandler(){}
+KeyHandler::~KeyHandler(){
+	sound->drop();
+}
 
 void KeyHandler::spawnKey(){
 	bool unique = false;

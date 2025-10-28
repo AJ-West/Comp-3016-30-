@@ -27,8 +27,9 @@ void Minotaur::attack() {
 	if (checkPlayerCollision(player_corners, attackRange)) {
 		canAttack = false;
 		cout << "game over";
-		async = new thread(&Minotaur::attackDelay, this);
-		async->detach();
+		//async = new thread(&Minotaur::attackDelay, this);
+		hit = true;
+		//async->detach();
 	}
 }
 
@@ -61,20 +62,9 @@ void Minotaur::checkChargeCollision() {
 }
 
 void Minotaur::checkWallCollision() {
-	// get the cell index for each corner of the player
-	pair<int, int> x_bounds(div(x - dung->getDungeonX(), dung->getWallSize()).quot, div(x - dung->getDungeonX() + width - 1, dung->getWallSize()).quot);
-	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + height - 1, dung->getWallSize()).quot);
+	pair<int, int> centre(div(x + width/2 - dung->getDungeonX(), dung->getWallSize()).quot, div(y + height/2 - dung->getDungeonY(), dung->getWallSize()).quot);
 
-	if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.first][x_bounds.first]) != wallTypes.end()) {
-		crash();
-	}
-	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.first][x_bounds.second]) != wallTypes.end()) {
-		crash();
-	}
-	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.second][x_bounds.first]) != wallTypes.end()) {
-		crash();
-	}
-	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.second][x_bounds.second]) != wallTypes.end()) {
+	if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[centre.second][centre.first]) != wallTypes.end()) {
 		crash();
 	}
 }

@@ -59,6 +59,7 @@ public:
     int getWallSize() { return wall_size; }
     bool getComplete() { return complete; }
     vector<char> getWallTypes() {return wallTypes; }
+    bool getRestart() { return restart; }
 
 private:
     bool current_Key = false;
@@ -98,6 +99,7 @@ private:
     SDL_Texture* tileset;
 
     bool complete = false;
+    bool restart = false;
 
     vector<char> wallTypes{'1','2' ,'3' ,'4' ,'5' ,'6' ,'7' ,'8' };
 };

@@ -38,6 +38,24 @@ bool Monster::checkCorner(int corner_x, int corner_y, vector<pair<int, int>> pla
 		return true;
 		cout << "game over";
 	}
+	x_dist = player_corners[0].first - corner_x;
+	y_dist = player_corners[1].second - corner_y;
+	if (x_dist * x_dist + y_dist * y_dist < range * range) {
+		return true;
+		cout << "game over";
+	}
+	x_dist = player_corners[1].first - corner_x;
+	y_dist = player_corners[0].second - corner_y;
+	if (x_dist * x_dist + y_dist * y_dist < range * range) {
+		return true;
+		cout << "game over";
+	}
+	x_dist = player_corners[1].first - corner_x;
+	y_dist = player_corners[1].second - corner_y;
+	if (x_dist * x_dist + y_dist * y_dist < range * range) {
+		return true;
+		cout << "game over";
+	}
 	return false;
 }
 

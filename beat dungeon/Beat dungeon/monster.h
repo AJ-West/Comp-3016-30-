@@ -34,7 +34,9 @@ public:
 	bool checkPlayerCollision(vector<pair<int, int>> player_corners, int range);
 	bool checkCorner(int corner_x, int corner_y, vector<pair<int, int>> player_corners, int range);
 
-	//setters
+	//getters
+	bool getHit() { return hit; }
+
 	//setters
 	void setWallTypes(vector<char> walls) { wallTypes = walls; }
 
@@ -47,6 +49,7 @@ protected:
 	float speed;
 	float attackRange = 10;
 	bool canAttack = true;
+	bool hit = false;
 
 	vector<char> wallTypes;
 

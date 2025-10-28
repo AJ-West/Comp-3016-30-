@@ -170,5 +170,10 @@ void GameManager::update() {
             delete dung;
             loadLevel(currentLevel + 1);
         }
+        if (dung->getRestart()) {
+            paused = false;
+            delete dung;
+            loadLevel(currentLevel);
+        }
     }
 }

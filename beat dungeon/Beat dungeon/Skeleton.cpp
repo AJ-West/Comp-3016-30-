@@ -18,8 +18,9 @@ void Skeleton::attack() {
 	if (checkPlayerCollision(player_corners, attackRange)) {
 		canAttack = false;
 		cout << "game over";
-		this_thread::sleep_for(chrono::seconds(2));
-		canAttack = true;
+		hit = true;
+		//this_thread::sleep_for(chrono::seconds(2));
+		//canAttack = true;
 	}
 }
 
