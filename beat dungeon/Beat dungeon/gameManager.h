@@ -43,4 +43,7 @@ private:
 	Dungeon* dung;
 
 	ISoundEngine* music;
+
+	int currentLevel = 0;
+	bool paused = false;
 };

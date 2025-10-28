@@ -34,6 +34,10 @@ public:
 	bool checkPlayerCollision(vector<pair<int, int>> player_corners, int range);
 	bool checkCorner(int corner_x, int corner_y, vector<pair<int, int>> player_corners, int range);
 
+	//setters
+	//setters
+	void setWallTypes(vector<char> walls) { wallTypes = walls; }
+
 protected:
 	// monster position
 	float x, y;
@@ -43,6 +47,8 @@ protected:
 	float speed;
 	float attackRange = 10;
 	bool canAttack = true;
+
+	vector<char> wallTypes;
 
 	SDL_Texture* sprite = nullptr;
 	SDL_FRect edge_remove{ 6, 0, 20, 32 };

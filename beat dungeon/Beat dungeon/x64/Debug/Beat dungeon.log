@@ -1,12 +1,12 @@
 ﻿  KeyHandler.cpp
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(92,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(92,121): warning C4244:         with
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(92,121): warning C4244:         [
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(92,121): warning C4244:             _Rep=__int64
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(92,121): warning C4244:         ]
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         ]
   (compiling source file 'KeyHandler.cpp')
   
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(42,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(46,16): warning C4305: 'initializing': truncation from 'double' to 'float'
   (compiling source file 'KeyHandler.cpp')
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
@@ -21,14 +21,14 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
   (compiling source file 'KeyHandler.cpp')
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
   the template instantiation context (the oldest one first) is
-  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(36,38):
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
   	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
           with
           [
               _Other1=int,
               _Other2=int
           ]
-  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(36,38):
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
   		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
@@ -42,4 +42,453 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
   (compiling source file 'KeyHandler.cpp')
   
+  KeyTime.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         ]
+  (compiling source file 'KeyTime.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(46,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'KeyTime.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(6,111): warning C4244: '=': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(6,111): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(6,111): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(6,111): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(6,111): warning C4244:         ]
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4838: conversion from '_Ty1' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4838:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4838:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4838:             _Ty1=int
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4838:         ]
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4244: 'initializing': conversion from '_Ty1' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4244:             _Ty1=int
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,28): warning C4244:         ]
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4838: conversion from '_Ty2' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4838:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4838:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4838:             _Ty2=int
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4838:         ]
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4244: 'initializing': conversion from '_Ty2' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4244:             _Ty2=int
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,44): warning C4244:         ]
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,53): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,53): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,59): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(25,59): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(35,26): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(35,26): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(35,38): warning C4838: conversion from 'double' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(35,38): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(35,54): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(35,54): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(35,64): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(35,64): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(38,37): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(38,37): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(38,65): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(38,65): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(38,82): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(38,82): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(38,92): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\KeyTime.cpp(38,92): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+  (compiling source file 'KeyTime.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+          with
+          [
+              _Other1=int,
+              _Other2=int
+          ]
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+  (compiling source file 'KeyTime.cpp')
+  
+  Minotaur.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(46,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'Minotaur.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         ]
+  (compiling source file 'Minotaur.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(27,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(45,11): warning C4305: '=': truncation from 'double' to 'float'
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(65,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(65,118): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(66,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(66,119): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.cpp(84,10): warning C4305: '=': truncation from 'double' to 'float'
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+  (compiling source file 'Minotaur.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+          with
+          [
+              _Other1=int,
+              _Other2=int
+          ]
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+  (compiling source file 'Minotaur.cpp')
+  
+  dungeon.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(46,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'dungeon.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         ]
+  (compiling source file 'dungeon.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(95,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(100,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(123,26): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(123,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(123,36): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(123,36): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(127,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(128,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(234,22): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(234,22): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(234,22): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(234,22): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(234,22): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+  (compiling source file 'dungeon.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+          with
+          [
+              _Other1=int,
+              _Other2=int
+          ]
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+  (compiling source file 'dungeon.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:             _Ty=double
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         ]
+  (compiling source file 'dungeon.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(176,24):
+  	see reference to function template instantiation 'std::unique_ptr<Skeleton,std::default_delete<Skeleton>> std::make_unique<Skeleton,int,int,Player*&,double,0>(int &&,int &&,Player *&,double &&)' being compiled
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244: 'argument': conversion from '_Ty' to 'float', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\memory(3465,56): warning C4244:         ]
+  (compiling source file 'dungeon.cpp')
+  
+  gameManager.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(46,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'gameManager.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         ]
+  (compiling source file 'gameManager.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(126,28): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(126,28): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(126,44): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(126,44): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(144,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(144,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+  (compiling source file 'gameManager.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+          with
+          [
+              _Other1=int,
+              _Other2=int
+          ]
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+  (compiling source file 'gameManager.cpp')
+  
+  main.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(46,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'main.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(29,17): warning C4804: '<': unsafe use of type 'bool' in operation
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(34,24): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(51,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(69,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+          with
+          [
+              _Other1=int,
+              _Other2=int
+          ]
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+  monster.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         ]
+  (compiling source file 'monster.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(46,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'monster.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\monster.cpp(27,21): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\monster.cpp(27,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\monster.cpp(28,23): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\monster.cpp(28,18): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\monster.cpp(29,27): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\monster.cpp(29,19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\monster.cpp(30,28): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\monster.cpp(30,19): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+  (compiling source file 'monster.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+          with
+          [
+              _Other1=int,
+              _Other2=int
+          ]
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+  (compiling source file 'monster.cpp')
+  
+  player.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         with
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         [
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:             _Rep=__int64
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(94,121): warning C4244:         ]
+  (compiling source file 'player.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.h(46,16): warning C4305: 'initializing': truncation from 'double' to 'float'
+  (compiling source file 'player.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(3,90): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(3,102): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(90,29): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(90,29): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(90,43): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(90,43): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(115,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(115,132): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(116,36): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(116,133): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(137,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(137,125): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(138,32): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(138,126): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+  (compiling source file 'player.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  	see reference to function template instantiation 'std::pair<float,float>::pair<int,int,0>(_Other1 &&,_Other2 &&) noexcept' being compiled
+          with
+          [
+              _Other1=int,
+              _Other2=int
+          ]
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\Minotaur.h(37,38):
+  		see the first reference to 'std::pair<float,float>::pair' in 'Minotaur::Minotaur'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from '_Ty' to '_Ty2', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         and
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=float
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+  (compiling source file 'player.cpp')
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from 'float' to '_Ty1', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
+  (compiling source file 'player.cpp')
+  C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
+  the template instantiation context (the oldest one first) is
+  	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(163,23):
+  	see reference to function template instantiation 'std::pair<int,int>::pair<float&,float&,0>(_Other1,_Other2) noexcept' being compiled
+          with
+          [
+              _Other1=float &,
+              _Other2=float &
+          ]
+  		C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\player.cpp(163,23):
+  		see the first reference to 'std::pair<int,int>::pair' in 'Player::getPos'
+  
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244: 'initializing': conversion from 'float' to '_Ty2', possible loss of data
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         with
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=int
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
+  (compiling source file 'player.cpp')
+  
+  Generating Code...
   Beat dungeon.vcxproj -> C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe

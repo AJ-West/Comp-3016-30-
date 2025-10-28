@@ -116,44 +116,44 @@ bool Player::checkCollision() {
 	pair<int, int> y_bounds(div(pot_y - dung->getDungeonY(), dung->getWallSize()).quot, div(pot_y - dung->getDungeonY() + player_height-1, dung->getWallSize()).quot);
 
 	// check if any corners of the player is within a wall and undo the move if so
-	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '1') {
+	if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.first][x_bounds.first]) != wallTypes.end()) {
 		return true;
 	}
-	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '1') {
+	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.first][x_bounds.second]) != wallTypes.end()) {
 		return true;
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '1') {
+	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.second][x_bounds.first]) != wallTypes.end()) {
 		return true;
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '1') {
+	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.second][x_bounds.second]) != wallTypes.end()) {
 		return true;
 	}
 	return false;
 }
 
-// check if the player is within a wall
+// check if the player is at the end of the level
 void Player::checkEnd() {
 	// get the cell index for each corner of the player
 	pair<int, int> x_bounds(div(x - dung->getDungeonX(), dung->getWallSize()).quot, div(x - dung->getDungeonX() + player_width - 1, dung->getWallSize()).quot);
 	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + player_height - 1, dung->getWallSize()).quot);
 
 	// check if any corners of the player is within an exit and completes the level if so
-	if (dung->getOutline()[y_bounds.first][x_bounds.first] == 'T') {
-		win();
+	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '9') {
+		levelComplete();
 	}
-	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == 'T') {
-		win();
+	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '9') {
+		levelComplete();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == 'T') {
-		win();
+	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '9') {
+		levelComplete();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == 'T') {
-		win();
+	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '9') {
+		levelComplete();
 	}
 }
 
-void Player::win() {
-	cout << "level completed";
+void Player::levelComplete() {
+	win = true;
 }
 
 

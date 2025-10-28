@@ -44,6 +44,8 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
         std::cerr << "Failed to load irrKlang DLL or initialize sound engine." << std::endl;
         return;
     }
+    music->play2D("background track.mp3", true); // looped playback
+    music->setSoundVolume(0.8f);
 }
 GameManager::~GameManager(){}
 
@@ -132,6 +134,7 @@ void GameManager::setUpLevelSelect() {
 void GameManager::loadLevel(int level) {
     buttons.resize(0);
     screen = inLevel;
+    currentLevel = level;
     dung = new Dungeon(renderer, level);
 }
 
@@ -156,5 +159,16 @@ void GameManager::handleInput(SDL_Event& event) {
 }
 
 void GameManager::update() {
-    if (dung) { dung->update(); }
+    if (dung && !paused) {
+        if (dung->update()) {
+            paused = true;
+        }
+    }
+    else if (dung && paused) {
+        if (dung->getComplete()) {
+            paused = false;
+            delete dung;
+            loadLevel(currentLevel + 1);
+        }
+    }
 }

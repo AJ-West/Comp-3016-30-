@@ -60,9 +60,6 @@ void init_environment() {
         std::cerr << "Failed to load irrKlang DLL or initialize sound engine." << std::endl;
         return;
     }
-
-    //engine->play2D("background track.mp3", true); // looped playback
-    //engine->setSoundVolume(1.0f);
     isRunning = true;
 }
 

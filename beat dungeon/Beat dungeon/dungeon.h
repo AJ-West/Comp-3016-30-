@@ -49,7 +49,7 @@ public:
     void save_tiles();
     void render_tiles();
 
-    void update();
+    bool update();
 
     void spawn_key();
 
@@ -57,6 +57,8 @@ public:
     int getDungeonX() { return dungeon_x; }
     int getDungeonY() { return dungeon_x; }
     int getWallSize() { return wall_size; }
+    bool getComplete() { return complete; }
+    vector<char> getWallTypes() {return wallTypes; }
 
 private:
     bool current_Key = false;
@@ -94,4 +96,8 @@ private:
     KeyHandler* keyHandler;
 
     SDL_Texture* tileset;
+
+    bool complete = false;
+
+    vector<char> wallTypes{'1','2' ,'3' ,'4' ,'5' ,'6' ,'7' ,'8' };
 };

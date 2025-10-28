@@ -92,18 +92,18 @@ void Dungeon::save_tiles() {
 				tile_row.push_back(tile_loc);
 				break;
 			case '7': //vertical wall
-				tile_loc.x = 32 + 32 * rand() % 2;
-				tile_loc.y = 0;
+				tile_loc.x = 0 + 32 * (rand() % 2);
+				tile_loc.y = 96;
 				tile_row.push_back(tile_loc);
 				break;
 			case '8': //horizontal wall
-				tile_loc.x = 96 + 32 * rand() % 2;
+				tile_loc.x = 96 + 32 * (rand() % 2);
 				tile_loc.y = 0;
 				tile_row.push_back(tile_loc);
 				break;
 			case '9': //trapdoor
 				tile_loc.x = 32;
-				tile_loc.y = 32;
+				tile_loc.y = 64;
 				tile_row.push_back(tile_loc);
 				break;
 			default:
@@ -183,11 +183,13 @@ void Dungeon::spawn_entities() {
 				//Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this);
 				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, this));
 				monsters[i]->loadTexture(renderer, "images/minotaur.png");
+				monsters[i]->setWallTypes(wallTypes);
 				//monsters[i] = monster;
 				i++;
 			}
 			if (column == 'P') {
 				player = new Player(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, this);
+				player->setWallTypes(wallTypes);
 			}
 			x++;
 		}
@@ -199,20 +201,20 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
+		/*if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
 			keyHandler->keyDown(key);
 			current_Key = true;
 		}
 		else if (input.type == SDL_EVENT_KEY_UP && current_Key) {
 			keyHandler->keyUp(key);
 			current_Key = false;
-		}
+		}*/
 		// for testing purposes
-		//player->change_direction(key);
+		player->change_direction(key, true);
 	}
 }
 
-void Dungeon::update() {
+bool Dungeon::update() {
 	spawn_key();
 	//removes used keys or timed out keys
 	int index = 0;
@@ -220,6 +222,12 @@ void Dungeon::update() {
 	keyHandler->checkTimes();
 	moveMonsters();
 	player->move();
+	if (player->getWin()) {
+		cout << "level complete";
+		complete = true;
+		return true;
+	}
+	return false;
 }
 
 void Dungeon::spawn_key() {

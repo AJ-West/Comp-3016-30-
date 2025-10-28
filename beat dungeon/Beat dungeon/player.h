@@ -29,12 +29,16 @@ public:
 	bool checkCollision();
 	void checkEnd();
 
-	void win();
+	void levelComplete();
 
 	//getters
 	pair<int, int> getPos();
 	pair<int, int> getDimensions();
 	vector<vector<SDL_Keycode>> getMovementKeys() { return movement_keys; }
+	bool getWin() { return win; }
+
+	//setters
+	void setWallTypes(vector<char> walls) { wallTypes = walls; }
 
 private:
 	// player position
@@ -51,6 +55,10 @@ private:
 	Dungeon* dung;
 
 	SDL_Texture* sprite;
+
+	bool win = false;
+
+	vector<char> wallTypes;
 
 	//undoes latest move for the player
 	void undoMove();

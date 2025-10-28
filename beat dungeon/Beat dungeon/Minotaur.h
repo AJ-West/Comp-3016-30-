@@ -30,6 +30,7 @@ public:
 	void checkWallCollision();
 	void crash();
 
+
 private:
 	int charge_range = 250;
 	bool charging = false;

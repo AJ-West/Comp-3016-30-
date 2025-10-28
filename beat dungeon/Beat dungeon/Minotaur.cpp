@@ -65,17 +65,16 @@ void Minotaur::checkWallCollision() {
 	pair<int, int> x_bounds(div(x - dung->getDungeonX(), dung->getWallSize()).quot, div(x - dung->getDungeonX() + width - 1, dung->getWallSize()).quot);
 	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + height - 1, dung->getWallSize()).quot);
 
-	// check if any corners of the player is within an exit and crashes the minotaur is so
-	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '1') {
+	if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.first][x_bounds.first]) != wallTypes.end()) {
 		crash();
 	}
-	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '1') {
+	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.first][x_bounds.second]) != wallTypes.end()) {
 		crash();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '1') {
+	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.second][x_bounds.first]) != wallTypes.end()) {
 		crash();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '1') {
+	else if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[y_bounds.second][x_bounds.second]) != wallTypes.end()) {
 		crash();
 	}
 }
