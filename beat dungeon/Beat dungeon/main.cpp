@@ -61,8 +61,8 @@ void init_environment() {
         return;
     }
 
-    engine->play2D("background track.mp3", true); // looped playback
-    engine->setSoundVolume(1.0f);
+    //engine->play2D("background track.mp3", true); // looped playback
+    //engine->setSoundVolume(1.0f);
     isRunning = true;
 }
 

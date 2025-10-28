@@ -138,16 +138,16 @@ void Player::checkEnd() {
 	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + player_height - 1, dung->getWallSize()).quot);
 
 	// check if any corners of the player is within an exit and completes the level if so
-	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '3') {
+	if (dung->getOutline()[y_bounds.first][x_bounds.first] == 'T') {
 		win();
 	}
-	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '3') {
+	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == 'T') {
 		win();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '3') {
+	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == 'T') {
 		win();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '3') {
+	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == 'T') {
 		win();
 	}
 }

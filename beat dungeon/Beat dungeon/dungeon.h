@@ -46,6 +46,8 @@ public:
     void moveMonsters();
 
     void spawn_entities();
+    void save_tiles();
+    void render_tiles();
 
     void update();
 
@@ -63,6 +65,9 @@ private:
     SDL_Renderer* renderer;
     //storing the dungeon as chars
     vector<vector<char>> outline;
+    vector<vector<SDL_FRect>> tiles;
+
+
     int levelNum;
     //dungeon features
     int dungeon_x = 100, dungeon_y = 100;
@@ -87,4 +92,6 @@ private:
     double last_time = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count();
 
     KeyHandler* keyHandler;
+
+    SDL_Texture* tileset;
 };

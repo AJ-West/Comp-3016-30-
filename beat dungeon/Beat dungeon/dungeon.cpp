@@ -3,6 +3,20 @@
 Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRenderer), levelNum(levelNumber) {
 	read_file();
 	keyHandler = new KeyHandler(renderer, player);
+	SDL_Surface* scaleSurface = IMG_Load("images/walls.png");
+	if (!scaleSurface) {
+		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+		SDL_Quit();
+		return;
+	}
+
+	tileset = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+	if (!tileset) {
+		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+		SDL_Quit();
+		return;
+	}
 }
 Dungeon::~Dungeon(){}
 
@@ -36,35 +50,96 @@ void Dungeon::read_file() {
 		}
 	}
 	outline.push_back(row);
+	save_tiles();
 	spawn_entities();
 }
 
-void Dungeon::render() {
-	int x = 0;
-	int y = 0;
+void Dungeon::save_tiles() {
+	vector<SDL_FRect> tile_row;
+	SDL_FRect tile_loc{ 0,0,32,32 };
 	for (const auto& row : outline) {
 		for (const auto& column : row) {
 			//match each value in the vector (respresents parts of the board)
 			switch (column) {
-			case '1':
-				SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+			case '1': //wall
+				tile_loc.x = 0;
+				tile_loc.y = 0;
+				tile_row.push_back(tile_loc);
 				break;
-			case '2':
-				SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
+			case '2': //door
+				tile_loc.x = 0;
+				tile_loc.y = 32;
+				tile_row.push_back(tile_loc);
 				break;
-			case '3':
-				SDL_SetRenderDrawColor(renderer, 0, 255, 0, 255);
+			case '3': //corner 1
+				tile_loc.x = 64;
+				tile_loc.y = 32;
+				tile_row.push_back(tile_loc);
+				break;
+			case '4': //corner 2
+				tile_loc.x = 96;
+				tile_loc.y = 32;
+				tile_row.push_back(tile_loc);
+				break;
+			case '5': //corner 3
+				tile_loc.x = 64;
+				tile_loc.y = 64;
+				tile_row.push_back(tile_loc);
+				break;
+			case '6': //corner 4
+				tile_loc.x = 96;
+				tile_loc.y = 64;
+				tile_row.push_back(tile_loc);
+				break;
+			case '7': //vertical wall
+				tile_loc.x = 32 + 32 * rand() % 2;
+				tile_loc.y = 0;
+				tile_row.push_back(tile_loc);
+				break;
+			case '8': //horizontal wall
+				tile_loc.x = 96 + 32 * rand() % 2;
+				tile_loc.y = 0;
+				tile_row.push_back(tile_loc);
+				break;
+			case '9': //trapdoor
+				tile_loc.x = 32;
+				tile_loc.y = 32;
+				tile_row.push_back(tile_loc);
 				break;
 			default:
-				SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+				tile_loc.x = 100;
+				tile_loc.y = 100;
+				tile_row.push_back(tile_loc);
 			}
-			SDL_FRect textRect{ dungeon_x + x * wall_size, dungeon_y + y * wall_size, wall_size, wall_size };
-			SDL_RenderFillRect(renderer, &textRect);
+		}
+		tiles.push_back(tile_row);
+		tile_row.clear();
+	}
+}
+
+void Dungeon::render_tiles() {
+	int x = 0;
+	int y = 0;
+	SDL_FRect textRect{ 0,0,wall_size,wall_size };
+	for (const auto& row : tiles) {
+		for (const auto& column : row) {
+			if (column.x != 100) {
+				textRect.x = dungeon_x + x * wall_size;
+				textRect.y = dungeon_y + y * wall_size;
+				SDL_RenderTexture(renderer, tileset, &column, &textRect);
+			}
+			//SDL_RenderFillRect(renderer, &textRect);
 			x++;
 		}
 		x = 0;
 		y++;
 	}
+}
+
+void Dungeon::render() {
+	int x = 0;
+	int y = 0;
+	render_tiles();
 	player->render();
 	for (auto& monster : monsters) {
 		monster->render(renderer);
@@ -95,7 +170,7 @@ void Dungeon::spawn_entities() {
 	for (const auto& row : outline) {
 		x = 0;
 		for (const auto& column : row) {
-			if (column == '2') {
+			if (column == 'S') {
 				//monsters.resize(i + 1);
 				//Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025);
 				monsters.push_back(make_unique<Skeleton>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005));
@@ -103,7 +178,7 @@ void Dungeon::spawn_entities() {
 				//monsters[i] = monster;
 				i++;
 			}
-			if (column == '5') {
+			if (column == 'M') {
 				//monsters.resize(i + 1);
 				//Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this);
 				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, this));
@@ -111,7 +186,7 @@ void Dungeon::spawn_entities() {
 				//monsters[i] = monster;
 				i++;
 			}
-			if (column == '4') {
+			if (column == 'P') {
 				player = new Player(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, this);
 			}
 			x++;
