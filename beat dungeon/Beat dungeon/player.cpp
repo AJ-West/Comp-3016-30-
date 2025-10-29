@@ -92,7 +92,7 @@ void Player::render() {
 	SDL_RenderTexture(renderer, sprite, &edge_remove, &character);
 }
 
-// check if the player is within a wall
+// check if the player is within a wall or modifier
 bool Player::checkCollision() {
 	float pot_x = x + player_width/2;
 	float pot_y = y + player_height/2;
@@ -116,6 +116,22 @@ bool Player::checkCollision() {
 
 	if (w_outline[centre.second][centre.first] == 1) {
 		return true;
+	}
+	else if (w_outline[centre.second][centre.first] == 3) {//speed
+		w_outline[centre.second][centre.first] = 0;
+		dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
+		doubleSpeed();
+	}
+	else if (w_outline[centre.second][centre.first] == 4) {//new keys
+		w_outline[centre.second][centre.first] = 0;
+		dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
+		newKeys();
+	}
+	else if (w_outline[centre.second][centre.first] == 5) {//rotate keys
+		w_outline[centre.second][centre.first] = 0;
+		dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
+		rotateKeys();
+
 	}
 	return false;
 }
@@ -159,4 +175,39 @@ pair<int, int> Player::getCell() {
 pair<int, int> Player::getDimensions() {
 	pair<int, int> pos = { player_width, player_height };
 	return pos;
+}
+
+//modifiers
+void Player::doubleSpeed() {
+	speed = speed * 2;
+}
+
+void Player::newKeys() {
+	int pos = rand() % potential_keys[0].size();
+	movement_keys[0].push_back(potential_keys[0][pos]);
+	movement_keys[1].push_back(potential_keys[1][pos]);
+	movement_keys[2].push_back(potential_keys[2][pos]);
+	movement_keys[3].push_back(potential_keys[3][pos]);
+	potential_keys[0].erase(potential_keys[0].begin() + pos - 1);
+	potential_keys[1].erase(potential_keys[1].begin() + pos - 1);
+	potential_keys[2].erase(potential_keys[2].begin() + pos - 1);
+	potential_keys[3].erase(potential_keys[3].begin() + pos - 1);
+}
+
+void Player::rotateKeys() {
+	int dir = rand() % 2;
+	if (dir == 0) { // anti-clockwise
+		vector<SDL_Keycode> temp = movement_keys[0];
+		movement_keys[0] = movement_keys[1];
+		movement_keys[1] = movement_keys[2];
+		movement_keys[2] = movement_keys[3];
+		movement_keys[3] = temp;
+	}
+	else if (dir == 1) { // clockwise
+		vector<SDL_Keycode> temp = movement_keys[2];
+		movement_keys[0] = movement_keys[3];
+		movement_keys[1] = movement_keys[0];
+		movement_keys[2] = movement_keys[1];
+		movement_keys[3] = temp;
+	}
 }

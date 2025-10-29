@@ -105,6 +105,7 @@ void KeyHandler::spawnKey(){
 	SDL_Keycode code = keyboard[rand() % size(keyboard)];
 	if (random_direction != 4) {
 		code = options[random_direction][rand() % size(options[random_direction])];
+		cout << code << '\n';
 		good = true;
 	}
 	

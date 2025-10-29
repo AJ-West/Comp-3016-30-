@@ -63,6 +63,9 @@ public:
     vector<char> getWallTypes() {return wallTypes; }
     bool getRestart() { return restart; }
 
+    //setters
+    void setDungeonTile(int x, int y, SDL_FRect tile) { tiles[y][x] = tile; }
+
 private:
     bool current_Key = false;
 

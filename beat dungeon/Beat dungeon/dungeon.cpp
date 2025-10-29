@@ -107,9 +107,24 @@ void Dungeon::save_tiles() {
 				tile_loc.y = 64;
 				tile_row.push_back(tile_loc);
 				break;
+			case 'Q': //2x modifier
+				tile_loc.x = 144;
+				tile_loc.y = 32;
+				tile_row.push_back(tile_loc);
+				break;
+			case 'K': //new keys modifier
+				tile_loc.x = 176;
+				tile_loc.y = 32;
+				tile_row.push_back(tile_loc);
+				break;
+			case 'R': //rotate modifier
+				tile_loc.x = 144;
+				tile_loc.y = 64;
+				tile_row.push_back(tile_loc);
+				break;
 			default:
-				tile_loc.x = 100;
-				tile_loc.y = 100;
+				tile_loc.x = 300;
+				tile_loc.y = 300;
 				tile_row.push_back(tile_loc);
 			}
 		}
@@ -126,6 +141,9 @@ void Dungeon::createWalkableOutline() {
 				tile_row.push_back(1);
 			}
 			else if (column == '9') { tile_row.push_back(2); }
+			else if (column == 'Q') { tile_row.push_back(3); }
+			else if (column == 'K') { tile_row.push_back(4); }
+			else if (column == 'R') { tile_row.push_back(5); }
 			else { tile_row.push_back(0); }
 		}
 		walkable_outline.push_back(tile_row);

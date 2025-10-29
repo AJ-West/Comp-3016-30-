@@ -31,6 +31,11 @@ public:
 
 	void levelComplete();
 
+	//modifier effects
+	void doubleSpeed();
+	void newKeys();
+	void rotateKeys();
+
 	//getters
 	pair<float, float> getPos();
 	pair<int, int> getCell();
@@ -49,6 +54,7 @@ private:
 	int direction = 5;
 	// the keys for movement may change as the game goes on so storing them in arrays to check what the current movement keys are
 	vector<vector<SDL_Keycode>> movement_keys;
+	vector<vector<SDL_Keycode>> potential_keys{ {SDLK_I, SDLK_T, SDLK_UP},{SDLK_J, SDLK_F, SDLK_LEFT},{SDLK_K, SDLK_G, SDLK_DOWN},{SDLK_L, SDLK_H, SDLK_RIGHT} };
 	//game renderer
 	SDL_Renderer* renderer;
 	Dungeon* dung;

@@ -84,8 +84,8 @@ void Minotaur::render(SDL_Renderer* renderer) {
 	SDL_FRect character{ x, y, 40, 40 };
 	SDL_RenderTexture(renderer, sprite, &edge_remove, &character);
 
-	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-	SDL_RenderLine(renderer, x+width/2, y+height/2, player_pos.first +player_dimen.first, player_pos.second +player_dimen.second);
+	//SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	//SDL_RenderLine(renderer, x+width/2, y+height/2, player_pos.first +player_dimen.first, player_pos.second +player_dimen.second);
 	//SDL_RenderFillRect(renderer, &character);
 }
 
