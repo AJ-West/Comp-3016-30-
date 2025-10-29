@@ -53,6 +53,8 @@ public:
 
     void spawn_key();
 
+    void createWalkableOutline();
+
     //getters
     int getDungeonX() { return dungeon_x; }
     int getDungeonY() { return dungeon_x; }
@@ -69,6 +71,7 @@ private:
     //storing the dungeon as chars
     vector<vector<char>> outline;
     vector<vector<SDL_FRect>> tiles;
+    vector<vector<int>> walkable_outline;
 
 
     int levelNum;

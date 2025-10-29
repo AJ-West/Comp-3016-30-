@@ -22,8 +22,8 @@ void Minotaur::move() {
 void Minotaur::attack() {
 	//need to add delay for attack animation
 	vector<pair<int, int>> player_corners;
-	player_corners.push_back({ target_pos.first - player_dimen.first / 2, target_pos.second - player_dimen.second / 2 });
-	player_corners.push_back({ target_pos.first + player_dimen.first / 2, target_pos.second + player_dimen.second / 2 });
+	player_corners.push_back({ player_pos.first - player_dimen.first / 2, player_pos.second - player_dimen.second / 2 });
+	player_corners.push_back({ player_pos.first + player_dimen.first / 2, player_pos.second + player_dimen.second / 2 });
 	if (checkPlayerCollision(player_corners, attackRange)) {
 		canAttack = false;
 		cout << "game over";
@@ -35,11 +35,11 @@ void Minotaur::attack() {
 
 void Minotaur::checkAttackCollision() {
 	vector<pair<int, int>> player_corners;
-	player_corners.push_back({ target_pos.first - player_dimen.first / 2, target_pos.second - player_dimen.second / 2 });
-	player_corners.push_back({ target_pos.first + player_dimen.first / 2, target_pos.second + player_dimen.second / 2 });
+	player_corners.push_back({ player_pos.first - player_dimen.first / 2, player_pos.second - player_dimen.second / 2 });
+	player_corners.push_back({ player_pos.first + player_dimen.first / 2, player_pos.second + player_dimen.second / 2 });
 	if (checkPlayerCollision(player_corners, charge_range) && checkLineOfSight()) {
 		cout << "charging";
-		pair<float, float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
+		pair<float, float> float_target{ static_cast<float>(player_pos.first), static_cast<float>(player_pos.second) };
 		charge_target_dir = { float_target.first - x, float_target.second - y };
 		// used to scale the travel direction to allow for constant speed
 		float mag = charge_target_dir.first* charge_target_dir.first + charge_target_dir.second* charge_target_dir.second;
@@ -65,7 +65,7 @@ void Minotaur::checkChargeCollision() {
 void Minotaur::checkWallCollision() {
 	pair<int, int> centre(div(x + width/2 - dung->getDungeonX(), dung->getWallSize()).quot, div(y + height/2 - dung->getDungeonY(), dung->getWallSize()).quot);
 
-	if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[centre.second][centre.first]) != wallTypes.end()) {
+	if (w_outline[centre.second][centre.first] == 1) {
 		crash();
 	}
 }
@@ -151,8 +151,9 @@ bool Minotaur::checkLineOfSight() { // help from https://www.youtube.com/watch?v
 			cy += dy;
 			length.second += dir_cell.second;
 		}
-
-		if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[cy][cx]) != wallTypes.end()) { return false; }
+		// is cell wall if so cannot see the player
+		if (w_outline[cy][cx] == 1) { return false; }
+		// if is the players cell then can see the player
 		if (cx == target_cell.first && cy == target_cell.second) { return true; }
 	}
 

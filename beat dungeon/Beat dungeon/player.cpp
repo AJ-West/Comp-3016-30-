@@ -1,6 +1,6 @@
 #include "player.h"
 
-Player::Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* dungeon): x(start_x), y(start_y), renderer(SDL_renderer), dung(dungeon) {
+Player::Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* dungeon, vector<vector<int>> walkable_outline): x(start_x), y(start_y), renderer(SDL_renderer), dung(dungeon), w_outline(walkable_outline) {
 	// Sets up the default movement keys for the player
 	movement_keys.resize(4, vector<SDL_Keycode>(1, 0));
 	movement_keys[0][0] = SDLK_W;
@@ -114,7 +114,7 @@ bool Player::checkCollision() {
 
 	pair<int, int> centre(div(pot_x -dung->getDungeonX(), dung->getWallSize()).quot, div(pot_y - dung->getDungeonY(), dung->getWallSize()).quot);
 
-	if (find(wallTypes.begin(), wallTypes.end(), dung->getOutline()[centre.second][centre.first]) != wallTypes.end()) {
+	if (w_outline[centre.second][centre.first] == 1) {
 		return true;
 	}
 	return false;
@@ -127,16 +127,16 @@ void Player::checkEnd() {
 	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + player_height - 1, dung->getWallSize()).quot);
 
 	// check if any corners of the player is within an exit and completes the level if so
-	if (dung->getOutline()[y_bounds.first][x_bounds.first] == '9') {
+	if (w_outline[y_bounds.first][x_bounds.first] == 2) {
 		levelComplete();
 	}
-	else if (dung->getOutline()[y_bounds.first][x_bounds.second] == '9') {
+	else if (w_outline[y_bounds.first][x_bounds.second] == 2) {
 		levelComplete();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.first] == '9') {
+	else if (w_outline[y_bounds.second][x_bounds.first] == 2) {
 		levelComplete();
 	}
-	else if (dung->getOutline()[y_bounds.second][x_bounds.second] == '9') {
+	else if (w_outline[y_bounds.second][x_bounds.second] == 2) {
 		levelComplete();
 	}
 }
@@ -146,9 +146,14 @@ void Player::levelComplete() {
 }
 
 //getters
-pair<int, int> Player::getPos() {
-	pair<int, int> pos = { x,y };
+pair<float, float> Player::getPos() {
+	pair<float, float> pos = { x,y };
 	return pos;
+}
+
+pair<int, int> Player::getCell() {
+	pair<int, int> cell(div(x - dung->getDungeonX(), dung->getWallSize()).quot, div(y - dung->getDungeonY(), dung->getWallSize()).quot);
+	return cell;
 }
 
 pair<int, int> Player::getDimensions() {

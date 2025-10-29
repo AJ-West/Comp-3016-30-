@@ -16,7 +16,7 @@ class Player {
 public:
 	//constructor
 	Player(){}
-	Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* dungeon);
+	Player(int start_x, int start_y, SDL_Renderer* SDL_renderer, Dungeon* dungeon, vector<vector<int>> walkable_outline);
 	~Player();
 	//update the player position
 	void move();
@@ -32,13 +32,12 @@ public:
 	void levelComplete();
 
 	//getters
-	pair<int, int> getPos();
+	pair<float, float> getPos();
+	pair<int, int> getCell();
 	pair<int, int> getDimensions();
 	vector<vector<SDL_Keycode>> getMovementKeys() { return movement_keys; }
 	bool getWin() { return win; }
 
-	//setters
-	void setWallTypes(vector<char> walls) { wallTypes = walls; }
 
 private:
 	// player position
@@ -58,7 +57,7 @@ private:
 
 	bool win = false;
 
-	vector<char> wallTypes;
+	vector<vector<int>> w_outline;
 
 	//undoes latest move for the player
 	void undoMove();

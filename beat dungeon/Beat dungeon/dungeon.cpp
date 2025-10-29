@@ -51,6 +51,7 @@ void Dungeon::read_file() {
 	}
 	outline.push_back(row);
 	save_tiles();
+	createWalkableOutline();
 	spawn_entities();
 }
 
@@ -117,6 +118,21 @@ void Dungeon::save_tiles() {
 	}
 }
 
+void Dungeon::createWalkableOutline() {
+	vector<int> tile_row;
+	for (const auto& row : outline) {
+		for (const auto& column : row) {
+			if (find(wallTypes.begin(), wallTypes.end(), column) != wallTypes.end()) {
+				tile_row.push_back(1);
+			}
+			else if (column == '9') { tile_row.push_back(2); }
+			else { tile_row.push_back(0); }
+		}
+		walkable_outline.push_back(tile_row);
+		tile_row.clear();
+	}
+}
+
 void Dungeon::render_tiles() {
 	int x = 0;
 	int y = 0;
@@ -176,7 +192,7 @@ void Dungeon::spawn_entities() {
 			if (column == 'S') {
 				//monsters.resize(i + 1);
 				//Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025);
-				monsters.push_back(make_unique<Skeleton>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005));
+				monsters.push_back(make_unique<Skeleton>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, walkable_outline, this));
 				monsters[i]->loadTexture(renderer, "images/skeleton.png");
 				//monsters[i] = monster;
 				i++;
@@ -184,15 +200,13 @@ void Dungeon::spawn_entities() {
 			if (column == 'M') {
 				//monsters.resize(i + 1);
 				//Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this);
-				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, this));
+				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, walkable_outline, this));
 				monsters[i]->loadTexture(renderer, "images/minotaur.png");
-				monsters[i]->setWallTypes(wallTypes);
 				//monsters[i] = monster;
 				i++;
 			}
 			if (column == 'P') {
-				player = new Player(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, this);
-				player->setWallTypes(wallTypes);
+				player = new Player(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, this, walkable_outline);
 			}
 			x++;
 		}
