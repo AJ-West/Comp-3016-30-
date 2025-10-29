@@ -83,6 +83,9 @@ void Minotaur::render(SDL_Renderer* renderer) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_FRect character{ x, y, 40, 40 };
 	SDL_RenderTexture(renderer, sprite, &edge_remove, &character);
+
+	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
+	SDL_RenderLine(renderer, x+width/2, y+height/2, player_pos.first +player_dimen.first, player_pos.second +player_dimen.second);
 	//SDL_RenderFillRect(renderer, &character);
 }
 
@@ -98,7 +101,7 @@ void Minotaur::attackDelay() {
 
 
 bool Minotaur::checkLineOfSight() { // help from https://www.youtube.com/watch?v=NbSee-XM7WA
-	pair<float, float> direction{ (target_pos.first + player_dimen.first / 2) - (x +width/2), (target_pos.second + player_dimen.second / 2) - (y+height/2)};
+	pair<float, float> direction{ (player_pos.first + player_dimen.first / 2) - (x +width/2), (player_pos.second + player_dimen.second / 2) - (y+height/2)};
 	float magnitude = sqrt(direction.first * direction.first + direction.second * direction.second);
 	pair<float, float> dir_norm{ direction.first / magnitude, direction.second / magnitude };
 	//distance moved along x and y in a cell
@@ -112,7 +115,7 @@ bool Minotaur::checkLineOfSight() { // help from https://www.youtube.com/watch?v
 	div_t x_div = div(x + width / 2 - dung->getDungeonX(), dung->getWallSize());
 	div_t y_div = div(y + height / 2 - dung->getDungeonY(), dung->getWallSize());
 
-	pair<int, int> target_cell{ div(target_pos.first + player_dimen.first / 2 - dung->getDungeonX(), dung->getWallSize()).quot , div(target_pos.second + player_dimen.second / 2 - dung->getDungeonY(), dung->getWallSize()).quot };
+	pair<int, int> target_cell{ div(player_pos.first + player_dimen.first / 2 - dung->getDungeonX(), dung->getWallSize()).quot , div(player_pos.second + player_dimen.second / 2 - dung->getDungeonY(), dung->getWallSize()).quot };
 
 	float cx = x_div.quot;
 	float cy = y_div.quot;
