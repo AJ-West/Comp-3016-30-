@@ -168,7 +168,7 @@ pair<float, float> Player::getPos() {
 }
 
 pair<int, int> Player::getCell() {
-	pair<int, int> cell(div(x - dung->getDungeonX(), dung->getWallSize()).quot, div(y - dung->getDungeonY(), dung->getWallSize()).quot);
+	pair<int, int> cell(div(x + player_width/2 - dung->getDungeonX(), dung->getWallSize()).quot, div(y+player_height/2 - dung->getDungeonY(), dung->getWallSize()).quot);
 	return cell;
 }
 

@@ -16,6 +16,14 @@ Monster::~Monster() {}
 void Monster::updateTargetPos() {
 	player_pos = player->getPos();
 	pair<int,int> cell(div(x +width/2 - dung->getDungeonX(), dung->getWallSize()).quot, div(y + height/2 - dung->getDungeonY(), dung->getWallSize()).quot);
+	/*pair<int, int> player_cell = player->getCell();
+	if (player_cell.first != cell.first || player_cell.second != cell.second) {
+		path = aStar(w_outline, cell.first, cell.second, player_cell.first, player_cell.second); // incase player leaves the cell
+		target_pos = make_pair(path[1].x * dung->getWallSize() + dung->getWallSize() / 2 + dung->getDungeonX(), path[1].y * dung->getWallSize() + dung->getWallSize() / 2 + dung->getDungeonY());
+	}
+	else {
+		target_pos = player_pos;
+	}*/
 	if (path.size() == 0) { //initiation
 		pair<int, int> player_cell = player->getCell();
 		path = aStar(w_outline, cell.first, cell.second, player_cell.first, player_cell.second); // incase player leaves the cell
@@ -24,14 +32,17 @@ void Monster::updateTargetPos() {
 	else if (path.size() == 1) {
 		pair<int, int> player_cell = player->getCell();
 		path = aStar(w_outline, cell.first, cell.second, player_cell.first, player_cell.second); // incase player leaves the cell)
-		if (path.size() == 1) {
-			target_pos = player_pos;
-		}
+		target_pos = player_pos;
 	}
 	else if (cell.first == path[1].x && cell.second == path[1].y) {
 		pair<int, int> player_cell = player->getCell();
 		path = aStar(w_outline, cell.first, cell.second, player_cell.first, player_cell.second);
-		target_pos = make_pair(path[1].x * dung->getWallSize() + dung->getWallSize() / 2 + dung->getDungeonX(), path[1].y * dung->getWallSize() + dung->getWallSize() / 2 + dung->getDungeonY());
+		if (path.size() == 1 || path.size() == 0) {//acounts for issues when charging
+			target_pos = player_pos;
+		}
+		else {
+			target_pos = make_pair(path[1].x * dung->getWallSize() + dung->getWallSize() / 2 + dung->getDungeonX(), path[1].y * dung->getWallSize() + dung->getWallSize() / 2 + dung->getDungeonY());
+		}
 	}
 }
 

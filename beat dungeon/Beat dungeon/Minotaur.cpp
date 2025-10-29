@@ -1,17 +1,21 @@
 #include "Minotaur.h"
 #include "dungeon.h"
 
+Minotaur::Minotaur(float start_x, float start_y, Player* player_point, float s_speed, vector<vector<int>> walkable_outline, Dungeon* dungeon): Monster(start_x, start_y, player_point, s_speed, walkable_outline, dungeon) {
+	async = new thread(&Minotaur::stun, this);
+}
+
 //moves the monster towards the players position
 void Minotaur::move() {
 	if (!stunned) {
-		updateTargetPos();
 		if (charging) {
 			charge();
 			checkChargeCollision();
 		}
 		else {
+			updateTargetPos();
 			vector<float> float_target{ static_cast<float>(target_pos.first), static_cast<float>(target_pos.second) };
-			vector<float> target_dir = { float_target[0] - x, float_target[1] - y };
+			vector<float> target_dir = { float_target[0] - (x+width/2), float_target[1] - (y+height/2) };
 			x += target_dir[0] / (sqrt(target_dir[0] * target_dir[0])) * speed;
 			y += target_dir[1] / (sqrt(target_dir[1] * target_dir[1])) * speed;
 			checkAttackCollision();
@@ -35,6 +39,7 @@ void Minotaur::updateParticles() {//ai from free copilot
 }
 
 void Minotaur::attack() {
+	player_pos = player->getPos();
 	//need to add delay for attack animation
 	vector<pair<int, int>> player_corners;
 	player_corners.push_back({ player_pos.first - player_dimen.first / 2, player_pos.second - player_dimen.second / 2 });

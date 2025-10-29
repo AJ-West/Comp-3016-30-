@@ -45,7 +45,8 @@ public:
 
     void moveMonsters();
 
-    void spawn_entities();
+    void spawn_monsters();
+    void spawn_player();
     void save_tiles();
     void render_tiles();
 

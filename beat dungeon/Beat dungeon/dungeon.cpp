@@ -39,20 +39,16 @@ void Dungeon::read_file() {
 		if (ch == '\n') {
 			outline.push_back(row);
 			row.clear();
-			//line++;
-			//col = 0;
 		}
-		else{
+		else if (ch != ' '){
 			row.push_back(ch);
-			//assign value to vector
-			//outline[line][col] = ch;
-			//col++;
 		}
 	}
 	outline.push_back(row);
 	save_tiles();
 	createWalkableOutline();
-	spawn_entities();
+	spawn_player();
+	spawn_monsters();
 }
 
 void Dungeon::save_tiles() {
@@ -200,7 +196,22 @@ void Dungeon::moveMonsters() {
 	}
 }
 
-void Dungeon::spawn_entities() {
+void Dungeon::spawn_player() {
+	int x = 0;
+	int y = 0;
+	for (const auto& row : outline) {
+		x = 0;
+		for (const auto& column : row) {
+			if (column == 'P') {
+				player = new Player(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, this, walkable_outline);
+			}
+			x++;
+		}
+		y++;
+	}
+}
+
+void Dungeon::spawn_monsters() {
 	int i = 0;
 	int x = 0;
 	int y = 0;
@@ -212,7 +223,6 @@ void Dungeon::spawn_entities() {
 				//Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025);
 				monsters.push_back(make_unique<Skeleton>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, walkable_outline, this));
 				monsters[i]->loadTexture(renderer, "images/skeleton.png");
-				//monsters[i] = monster;
 				i++;
 			}
 			if (column == 'M') {
@@ -220,17 +230,14 @@ void Dungeon::spawn_entities() {
 				//Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this);
 				monsters.push_back(make_unique<Minotaur>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, walkable_outline, this));
 				monsters[i]->loadTexture(renderer, "images/minotaur.png");
-				//monsters[i] = monster;
 				i++;
-			}
-			if (column == 'P') {
-				player = new Player(x * wall_size + dungeon_x, y * wall_size + dungeon_y, renderer, this, walkable_outline);
 			}
 			x++;
 		}
 		y++;
 	}
 }
+
 
 void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;

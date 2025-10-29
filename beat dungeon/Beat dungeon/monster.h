@@ -70,6 +70,8 @@ protected:
 	bool canAttack = true;
 	bool hit = false;
 
+	Player* player;
+
 	vector<vector<int>> w_outline;
 	Dungeon* dung;
 
@@ -90,7 +92,6 @@ protected:
 	vector<Node> aStar(const vector<vector<int>>& map, int startX, int startY, int endX, int endY);
 
 private:
-	Player* player;
 
 	//ai generated for pathfinding
 

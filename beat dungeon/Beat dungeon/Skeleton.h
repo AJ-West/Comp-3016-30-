@@ -20,6 +20,5 @@ public:
 	virtual void checkAttackCollision();
 
 private:
-	int range = 10;
-	int attackRange = 20;
+	int range = 9;
 };
