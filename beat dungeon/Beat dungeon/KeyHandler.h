@@ -9,6 +9,7 @@
 
 #include "player.h"
 #include "KeyTime.h"
+#include "particles.h"
 
 using namespace std;
 using namespace irrklang;
@@ -23,6 +24,7 @@ public:
 	void spawnKey();
 	void renderKeys();
 	void checkTimes();
+	void updateParticles();
 
 	void keyDown(SDL_Keycode key);
 	void keyUp(SDL_Keycode key);
@@ -52,6 +54,8 @@ private:
 	SDL_Texture* key_outline;
 	SDL_Texture* key_bad_outline;
 	SDL_Texture* key_dot;
+
+	vector<Particle> particles;
 
 	ISoundEngine* sound;
 };

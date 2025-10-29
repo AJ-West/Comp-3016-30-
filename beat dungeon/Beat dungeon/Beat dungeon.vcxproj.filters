@@ -83,6 +83,9 @@
     <ClInclude Include="monster.h">
       <Filter>Source Files\monsters</Filter>
     </ClInclude>
+    <ClInclude Include="particles.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\..\..\Downloads\pixel-emulator-font\PixelEmulator-xq08.ttf">

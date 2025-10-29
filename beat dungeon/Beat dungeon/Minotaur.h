@@ -1,6 +1,7 @@
 #pragma once
 
 #include "monster.h"
+#include "particles.h"
 
 using namespace std;
 
@@ -32,6 +33,7 @@ public:
 
 	bool checkLineOfSight();
 
+	void updateParticles();
 	void pathFinding();
 
 
@@ -42,6 +44,8 @@ private:
 	bool stunned = false;
 	float width = 40, height = 40;
 	SDL_FRect edge_remove{ 6, 1, 20, 26 };
+
+	vector<Particle> particles;
 
 	thread* async;
 };

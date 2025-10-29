@@ -129,9 +129,13 @@ void KeyHandler::renderKeys() {
 		if(key != nullptr)
 			key->render(key_dot, renderer);
 	}
+	for (auto& p : particles) {
+		p.render(renderer);
+	}
 }
 
 void KeyHandler::checkTimes() {
+	int index = 0;
 	for (auto& key : all_keys) {
 		if (key != nullptr) {
 			if ((key->time_elapsed() || key->getUsed()) && key->getGood()) {
@@ -139,6 +143,9 @@ void KeyHandler::checkTimes() {
 					player->change_direction(key->getKey(), false);
 					int rand = std::rand() % 5;
 					sound->play2D(key_sounds[rand], false);
+					for (int i = 0; i < 25; i++) { // ai
+						particles.emplace_back(locations[index].first+50, locations[index].second+50, true);//keys have size 100 so 50 is centering the particles
+					}
 				}
 				delete key;
 				key = nullptr;
@@ -153,6 +160,19 @@ void KeyHandler::checkTimes() {
 				delete key;
 				key = nullptr;
 			}
+		}
+		index++;
+	}
+}
+
+void KeyHandler::updateParticles() {//ai from free copilot
+	// Update particles
+	for (size_t i = 0; i < particles.size();) {
+		if (!particles[i].update()) {
+			particles.erase(particles.begin() + i);
+		}
+		else {
+			i++;
 		}
 	}
 }
@@ -173,6 +193,7 @@ void KeyHandler::keyDown(SDL_Keycode key) {
 }
 
 void KeyHandler::keyUp(SDL_Keycode key) {
+	int index = 0;
 	for (auto& keyT : all_keys) {
 		if (keyT != nullptr) {
 			if (keyT->getKey() == key) {
@@ -182,9 +203,14 @@ void KeyHandler::keyUp(SDL_Keycode key) {
 					keyT->setUsed(true);
 					int rand = std::rand() % 5;
 					sound->play2D(key_sounds[rand], false);
+					// Spawn multiple particles at mouse click
+					for (int i = 0; i < 25; i++) { // ai
+						particles.emplace_back(locations[index].first+50, locations[index].second+50, true);
+					}
 					break;
 				}
 			}
 		}
+		index++;
 	}
 }

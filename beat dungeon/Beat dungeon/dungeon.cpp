@@ -255,6 +255,7 @@ bool Dungeon::update() {
 	int index = 0;
 	vector<int> to_delete;
 	keyHandler->checkTimes();
+	keyHandler->updateParticles();
 	moveMonsters();
 	player->move();
 	if (player->getWin()) {

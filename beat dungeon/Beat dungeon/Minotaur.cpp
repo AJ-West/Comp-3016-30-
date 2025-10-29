@@ -17,6 +17,21 @@ void Minotaur::move() {
 			checkAttackCollision();
 		}
 	}
+	else {
+		updateParticles();
+	}
+}
+
+void Minotaur::updateParticles() {//ai from free copilot
+	// Update particles
+	for (size_t i = 0; i < particles.size();) {
+		if (!particles[i].update()) {
+			particles.erase(particles.begin() + i);
+		}
+		else {
+			i++;
+		}
+	}
 }
 
 void Minotaur::attack() {
@@ -76,6 +91,10 @@ void Minotaur::crash() {
 	charging = false;
 	async = new thread(&Minotaur::stun, this);
 	async->detach();
+	// Spawn multiple particles at mouse click
+	for (int i = 0; i < 25; i++) { // ai
+		particles.emplace_back(x+width/2, y+height/2, false);
+	}
 }
 
 void Minotaur::render(SDL_Renderer* renderer) {
@@ -83,6 +102,10 @@ void Minotaur::render(SDL_Renderer* renderer) {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 0, 255);
 	SDL_FRect character{ x, y, 40, 40 };
 	SDL_RenderTexture(renderer, sprite, &edge_remove, &character);
+
+	for (auto& p : particles) {
+		p.render(renderer);
+	}
 
 	//SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
 	//SDL_RenderLine(renderer, x+width/2, y+height/2, player_pos.first +player_dimen.first, player_pos.second +player_dimen.second);
