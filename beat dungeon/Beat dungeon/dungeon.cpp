@@ -5,7 +5,7 @@ Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRender
 	keyHandler = new KeyHandler(renderer, player);
 	SDL_Surface* scaleSurface = IMG_Load("images/walls.png");
 	if (!scaleSurface) {
-		std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+		cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << endl;
 		SDL_Quit();
 		return;
 	}
@@ -13,7 +13,7 @@ Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber): renderer(sdlRender
 	tileset = SDL_CreateTextureFromSurface(renderer, scaleSurface);
 	SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
 	if (!tileset) {
-		std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+		cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << endl;
 		SDL_Quit();
 		return;
 	}
@@ -23,18 +23,25 @@ Dungeon::~Dungeon(){}
 void Dungeon::read_file() {
 	string fileName = "levels/level" + to_string(levelNum) + ".txt";
 	//retrieve text file for the sppecified level
-	ifstream f(fileName);
-	if (!f.is_open()) {
+	ifstream f(fileName, ios::binary);
+
+	ifstream file(fileName, ios::binary);
+	if (!file.is_open()) {
 		cerr << "Cannot open file";
 		return;
 	}
+	string encoded((istreambuf_iterator<char>(file)), istreambuf_iterator<char>());
+	file.close();
+	string decoded = base64_decode(encoded);
+	
 	//for retrieving the data char at a time
-	char ch;
+	//char ch;
 	int line = 0;
 	int col = 0;
 	vector<char> row;
 	//get next char
-	while (f.get(ch)) {
+	for(char ch: decoded) {
+		cout << ch << '\n';
 		//if end of line got to start of next
 		if (ch == '\n') {
 			outline.push_back(row);
@@ -49,6 +56,25 @@ void Dungeon::read_file() {
 	createWalkableOutline();
 	spawn_player();
 	spawn_monsters();
+}
+
+string Dungeon::base64_decode(const string& input) { // ai copilot free
+	static const string table = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+	vector<int> decoding_table(256, -1);
+	for (int i = 0; i < 64; ++i) decoding_table[table[i]] = i;
+
+	string output;
+	int val = 0, valb = -8;
+	for (unsigned char c : input) {
+		if (decoding_table[c] == -1) break;
+		val = (val << 6) + decoding_table[c];
+		valb += 6;
+		if (valb >= 0) {
+			output.push_back(char((val >> valb) & 0xFF));
+			valb -= 8;
+		}
+	}
+	return output;
 }
 
 void Dungeon::save_tiles() {

@@ -56,6 +56,8 @@ public:
 
     void createWalkableOutline();
 
+    string base64_decode(const string& input);
+
     //getters
     int getDungeonX() { return dungeon_x; }
     int getDungeonY() { return dungeon_x; }
