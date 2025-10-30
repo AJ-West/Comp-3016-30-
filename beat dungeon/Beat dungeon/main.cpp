@@ -36,7 +36,7 @@ void init_environment() {
         isRunning = false;
         return;
     }
-    window = SDL_CreateWindow("Snake", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
+    window = SDL_CreateWindow("Beat dungeon", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
     if (window == nullptr) {
         cerr << "Window cannot be created: SDL_ERROR" << SDL_GetError() << endl;
         isRunning = false;

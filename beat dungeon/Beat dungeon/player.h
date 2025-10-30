@@ -25,9 +25,7 @@ public:
 	//draw player
 	void render();
 
-	//checks wall collision
 	bool checkCollision();
-	void checkEnd();
 
 	void levelComplete();
 

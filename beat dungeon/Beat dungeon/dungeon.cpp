@@ -23,7 +23,6 @@ Dungeon::~Dungeon(){}
 void Dungeon::read_file() {
 	string fileName = "levels/level" + to_string(levelNum) + ".txt";
 	//retrieve text file for the sppecified level
-	ifstream f(fileName, ios::binary);
 
 	ifstream file(fileName, ios::binary);
 	if (!file.is_open()) {
@@ -41,7 +40,6 @@ void Dungeon::read_file() {
 	vector<char> row;
 	//get next char
 	for(char ch: decoded) {
-		cout << ch << '\n';
 		//if end of line got to start of next
 		if (ch == '\n') {
 			outline.push_back(row);

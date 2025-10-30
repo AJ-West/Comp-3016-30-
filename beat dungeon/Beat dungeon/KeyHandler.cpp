@@ -111,18 +111,56 @@ void KeyHandler::spawnKey(){
 	
 	char key_text = static_cast<char>(code);
 	if (good) {
-		SDL_Surface* surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,255,255,0 });
+		SDL_Surface* surface;
+		switch (code) {
+		case SDLK_UP:
+			surface = IMG_Load("images/arrows/up.png");
+			break;
+		case SDLK_LEFT:
+			surface = IMG_Load("images/arrows/left.png");
+			break;
+		case SDLK_DOWN:
+			surface = IMG_Load("images/arrows/down.png");
+			break;
+		case SDLK_RIGHT:
+			surface = IMG_Load("images/arrows/right.png");
+			break;
+		default:
+			surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,255,255,0 });
+		}
 		text = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_DestroySurface(surface);
 		all_keys[pos] = new KeyTime(code, text, true, key_outline, locations[pos]);
 	}
 	else {
-		SDL_Surface* surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,0,0,0 });
+		SDL_Surface* surface;
+		switch (code) {
+		case SDLK_UP:
+			surface = IMG_Load("images/arrows/redup.png");
+			break;
+		case SDLK_LEFT:
+			surface = IMG_Load("images/arrows/redleft.png");
+			break;
+		case SDLK_DOWN:
+			surface = IMG_Load("images/arrows/redown.png");
+			break;
+		case SDLK_RIGHT:
+			surface = IMG_Load("images/arrows/redright.png");
+			break;
+		default:
+			surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,0,0,0 });
+		}
+		if (!surface) {
+			std::cerr << "Unable to load surface! IMG_Error: " << SDL_GetError() << std::endl;
+			SDL_Quit();
+			return;
+		}
 		text = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_DestroySurface(surface);
 		all_keys[pos] = new KeyTime(code, text, false, key_bad_outline, locations[pos]);
 	}
 }
+
 
 void KeyHandler::renderKeys() {
 	for (auto& key : all_keys) {

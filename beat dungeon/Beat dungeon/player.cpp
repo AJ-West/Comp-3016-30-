@@ -63,8 +63,6 @@ void Player::move() {
 			break;
 		}
 	}
-	
-	checkEnd();
 }
 
 void Player::undoMove() {
@@ -117,6 +115,9 @@ bool Player::checkCollision() {
 	if (w_outline[centre.second][centre.first] == 1) {
 		return true;
 	}
+	if (w_outline[centre.second][centre.first] == 2) {
+		levelComplete();
+	}
 	else if (w_outline[centre.second][centre.first] == 3) {//speed
 		w_outline[centre.second][centre.first] = 0;
 		dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
@@ -134,27 +135,6 @@ bool Player::checkCollision() {
 
 	}
 	return false;
-}
-
-// check if the player is at the end of the level
-void Player::checkEnd() {
-	// get the cell index for each corner of the player
-	pair<int, int> x_bounds(div(x - dung->getDungeonX(), dung->getWallSize()).quot, div(x - dung->getDungeonX() + player_width - 1, dung->getWallSize()).quot);
-	pair<int, int> y_bounds(div(y - dung->getDungeonY(), dung->getWallSize()).quot, div(y - dung->getDungeonY() + player_height - 1, dung->getWallSize()).quot);
-
-	// check if any corners of the player is within an exit and completes the level if so
-	if (w_outline[y_bounds.first][x_bounds.first] == 2) {
-		levelComplete();
-	}
-	else if (w_outline[y_bounds.first][x_bounds.second] == 2) {
-		levelComplete();
-	}
-	else if (w_outline[y_bounds.second][x_bounds.first] == 2) {
-		levelComplete();
-	}
-	else if (w_outline[y_bounds.second][x_bounds.second] == 2) {
-		levelComplete();
-	}
 }
 
 void Player::levelComplete() {

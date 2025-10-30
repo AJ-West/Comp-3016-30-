@@ -28,14 +28,26 @@ public:
 	void setUpHome();
 	void setUpLevelSelect();
 
+	void levelPaused();
+	void nextLevel();
+	void tryagain();
+	void exitlevel();
+
 	void loadLevel(int level);
+
+	int getUnlockedLevels();
+	void unlockLevel();
+
+	string base64_encode(const string& input);
+	string base64_decode(const string& input);
 
 private:
 	SDL_Renderer* renderer;
 	SDL_Window* window;
 	SDL_Texture* home_screen = nullptr;
 	SDL_Texture* level_screen = nullptr;
-	enum screens{home = 1, levels = 2, inLevel = 3};
+	SDL_Texture* pause_screen = nullptr;
+	enum screens{home = 1, levels = 2, inLevel = 3, pauseLevel = 4};
 	screens screen = home;
 
 	vector<Button> buttons;
