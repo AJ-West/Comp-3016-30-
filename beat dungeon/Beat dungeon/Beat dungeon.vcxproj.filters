@@ -54,6 +54,9 @@
     <ClCompile Include="monster.cpp">
       <Filter>Source Files\monsters</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dungeon.h">
@@ -84,6 +87,12 @@
       <Filter>Source Files\monsters</Filter>
     </ClInclude>
     <ClInclude Include="particles.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="components.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

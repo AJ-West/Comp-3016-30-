@@ -8,6 +8,9 @@
 #include <vector>
 #include <irrKlang.h>
 #include "gameManager.h"
+#include "GameObject.h"
+#include "components.h"
+#include <memory>
 
 
 using namespace std;
@@ -68,6 +71,37 @@ int main(int argc, char* argv[])
     system("pause");
     srand(time(0));
     init_environment();
+    SDL_Surface* scaleSurface = IMG_Load("images/Knight.png");
+    if (!scaleSurface) {
+        std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        return 0;
+    }
+
+    SDL_Texture* sprite = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+    SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+    if (!sprite) {
+        std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+        SDL_Quit();
+        return 0;
+    }
+    GameObject player({10,10,50,50});
+    SDL_FRect size{ 6, 0, 20, 23 };
+    player.AddComponent(make_shared<TextureComponent>(&player, size, renderer, sprite));
+
+    //GPP testing
+    while (isRunning) {
+        //handle input
+        SDL_Event event;
+        while (SDL_PollEvent(&event) != 0) {
+            if (event.type == SDL_EVENT_QUIT) {
+                isRunning = false;
+            }
+        }
+    }
+
+    //Current Game
+    /*
     GameManager manager(renderer, window);
 
     manager.setUpHome();
@@ -86,6 +120,7 @@ int main(int argc, char* argv[])
         }
         manager.update();
     }
+    */
     engine->drop(); // clean up
 
     return 0;

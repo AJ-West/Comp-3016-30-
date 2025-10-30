@@ -154,6 +154,7 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="dungeon.cpp" />
     <ClCompile Include="gameManager.cpp" />
+    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="KeyHandler.cpp" />
     <ClCompile Include="KeyTime.cpp" />
     <ClCompile Include="main.cpp" />
@@ -164,8 +165,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="button.h" />
+    <ClInclude Include="components.h" />
     <ClInclude Include="dungeon.h" />
     <ClInclude Include="gameManager.h" />
+    <ClInclude Include="GameObject.h" />
     <ClInclude Include="KeyHandler.h" />
     <ClInclude Include="KeyTime.h" />
     <ClInclude Include="Minotaur.h" />
