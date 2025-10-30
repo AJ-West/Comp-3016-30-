@@ -51,8 +51,9 @@ void Dungeon::read_file() {
 	}
 	outline.push_back(row);
 	save_tiles();
-	createWalkableOutline();
+	createPWalkableOutline();
 	spawn_player();
+	createMWalkableOutline();
 	spawn_monsters();
 }
 
@@ -153,7 +154,7 @@ void Dungeon::save_tiles() {
 	}
 }
 
-void Dungeon::createWalkableOutline() {
+void Dungeon::createPWalkableOutline() {
 	vector<int> tile_row;
 	for (const auto& row : outline) {
 		for (const auto& column : row) {
@@ -168,6 +169,16 @@ void Dungeon::createWalkableOutline() {
 		}
 		walkable_outline.push_back(tile_row);
 		tile_row.clear();
+	}
+}
+
+void Dungeon::createMWalkableOutline() {
+	for (auto& row : walkable_outline) {
+		for (auto& column : row) {
+			if (column != 1) {
+				column = 0;
+			}
+		}
 	}
 }
 

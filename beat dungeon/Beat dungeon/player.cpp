@@ -184,10 +184,10 @@ void Player::rotateKeys() {
 		movement_keys[3] = temp;
 	}
 	else if (dir == 1) { // clockwise
-		vector<SDL_Keycode> temp = movement_keys[2];
-		movement_keys[0] = movement_keys[3];
-		movement_keys[1] = movement_keys[0];
+		vector<SDL_Keycode> temp = movement_keys[3];
+		movement_keys[3] = movement_keys[2];
 		movement_keys[2] = movement_keys[1];
-		movement_keys[3] = temp;
+		movement_keys[1] = movement_keys[0];
+		movement_keys[0] = temp;
 	}
 }

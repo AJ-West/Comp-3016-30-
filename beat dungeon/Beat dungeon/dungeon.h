@@ -54,7 +54,8 @@ public:
 
     void spawn_key();
 
-    void createWalkableOutline();
+    void createPWalkableOutline();
+    void createMWalkableOutline();
 
     string base64_decode(const string& input);
 
