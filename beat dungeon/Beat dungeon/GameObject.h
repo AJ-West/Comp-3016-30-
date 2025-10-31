@@ -3,34 +3,147 @@
 #include <unordered_map>
 #include <string>
 #include <memory>
+#include <queue>
+#include <cmath>
+#include <unordered_map>
 
 #include <SDL3/SDL.h>
 
+
 using namespace std;
 
-class Component;
-
-//inspired by slides
+class GameObject;
 
 //GameObject class that holds multiple components
+
+class Component {
+public:
+	virtual void update(float deltatime) = 0;//to be implemented by derived components
+
+	Component(GameObject* obj) : owner(obj) {};
+	virtual ~Component() = default;
+protected:
+	GameObject* owner;
+};
+
 class GameObject {
 public:
-	GameObject(SDL_FRect dim):  dimensions(dim) {}
+	GameObject(SDL_FRect dim, float sp, vector<vector<int>> walkable_outline, int size) : dimensions(dim), speed(sp), w_outline(walkable_outline), cell_size(size) {}
 
 	//add a component to the GameObject
-	template <typename T> void AddComponent(shared_ptr<T> component);
-	
+	template <typename T> void AddComponent(shared_ptr<T> component) {
+		components[typeid(T).name()] = component;
+	}
+
 	//get a component from GameObject
-	template <typename T> shared_ptr<T> AddComponent();
+	template <typename T> shared_ptr<T> AddComponent() {
+		return static_pointer_cast<T>(components[typeid(T).name()]);
+	}
 
 	//update all components
-	void Update();
+	void Update(float deltatime) {
+		for (auto& pair : components) {
+			pair.second->update(deltatime);
+		}
+	}
+
+	pair<int, int> getCell() {
+		pair<int, int> cell(div(dimensions.x + dimensions.w / 2, cell_size).quot, div(dimensions.y + dimensions.h / 2, cell_size).quot);
+		return cell;
+	}
 
 	//getters
 	SDL_FRect getDimensions() { return dimensions; }
+	pair<int, int> getDirection() { return direction; }
+	int getSpeed() { return speed; }
+	vector<vector<int>> getWOutline() { return w_outline; }
+
+	//setters
+	//setters
+	void setDimensions(SDL_FRect dim) { dimensions = dim; }
+	void setDirection(pair<int, int> dir) { direction = dir; }
+	void setSpeed(float sp) { speed = sp; }
 
 private:
 	unordered_map<string, shared_ptr<Component>> components;// Store components
 
 	SDL_FRect dimensions;
+	pair<int, int> direction{0,0};
+	float speed;
+	vector<vector<int>> w_outline;
+
+	int cell_size;
+};
+
+class movementComponent : public Component {
+public:
+	virtual void update(float deltatime){
+		SDL_FRect dimensions = owner->getDimensions();
+		pair<int, int> direction = owner->getDirection();
+		float speed = owner->getSpeed() * deltatime;
+		owner->setDimensions({ dimensions.x + direction.first*speed, dimensions.y + direction.second * speed, dimensions.w, dimensions.h });
+	}
+
+	movementComponent(GameObject* obj) : Component(obj) {}
+	virtual ~movementComponent(){}
+};
+
+class animationComponent : public Component {
+public:
+	virtual void update(Uint32 deltatime) {}
+
+	animationComponent(GameObject* obj) : Component(obj) {}
+	virtual ~animationComponent() {}
+};
+
+class attackComponent : public Component {
+public:
+	virtual void update(float deltatime) {}
+
+	attackComponent(GameObject* obj) : Component(obj) {}
+	virtual ~attackComponent() {}
+};
+/*
+class wallCollisionComponent : public Component {
+public:
+	virtual void update(float deltatime) {
+		pair<int, int> centre(div(x + width / 2 - dung->getDungeonX(), dung->getWallSize()).quot, div(y + height / 2 - dung->getDungeonY(), dung->getWallSize()).quot);
+
+		if (w_outline[centre.second][centre.first] == 1) {
+			crash();
+		}
+	}
+
+	collisionComponent(GameObject* obj) : Component(obj) {}
+	virtual ~collisionComponent() {}
+};*/
+
+class playerCollisionComponent : public Component {
+public:
+	virtual void update(float deltatime) {}
+
+	playerCollisionComponent(GameObject* obj) : Component(obj) {}
+	virtual ~playerCollisionComponent() {}
+};
+
+struct Node { //ai generated for pathfinding
+	int x, y;               // Coordinates of the node
+	float gCost, hCost;     // gCost: cost from start to this node, hCost: estimated cost to goal
+	Node* parent;           // Pointer to parent node for path reconstruction
+
+	// Total cost = gCost + hCost
+	float fCost() const { return gCost + hCost; }
+
+	// Comparison operator for priority queue (min-heap)
+	bool operator>(const Node& other) const {
+		return fCost() > other.fCost();
+	}
+};
+
+class demoComponent : public Component {
+public:
+	virtual void update(float deltatime) {}
+
+	demoComponent(GameObject* obj) : Component(obj) {}
+	virtual ~demoComponent() {}
 };

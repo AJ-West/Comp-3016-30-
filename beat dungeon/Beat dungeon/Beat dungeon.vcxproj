@@ -154,7 +154,6 @@
     <ClCompile Include="button.cpp" />
     <ClCompile Include="dungeon.cpp" />
     <ClCompile Include="gameManager.cpp" />
-    <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="KeyHandler.cpp" />
     <ClCompile Include="KeyTime.cpp" />
     <ClCompile Include="main.cpp" />
@@ -165,7 +164,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="button.h" />
-    <ClInclude Include="components.h" />
     <ClInclude Include="dungeon.h" />
     <ClInclude Include="gameManager.h" />
     <ClInclude Include="GameObject.h" />
@@ -174,22 +172,23 @@
     <ClInclude Include="Minotaur.h" />
     <ClInclude Include="monster.h" />
     <ClInclude Include="particles.h" />
+    <ClInclude Include="pathfinding.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="Skeleton.h" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\SDL\SDL\SDL\VisualC\SDL\SDL.vcxproj">
-      <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\SDL\SDL\SDL_image-release-3.2.4\VisualC\SDL_image.vcxproj">
-      <Project>{2bd5534e-00e2-4bea-ac96-d9a92ea24696}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\SDL\SDL\SDL_ttf\VisualC\SDL_ttf.vcxproj">
-      <Project>{dddbd07d-dc76-4af6-8d02-3e2deb6ee255}</Project>
-    </ProjectReference>
+    <Font Include="..\..\..\..\..\Downloads\pixel-emulator-font\PixelEmulator-xq08.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Font Include="..\..\..\..\..\Downloads\pixel-emulator-font\PixelEmulator-xq08.ttf" />
+    <ProjectReference Include="..\dependencies\SDL\VisualC\SDL\SDL.vcxproj">
+      <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\SDL_image-release-3.2.4\VisualC\SDL_image.vcxproj">
+      <Project>{2bd5534e-00e2-4bea-ac96-d9a92ea24696}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\dependencies\SDL_ttf\VisualC\SDL_ttf.vcxproj">
+      <Project>{dddbd07d-dc76-4af6-8d02-3e2deb6ee255}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

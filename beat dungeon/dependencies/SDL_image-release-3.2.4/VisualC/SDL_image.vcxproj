@@ -72,19 +72,19 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|x64'" />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(ProjectDir)..\include;$(ProjectDir)..\..\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\include;$(ProjectDir)..\..\SDL\include;$(IncludePath);C:\Users\gamin\Documents\SDL\SDL\SDL\include</IncludePath>
     <LibraryPath>$(SolutionDir)$(PlatformName)\$(Configuration);$(ProjectDir)..\..\SDL\VisualC\$(PlatformName)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(ProjectDir)..\include;$(ProjectDir)..\..\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\include;$(ProjectDir)..\..\SDL\include;$(IncludePath);C:\Users\gamin\Documents\SDL\SDL\SDL\include</IncludePath>
     <LibraryPath>$(SolutionDir)$(PlatformName)\$(Configuration);$(ProjectDir)..\..\SDL\VisualC\$(PlatformName)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)..\include;$(ProjectDir)..\..\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\include;$(ProjectDir)..\..\SDL\include;$(IncludePath);C:\Users\gamin\Documents\SDL\SDL\SDL\include</IncludePath>
     <LibraryPath>$(SolutionDir)$(PlatformName)\$(Configuration);$(ProjectDir)..\..\SDL\VisualC\$(PlatformName)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(ProjectDir)..\include;$(ProjectDir)..\..\SDL\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)..\include;$(ProjectDir)..\..\SDL\include;$(IncludePath);C:\Users\gamin\Documents\SDL\SDL\SDL\include</IncludePath>
     <LibraryPath>$(SolutionDir)$(PlatformName)\$(Configuration);$(ProjectDir)..\..\SDL\VisualC\$(PlatformName)\$(Configuration);$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -362,6 +362,11 @@
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Copying %(Filename)%(Extension)</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Platform)\$(Configuration)\%(Filename)%(Extension)</Outputs>
     </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\SDL\VisualC\SDL\SDL.vcxproj">
+      <Project>{81ce8daf-ebb2-4761-8e45-b71abcca8c68}</Project>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

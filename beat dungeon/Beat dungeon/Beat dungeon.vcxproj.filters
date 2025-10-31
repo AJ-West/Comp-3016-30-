@@ -22,6 +22,9 @@
     <Filter Include="Source Files\keys">
       <UniqueIdentifier>{b229d030-e2d5-41a7-97dc-68ffeac51c31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\components">
+      <UniqueIdentifier>{069c27dc-3ccb-4f5f-b5ff-8d140fd7764e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -53,9 +56,6 @@
     </ClCompile>
     <ClCompile Include="monster.cpp">
       <Filter>Source Files\monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObject.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -89,11 +89,11 @@
     <ClInclude Include="particles.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="components.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameObject.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pathfinding.h">
+      <Filter>Source Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

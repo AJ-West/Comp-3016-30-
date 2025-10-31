@@ -1,1 +1,28 @@
-﻿  Beat dungeon.vcxproj -> C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe
+﻿  main.cpp
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\GameObject.h(51,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\GameObject.h(51,94): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\GameObject.h(58,26): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\pathfinding.h(89,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\pathfinding.h(105,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\pathfinding.h(141,23): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
+  (compiling source file 'main.cpp')
+  
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(37,17): warning C4804: '<': unsafe use of type 'bool' in operation
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(42,24): warning C4806: '==': unsafe operation: no value of type 'bool' promoted to type 'int' can equal the given constant
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(59,51): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(79,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(152,21): warning C4244: 'initializing': conversion from 'Uint64' to 'Uint32', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(156,27): warning C4244: 'initializing': conversion from 'Uint64' to 'Uint32', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(182,28): warning C4244: 'initializing': conversion from 'Uint64' to 'Uint32', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\main.cpp(191,26): warning C4244: 'initializing': conversion from 'Uint64' to 'Uint32', possible loss of data
+  Beat dungeon.vcxproj -> C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe

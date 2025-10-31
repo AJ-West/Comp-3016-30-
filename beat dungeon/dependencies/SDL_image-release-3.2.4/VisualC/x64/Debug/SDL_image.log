@@ -1,1 +1,2 @@
-﻿  SDL_image.vcxproj -> C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\SDL3_image.dll
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2146,5): warning : The referenced project '..\..\..\SDL\VisualC\SDL\SDL.vcxproj' does not exist.
+  SDL_image.vcxproj -> C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\SDL3_image.dll
