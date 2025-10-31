@@ -6,6 +6,7 @@ public:
 	virtual void update(float deltatime) {
 		if (!owner->getStunned() && !owner->getCharging()) {
 			if (checkPlayerCollision(player->getDimensions()) && checkLineOfSight()) {
+				cout << "charging";
 				owner->setCharging(true);
 				owner->setSpeed(owner->getSpeed() * 2);
 				SDL_FRect target_dim = player->getDimensions();
@@ -16,6 +17,8 @@ public:
 				charge_target_dir = { charge_target_dir.first / sqrt(mag), charge_target_dir.second / sqrt(mag) };
 				owner->setSpeed(owner->getSpeed() * 2);
 				owner->setDirection(charge_target_dir);
+				cout << charge_target_dir.first << '\n';
+				cout << charge_target_dir.second << '\n';
 			}
 		}
 	}
@@ -55,7 +58,8 @@ public:
 		else
 		{
 			dx = 1;
-			length.first = ((x_div.quot + 1) * cell_size - own_dim.x) * dir_cell.first;
+			length.first = (1-(x_div.rem / cell_size)) * dir_cell.first;
+			//length.first = ((x_div.quot + 1) * cell_size - own_dim.x) * dir_cell.first;
 		}
 
 		if (direction.second < 0)
@@ -66,7 +70,8 @@ public:
 		else
 		{
 			dy = 1;
-			length.second = ((y_div.quot + 1) * cell_size - own_dim.y) * dir_cell.second;
+			length.second = (1-(y_div.rem / cell_size)) * dir_cell.second;
+			//length.second = ((y_div.quot + 1) * cell_size - own_dim.y) * dir_cell.second;
 		}
 
 		bool collided = false;
@@ -85,8 +90,6 @@ public:
 			// if is the players cell then can see the player
 			if (cx == target_cell.first && cy == target_cell.second) { return true; }
 		}
-
-
 		int check_points = magnitude / 1;
 
 	}

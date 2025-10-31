@@ -52,6 +52,8 @@ public:
 		return cell;
 	}
 
+	virtual void wallCollision(float deltatime) = 0;
+
 	//getters
 	SDL_FRect getDimensions() { return dimensions; }
 	pair<float, float> getDirection() { return direction; }
@@ -65,28 +67,17 @@ public:
 	void setDirection(pair<float, float> dir) { direction = dir; }
 	void setSpeed(float sp) { speed = sp; }
 
+protected:
+	SDL_FRect dimensions;
+
 private:
 	unordered_map<string, shared_ptr<Component>> components;// Store components
 
-	SDL_FRect dimensions;
 	pair<float, float> direction{0,0};
 	float speed;
 	vector<vector<int>> w_outline;
 
 	int cell_size;
-};
-
-class movementComponent : public Component {
-public:
-	virtual void update(float deltatime){
-		SDL_FRect dimensions = owner->getDimensions();
-		pair<int, int> direction = owner->getDirection();
-		float speed = owner->getSpeed() * deltatime;
-		owner->setDimensions({ dimensions.x + direction.first*speed, dimensions.y + direction.second * speed, dimensions.w, dimensions.h });
-	}
-
-	movementComponent(GameObject* obj) : Component(obj) {}
-	virtual ~movementComponent(){}
 };
 
 class animationComponent : public Component {
@@ -104,22 +95,6 @@ public:
 	attackComponent(GameObject* obj) : Component(obj) {}
 	virtual ~attackComponent() {}
 };
-/*
-class wallCollisionComponent : public Component {
-public:
-	virtual void update(float deltatime) {
-		pair<int, int> centre(div(x + width / 2 - dung->getDungeonX(), dung->getWallSize()).quot, div(y + height / 2 - dung->getDungeonY(), dung->getWallSize()).quot);
-
-		if (w_outline[centre.second][centre.first] == 1) {
-			crash();
-		}
-	}
-
-	collisionComponent(GameObject* obj) : Component(obj) {}
-	virtual ~collisionComponent() {}
-};*/
-
-
 
 class demoComponent : public Component {
 public:

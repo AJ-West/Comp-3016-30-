@@ -110,6 +110,18 @@
     <ClInclude Include="skeletonObject.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="chargeCollision.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="particleComponent.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="movement.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="wallCollision.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\..\..\Downloads\pixel-emulator-font\PixelEmulator-xq08.ttf">

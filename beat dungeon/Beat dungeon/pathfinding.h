@@ -18,7 +18,7 @@ struct Node { //ai generated for pathfinding
 class pathfindingComponent : public Component {
 public:
 	virtual void update(float deltatime) {
-		if (!owner->getCharging()) {
+		if (!owner->getCharging() && !owner->getStunned()) {
 			pair<int, int> cell = owner->getCell();
 			pair<int, int> player_cell = player->getCell();
 			path = aStar(owner->getWOutline(), cell.first, cell.second, player_cell.first, player_cell.second); // incase player leaves the cell

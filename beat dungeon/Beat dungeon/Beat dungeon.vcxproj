@@ -164,6 +164,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="button.h" />
+    <ClInclude Include="chargeCollision.h" />
     <ClInclude Include="dungeon.h" />
     <ClInclude Include="gameManager.h" />
     <ClInclude Include="GameObject.h" />
@@ -172,6 +173,8 @@
     <ClInclude Include="Minotaur.h" />
     <ClInclude Include="minotaurObject.h" />
     <ClInclude Include="monster.h" />
+    <ClInclude Include="movement.h" />
+    <ClInclude Include="particleComponent.h" />
     <ClInclude Include="particles.h" />
     <ClInclude Include="pathfinding.h" />
     <ClInclude Include="player.h" />
@@ -180,6 +183,7 @@
     <ClInclude Include="Skeleton.h" />
     <ClInclude Include="skeletonObject.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="wallCollision.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\..\..\Downloads\pixel-emulator-font\PixelEmulator-xq08.ttf" />

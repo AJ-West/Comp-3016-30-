@@ -9,7 +9,8 @@
 #include <vector>
 #include <irrKlang.h>
 //#include "gameManager.h"
-#include "GameObject.h"
+#include "minotaurObject.h"
+#include "playerObject.h"
 #include <memory>
 
 
@@ -17,6 +18,10 @@
 #include "pathfinding.h"
 #include "Texture.h"
 #include "playerCollision.h"
+#include "chargeCollision.h"
+#include "particleComponent.h"
+#include "movement.h"
+#include "wallCollision.h"
 
 
 using namespace std;
@@ -131,7 +136,7 @@ int main(int argc, char* argv[])
     vector<vector<int>> map{ {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0}, {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0} };
     int cell_size = 40;
 
-    GameObject player({10,10,50,50},150, map, cell_size);
+    PlayerObj player({10,10,50,50},150, map, cell_size);
     SDL_FRect size{ 6, 0, 20, 23 };
     player.AddComponent(make_shared<TextureComponent>(&player, size, renderer, sprite));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     player.AddComponent(make_shared<movementComponent>(&player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
@@ -143,9 +148,9 @@ int main(int argc, char* argv[])
     size.h = 26;
     minotaur.AddComponent(make_shared<TextureComponent>(&minotaur, size, renderer, msprite));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     minotaur.AddComponent(make_shared<movementComponent>(&minotaur));// (&player, size, renderer, sprite)); // why is this causing LNK2019
-    minotaur.AddComponent(make_shared<chargeCollisionComponent>(&minotaur, &player, 800));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     minotaur.AddComponent(make_shared<pathfindingComponent>(&minotaur, &player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     minotaur.AddComponent(make_shared<playerCollisionComponent>(&minotaur, &player, 80));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+    minotaur.AddComponent(make_shared<chargeCollisionComponent>(&minotaur, &player, 800));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     
 
     MonsterObj skeleton({ 10, 500, 50, 50 }, 150, map, cell_size);
