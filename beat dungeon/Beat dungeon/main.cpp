@@ -136,17 +136,19 @@ int main(int argc, char* argv[])
     player.AddComponent(make_shared<TextureComponent>(&player, size, renderer, sprite));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     player.AddComponent(make_shared<movementComponent>(&player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 
-    GameObject minotaur({ 500, 10, 80, 80 }, 150, map, cell_size);
+    MonsterObj minotaur({ 500, 10, 80, 80 }, 150, map, cell_size);
     size.x = 6;
     size.y = 1;
     size.w = 20;
     size.h = 26;
     minotaur.AddComponent(make_shared<TextureComponent>(&minotaur, size, renderer, msprite));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     minotaur.AddComponent(make_shared<movementComponent>(&minotaur));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+    minotaur.AddComponent(make_shared<chargeCollisionComponent>(&minotaur, &player, 800));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     minotaur.AddComponent(make_shared<pathfindingComponent>(&minotaur, &player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     minotaur.AddComponent(make_shared<playerCollisionComponent>(&minotaur, &player, 80));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+    
 
-    GameObject skeleton({ 10, 500, 50, 50 }, 150, map, cell_size);
+    MonsterObj skeleton({ 10, 500, 50, 50 }, 150, map, cell_size);
     size.x = 6;
     size.y = 0;
     size.w = 20;

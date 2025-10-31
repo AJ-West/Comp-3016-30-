@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h"
+#include "minotaurObject.h"
 
 struct Node { //ai generated for pathfinding
 	int x, y;               // Coordinates of the node
@@ -18,23 +18,25 @@ struct Node { //ai generated for pathfinding
 class pathfindingComponent : public Component {
 public:
 	virtual void update(float deltatime) {
-		pair<int, int> cell = owner->getCell();
-		pair<int, int> player_cell = player->getCell();
-		path = aStar(owner->getWOutline(), cell.first, cell.second, player_cell.first, player_cell.second); // incase player leaves the cell
-		if (path.size() > 1) {
-			if (path[1].x > cell.first) {
-				if (path[1].y > cell.second) { owner->setDirection({ 1,1 }); }
-				else if (path[1].y = cell.second) { owner->setDirection({ 1,0 }); }
-				else { owner->setDirection({ 1,-1 }); }
-			}
-			else if (path[1].x == cell.first) {
-				if (path[1].y > cell.second) { owner->setDirection({ 0,1 }); }
-				else { owner->setDirection({ 0,-1 }); }
-			}
-			else {
-				if (path[1].y > cell.second) { owner->setDirection({ -1,1 }); }
-				else if (path[1].y = cell.second) { owner->setDirection({ -1,0 }); }
-				else { owner->setDirection({ -1,-1 }); }
+		if (!owner->getCharging()) {
+			pair<int, int> cell = owner->getCell();
+			pair<int, int> player_cell = player->getCell();
+			path = aStar(owner->getWOutline(), cell.first, cell.second, player_cell.first, player_cell.second); // incase player leaves the cell
+			if (path.size() > 1) {
+				if (path[1].x > cell.first) {
+					if (path[1].y > cell.second) { owner->setDirection({ 1,1 }); }
+					else if (path[1].y = cell.second) { owner->setDirection({ 1,0 }); }
+					else { owner->setDirection({ 1,-1 }); }
+				}
+				else if (path[1].x == cell.first) {
+					if (path[1].y > cell.second) { owner->setDirection({ 0,1 }); }
+					else { owner->setDirection({ 0,-1 }); }
+				}
+				else {
+					if (path[1].y > cell.second) { owner->setDirection({ -1,1 }); }
+					else if (path[1].y = cell.second) { owner->setDirection({ -1,0 }); }
+					else { owner->setDirection({ -1,-1 }); }
+				}
 			}
 		}
 	}
@@ -138,9 +140,10 @@ public:
 		return {};
 	}
 
-	pathfindingComponent(GameObject* obj, GameObject* play) : Component(obj), player(play) {}
+	pathfindingComponent(MonsterObj* obj, GameObject* play) : Component(obj), owner(obj), player(play) {}
 	virtual ~pathfindingComponent() {}
 private:
+	MonsterObj* owner;
 	GameObject* player;
 
 	// Comparator for priority queue to sort nodes by lowest fCost

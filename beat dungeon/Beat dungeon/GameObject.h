@@ -20,7 +20,7 @@ class Component {
 public:
 	virtual void update(float deltatime) = 0;//to be implemented by derived components
 
-	Component(GameObject* obj) : owner(obj) {};
+	template <typename T> Component(T* obj) : owner(obj) {};
 	virtual ~Component() = default;
 protected:
 	GameObject* owner;
@@ -41,7 +41,7 @@ public:
 	}
 
 	//update all components
-	void Update(float deltatime) {
+	virtual void Update(float deltatime) {
 		for (auto& pair : components) {
 			pair.second->update(deltatime);
 		}
@@ -54,21 +54,22 @@ public:
 
 	//getters
 	SDL_FRect getDimensions() { return dimensions; }
-	pair<int, int> getDirection() { return direction; }
+	pair<float, float> getDirection() { return direction; }
 	int getSpeed() { return speed; }
 	vector<vector<int>> getWOutline() { return w_outline; }
+	int getCellSize() { return cell_size; }
 
 	//setters
 	//setters
 	void setDimensions(SDL_FRect dim) { dimensions = dim; }
-	void setDirection(pair<int, int> dir) { direction = dir; }
+	void setDirection(pair<float, float> dir) { direction = dir; }
 	void setSpeed(float sp) { speed = sp; }
 
 private:
 	unordered_map<string, shared_ptr<Component>> components;// Store components
 
 	SDL_FRect dimensions;
-	pair<int, int> direction{0,0};
+	pair<float, float> direction{0,0};
 	float speed;
 	vector<vector<int>> w_outline;
 
@@ -118,38 +119,7 @@ public:
 	virtual ~collisionComponent() {}
 };*/
 
-class chargeCollisionComponent : public Component {
-public:
-	virtual void update(float deltatime) {
-		if (!stunned && !charging) {
-			if (checkPlayerCollision(player->getDimensions())) {
-				charging = true;
-				owner->setSpeed(owner->getSpeed() * 2);
-			}
-		}
-		else {
 
-		}
-	}
-
-	bool checkPlayerCollision(SDL_FRect player_dim) {
-		SDL_FRect dim = owner->getDimensions();
-		int x_dist = dim.x - player_dim.x;
-		int y_dist = dim.y - player_dim.y;
-		if (x_dist * x_dist + y_dist * y_dist < range * range) {
-			return true;
-		}
-		return false;
-	}
-
-	chargeCollisionComponent(GameObject* obj, GameObject* play, int attackRange) : Component(obj), player(play), range(attackRange) {}
-	virtual ~chargeCollisionComponent() {}
-private:
-	GameObject* player;
-	int range;
-	bool stunned = false;
-	bool charging = false;
-};
 
 class demoComponent : public Component {
 public:

@@ -101,6 +101,15 @@
     <ClInclude Include="playerCollision.h">
       <Filter>Source Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="playerObject.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="minotaurObject.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="skeletonObject.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\..\..\Downloads\pixel-emulator-font\PixelEmulator-xq08.ttf">
