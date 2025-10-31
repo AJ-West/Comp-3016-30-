@@ -71,7 +71,7 @@ int main(int argc, char* argv[])
     system("pause");
     srand(time(0));
     init_environment();
-    SDL_Surface* scaleSurface = IMG_Load("images/Knight.png");
+    /*SDL_Surface* scaleSurface = IMG_Load("images/Knight.png");
     if (!scaleSurface) {
         std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
@@ -98,10 +98,10 @@ int main(int argc, char* argv[])
                 isRunning = false;
             }
         }
-    }
+    }*/
 
     //Current Game
-    /*
+    
     GameManager manager(renderer, window);
 
     manager.setUpHome();
@@ -120,7 +120,7 @@ int main(int argc, char* argv[])
         }
         manager.update();
     }
-    */
+    
     engine->drop(); // clean up
 
     return 0;
