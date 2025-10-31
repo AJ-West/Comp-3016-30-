@@ -118,26 +118,37 @@ public:
 	virtual ~collisionComponent() {}
 };*/
 
-class playerCollisionComponent : public Component {
+class chargeCollisionComponent : public Component {
 public:
-	virtual void update(float deltatime) {}
+	virtual void update(float deltatime) {
+		if (!stunned && !charging) {
+			if (checkPlayerCollision(player->getDimensions())) {
+				charging = true;
+				owner->setSpeed(owner->getSpeed() * 2);
+			}
+		}
+		else {
 
-	playerCollisionComponent(GameObject* obj) : Component(obj) {}
-	virtual ~playerCollisionComponent() {}
-};
-
-struct Node { //ai generated for pathfinding
-	int x, y;               // Coordinates of the node
-	float gCost, hCost;     // gCost: cost from start to this node, hCost: estimated cost to goal
-	Node* parent;           // Pointer to parent node for path reconstruction
-
-	// Total cost = gCost + hCost
-	float fCost() const { return gCost + hCost; }
-
-	// Comparison operator for priority queue (min-heap)
-	bool operator>(const Node& other) const {
-		return fCost() > other.fCost();
+		}
 	}
+
+	bool checkPlayerCollision(SDL_FRect player_dim) {
+		SDL_FRect dim = owner->getDimensions();
+		int x_dist = dim.x - player_dim.x;
+		int y_dist = dim.y - player_dim.y;
+		if (x_dist * x_dist + y_dist * y_dist < range * range) {
+			return true;
+		}
+		return false;
+	}
+
+	chargeCollisionComponent(GameObject* obj, GameObject* play, int attackRange) : Component(obj), player(play), range(attackRange) {}
+	virtual ~chargeCollisionComponent() {}
+private:
+	GameObject* player;
+	int range;
+	bool stunned = false;
+	bool charging = false;
 };
 
 class demoComponent : public Component {

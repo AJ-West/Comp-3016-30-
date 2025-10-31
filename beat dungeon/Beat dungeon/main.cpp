@@ -10,8 +10,13 @@
 #include <irrKlang.h>
 //#include "gameManager.h"
 #include "GameObject.h"
-#include "pathfinding.h"
 #include <memory>
+
+
+//components
+#include "pathfinding.h"
+#include "Texture.h"
+#include "playerCollision.h"
 
 
 using namespace std;
@@ -139,6 +144,7 @@ int main(int argc, char* argv[])
     minotaur.AddComponent(make_shared<TextureComponent>(&minotaur, size, renderer, msprite));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     minotaur.AddComponent(make_shared<movementComponent>(&minotaur));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     minotaur.AddComponent(make_shared<pathfindingComponent>(&minotaur, &player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+    minotaur.AddComponent(make_shared<playerCollisionComponent>(&minotaur, &player, 80));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 
     GameObject skeleton({ 10, 500, 50, 50 }, 150, map, cell_size);
     size.x = 6;
@@ -148,6 +154,7 @@ int main(int argc, char* argv[])
     skeleton.AddComponent(make_shared<TextureComponent>(&skeleton, size, renderer, ssprite));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     skeleton.AddComponent(make_shared<movementComponent>(&skeleton));// (&player, size, renderer, sprite)); // why is this causing LNK2019
     skeleton.AddComponent(make_shared<pathfindingComponent>(&skeleton, &player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+    skeleton.AddComponent(make_shared<playerCollisionComponent>(&skeleton, &player, 50));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 
     Uint32 lastTime = SDL_GetTicks();
 

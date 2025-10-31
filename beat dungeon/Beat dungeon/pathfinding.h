@@ -1,6 +1,20 @@
 #pragma once
 #include "GameObject.h"
 
+struct Node { //ai generated for pathfinding
+	int x, y;               // Coordinates of the node
+	float gCost, hCost;     // gCost: cost from start to this node, hCost: estimated cost to goal
+	Node* parent;           // Pointer to parent node for path reconstruction
+
+	// Total cost = gCost + hCost
+	float fCost() const { return gCost + hCost; }
+
+	// Comparison operator for priority queue (min-heap)
+	bool operator>(const Node& other) const {
+		return fCost() > other.fCost();
+	}
+};
+
 class pathfindingComponent : public Component {
 public:
 	virtual void update(float deltatime) {

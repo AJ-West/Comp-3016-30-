@@ -174,7 +174,9 @@
     <ClInclude Include="particles.h" />
     <ClInclude Include="pathfinding.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="playerCollision.h" />
     <ClInclude Include="Skeleton.h" />
+    <ClInclude Include="Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="..\..\..\..\..\Downloads\pixel-emulator-font\PixelEmulator-xq08.ttf" />
