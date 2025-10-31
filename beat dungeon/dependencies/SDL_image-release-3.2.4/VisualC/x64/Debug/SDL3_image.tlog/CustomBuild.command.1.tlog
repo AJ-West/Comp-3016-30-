@@ -1,0 +1,16 @@
+^C:\USERS\USER\DOCUMENTS\SDL\SDL\SDL_IMAGE-RELEASE-3.2.4\VISUALC\EXTERNAL\OPTIONAL\X64\LIBAVIF-16.DLL
+copy "C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\VisualC\external\optional\x64\libavif-16.dll" "C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\"
+^C:\USERS\USER\DOCUMENTS\SDL\SDL\SDL_IMAGE-RELEASE-3.2.4\VISUALC\EXTERNAL\OPTIONAL\X64\LIBTIFF-6.DLL
+copy "C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\VisualC\external\optional\x64\libtiff-6.dll" "C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\"
+^C:\USERS\USER\DOCUMENTS\SDL\SDL\SDL_IMAGE-RELEASE-3.2.4\VISUALC\EXTERNAL\OPTIONAL\X64\LIBWEBP-7.DLL
+copy "C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\VisualC\external\optional\x64\libwebp-7.dll" "C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\"
+^C:\USERS\USER\DOCUMENTS\SDL\SDL\SDL_IMAGE-RELEASE-3.2.4\VISUALC\EXTERNAL\OPTIONAL\X64\LIBWEBPDEMUX-2.DLL
+copy "C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\VisualC\external\optional\x64\libwebpdemux-2.dll" "C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\"
+^C:\USERS\USER\DOCUMENTS\SDL\SDL\SDL_IMAGE-RELEASE-3.2.4\VISUALC\EXTERNAL\OPTIONAL\X64\LICENSE.AVIF.TXT
+copy "C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\VisualC\external\optional\x64\LICENSE.avif.txt" "C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\"
+^C:\USERS\USER\DOCUMENTS\SDL\SDL\SDL_IMAGE-RELEASE-3.2.4\VISUALC\EXTERNAL\OPTIONAL\X64\LICENSE.DAV1D.TXT
+copy "C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\VisualC\external\optional\x64\LICENSE.dav1d.txt" "C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\"
+^C:\USERS\USER\DOCUMENTS\SDL\SDL\SDL_IMAGE-RELEASE-3.2.4\VISUALC\EXTERNAL\OPTIONAL\X64\LICENSE.TIFF.TXT
+copy "C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\VisualC\external\optional\x64\LICENSE.tiff.txt" "C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\"
+^C:\USERS\USER\DOCUMENTS\SDL\SDL\SDL_IMAGE-RELEASE-3.2.4\VISUALC\EXTERNAL\OPTIONAL\X64\LICENSE.WEBP.TXT
+copy "C:\Users\User\Documents\SDL\SDL\SDL_image-release-3.2.4\VisualC\external\optional\x64\LICENSE.webp.txt" "C:\Users\User\Documents\final year\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\"
