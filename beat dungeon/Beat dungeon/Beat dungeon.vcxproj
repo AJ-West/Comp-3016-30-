@@ -158,10 +158,6 @@
     <ClCompile Include="KeyHandler.cpp" />
     <ClCompile Include="KeyTime.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Minotaur.cpp" />
-    <ClCompile Include="monster.cpp" />
-    <ClCompile Include="player.cpp" />
-    <ClCompile Include="Skeleton.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="button.h" />
@@ -172,18 +168,13 @@
     <ClInclude Include="globals.h" />
     <ClInclude Include="KeyHandler.h" />
     <ClInclude Include="KeyTime.h" />
-    <ClInclude Include="Minotaur.h" />
-    <ClInclude Include="minotaurObject.h" />
-    <ClInclude Include="monster.h" />
+    <ClInclude Include="monsterObject.h" />
     <ClInclude Include="movement.h" />
     <ClInclude Include="particleComponent.h" />
     <ClInclude Include="particles.h" />
     <ClInclude Include="pathfinding.h" />
-    <ClInclude Include="player.h" />
     <ClInclude Include="playerCollision.h" />
     <ClInclude Include="playerObject.h" />
-    <ClInclude Include="Skeleton.h" />
-    <ClInclude Include="skeletonObject.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="wallCollision.h" />
   </ItemGroup>

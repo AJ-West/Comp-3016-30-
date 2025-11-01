@@ -1,5 +1,5 @@
 #pragma once
-#include "minotaurObject.h"
+#include "monsterObject.h"
 
 class chargeCollisionComponent : public Component {
 public:

@@ -1,6 +1,6 @@
 #pragma once
 #include "particles.h"
-#include "minotaurObject.h"
+#include "monsterObject.h"
 
 class particleComponent : public Component {// renderers the object
 public:

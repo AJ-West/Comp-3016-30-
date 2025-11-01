@@ -28,6 +28,8 @@ public:
 	void checkTimes();
 	void updateParticles(float deltaTime);
 
+	void createTextures();
+
 	void keyDown(SDL_Keycode key);
 	void keyUp(SDL_Keycode key);
 

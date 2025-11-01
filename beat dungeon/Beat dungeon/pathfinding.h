@@ -1,5 +1,5 @@
 #pragma once
-#include "minotaurObject.h"
+#include "monsterObject.h"
 
 struct Node { //ai generated for pathfinding
 	int x, y;               // Coordinates of the node

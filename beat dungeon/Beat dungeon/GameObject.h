@@ -95,27 +95,3 @@ private:
 	int cell_size;
 	pair<int, int> removeCell{ NULL,NULL };
 };
-
-class animationComponent : public Component {
-public:
-	virtual void update(Uint32 deltatime) {}
-
-	animationComponent(GameObject* obj) : Component(obj) {}
-	virtual ~animationComponent() {}
-};
-
-class attackComponent : public Component {
-public:
-	virtual void update(float deltatime) {}
-
-	attackComponent(GameObject* obj) : Component(obj) {}
-	virtual ~attackComponent() {}
-};
-
-class demoComponent : public Component {
-public:
-	virtual void update(float deltatime) {}
-
-	demoComponent(GameObject* obj) : Component(obj) {}
-	virtual ~demoComponent() {}
-};

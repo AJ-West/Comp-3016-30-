@@ -33,29 +33,17 @@
     <ClCompile Include="dungeon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="gameManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="button.cpp">
       <Filter>Source Files\generic</Filter>
     </ClCompile>
-    <ClCompile Include="Skeleton.cpp">
-      <Filter>Source Files\monsters</Filter>
-    </ClCompile>
-    <ClCompile Include="Minotaur.cpp">
-      <Filter>Source Files\monsters</Filter>
-    </ClCompile>
     <ClCompile Include="KeyTime.cpp">
       <Filter>Source Files\keys</Filter>
     </ClCompile>
     <ClCompile Include="KeyHandler.cpp">
       <Filter>Source Files\keys</Filter>
-    </ClCompile>
-    <ClCompile Include="monster.cpp">
-      <Filter>Source Files\monsters</Filter>
     </ClCompile>
     <ClCompile Include="globals.cpp">
       <Filter>Source Files</Filter>
@@ -65,29 +53,17 @@
     <ClInclude Include="dungeon.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="player.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="gameManager.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="button.h">
       <Filter>Source Files\generic</Filter>
     </ClInclude>
-    <ClInclude Include="Skeleton.h">
-      <Filter>Source Files\monsters</Filter>
-    </ClInclude>
-    <ClInclude Include="Minotaur.h">
-      <Filter>Source Files\monsters</Filter>
-    </ClInclude>
     <ClInclude Include="KeyTime.h">
       <Filter>Source Files\keys</Filter>
     </ClInclude>
     <ClInclude Include="KeyHandler.h">
       <Filter>Source Files\keys</Filter>
-    </ClInclude>
-    <ClInclude Include="monster.h">
-      <Filter>Source Files\monsters</Filter>
     </ClInclude>
     <ClInclude Include="particles.h">
       <Filter>Source Files</Filter>
@@ -107,10 +83,7 @@
     <ClInclude Include="playerObject.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="minotaurObject.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="skeletonObject.h">
+    <ClInclude Include="monsterObject.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="chargeCollision.h">

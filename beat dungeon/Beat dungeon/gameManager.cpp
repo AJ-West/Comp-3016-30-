@@ -63,10 +63,12 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
         std::cerr << "Failed to load irrKlang DLL or initialize sound engine." << std::endl;
         return;
     }
-    //music->play2D("background track.mp3", true); // looped playback
-    //music->setSoundVolume(0.8f);
+    music->play2D("background track.mp3", true); // looped playback
+    music->setSoundVolume(0.8f);
 }
-GameManager::~GameManager(){}
+GameManager::~GameManager(){
+    music->drop();
+}
 
 void GameManager::setUpHome() {
     screen = home;

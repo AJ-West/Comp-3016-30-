@@ -31,6 +31,13 @@ KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play): renderer(SD
 
 	all_keys.resize(22, nullptr);
 
+	createTextures();
+}
+KeyHandler::~KeyHandler(){
+	sound->drop();
+}
+
+void KeyHandler::createTextures() {
 	//create textures
 	SDL_Surface* scaleSurface = IMG_Load("images/outline.png");
 	if (!scaleSurface) {
@@ -82,9 +89,6 @@ KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play): renderer(SD
 		std::cerr << "Failed to load irrKlang DLL or initialize sound engine." << std::endl;
 		return;
 	}
-}
-KeyHandler::~KeyHandler(){
-	sound->drop();
 }
 
 void KeyHandler::spawnKey(){
@@ -170,29 +174,29 @@ void KeyHandler::renderKeys() {
 	particles.render(renderer);
 }
 
-void KeyHandler::checkTimes() {
+void KeyHandler::checkTimes() { // see if any keys need removing
 	int index = 0;
 	for (auto& key : all_keys) {
 		if (key != nullptr) {
-			if ((key->time_elapsed() || key->getUsed()) && key->getGood()) {
-				if (key->getIsDown()) {
+			if ((key->time_elapsed() || key->getUsed()) && key->getGood()) { // if good key has been pressed or ran out
+				if (key->getIsDown()) { // if still pressing a key as it ran out act as though let go og good key
 					player->change_direction(key->getKey(), false);
 					int rand = std::rand() % 5;
 					sound->play2D(key_sounds[rand], false);
 					for (int i = 0; i < 25; i++) { // ai
-						particles.create(locations[index].first+50, locations[index].second+50, true);//keys have size 100 so 50 is centering the particles
+						particles.create(locations[index].first+ screen_width / 20, locations[index].second+ screen_width / 20, true);//keys have size screen_width/10 so halving is centering the particles
 					}
 				}
 				delete key;
 				key = nullptr;
 			}
-			else if (key->time_elapsed() && !key->getGood()) {
+			else if (key->time_elapsed() && !key->getGood()) { // if bad key has ran out fail level
 				cout << "level failed";
 				sound->play2D("sound effects/missed.wav", false);
 				delete key;
 				key = nullptr;
 			}
-			else if (key->getUsed() && !key->getGood()) {
+			else if (key->getUsed() && !key->getGood()) { // if pressed bad key before it ran out
 				delete key;
 				key = nullptr;
 			}
@@ -206,11 +210,10 @@ void KeyHandler::updateParticles(float deltaTime) {//ai from free copilot
 }
 
 void KeyHandler::keyDown(SDL_Keycode key) {
-	//code for game
 	for (auto& keyT : all_keys) {
 		if (keyT != nullptr) {
-			if (keyT->getKey() == key) {
-				if (keyT->inZone()) {
+			if (keyT->getKey() == key) { // if key matches held down key
+				if (keyT->inZone()) { // if in correct zone
 					player->change_direction(key, true);
 					keyT->setIsDown(true);
 					break;
@@ -220,12 +223,12 @@ void KeyHandler::keyDown(SDL_Keycode key) {
 	}
 }
 
-void KeyHandler::keyUp(SDL_Keycode key) {
+void KeyHandler::keyUp(SDL_Keycode key) { // on release of key
 	int index = 0;
 	for (auto& keyT : all_keys) {
 		if (keyT != nullptr) {
-			if (keyT->getKey() == key) {
-				if (keyT->inZone()) {
+			if (keyT->getKey() == key) { // if key just released
+				if (keyT->inZone()) { // if in correct zone
 					player->change_direction(key, false);
 					keyT->setIsDown(false);
 					keyT->setUsed(true);

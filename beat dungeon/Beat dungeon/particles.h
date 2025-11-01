@@ -15,27 +15,6 @@ struct Particle {
     int lifetime;     // Remaining life in frames
     bool inUse = false;
 
-    /*Particle(float px, float py, bool colour) {
-        x = px;
-        y = py;
-        // Random velocity
-        vx = (rand() % 100 - 50) / 100.0f;
-        vy = (rand() % 100 - 50) / 100.0f;
-        // Random color
-        if (colour) {
-            r = rand() % 256;
-            g = rand() % 256;
-            b = rand() % 256;
-        }
-        else {
-            r = 255;
-            g = 255;
-            b = 255;
-        }
-        a = 255;
-        lifetime = 60 + rand() % 30; // 1–1.5 seconds at 60 FPS
-    }*/
-
     void init(float px, float py, bool colour) {
         x = px;
         y = py;
