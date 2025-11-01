@@ -6,7 +6,16 @@ public:
 	virtual void update(float deltatime) { // check what the owner is colliding with
 		SDL_FRect own_dim = owner->getDimensions();
 		pair<int, int> centre = owner->getCell();
-		vector<vector<int>> w_outline = owner->getWOutline();
+		// Get the owner's walkable outline by reference to avoid copies
+		vector<vector<int>>& w_outline = owner->getWOutline();
+
+		// Bounds-check the computed cell before indexing the map to avoid crashes
+		if (centre.second < 0 || centre.first < 0 ||
+			centre.second >= static_cast<int>(w_outline.size()) ||
+			centre.first >= static_cast<int>(w_outline[0].size())) {
+			return; // out-of-bounds - nothing to collide with
+		}
+
 		switch (w_outline[centre.second][centre.first]) {//colliding with
 		case 1: // wall
 			owner->wallCollision(deltatime);

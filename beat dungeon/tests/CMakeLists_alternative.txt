@@ -1,0 +1,66 @@
+cmake_minimum_required(VERSION 3.14)
+project(BeatDungeonTests)
+
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Alternative CMakeLists.txt if FetchContent fails
+# This version downloads Google Test manually
+
+# Google Test - Manual download option
+set(GTEST_VERSION "1.14.0")
+set(GTEST_URL "https://github.com/google/googletest/archive/refs/tags/v${GTEST_VERSION}.zip")
+set(GTEST_DIR "${CMAKE_BINARY_DIR}/googletest")
+
+# Download Google Test if not present
+if(NOT EXISTS "${GTEST_DIR}/CMakeLists.txt")
+    message(STATUS "Downloading Google Test...")
+    file(DOWNLOAD ${GTEST_URL} "${CMAKE_BINARY_DIR}/googletest.zip")
+    execute_process(
+        COMMAND ${CMAKE_COMMAND} -E tar xzf "${CMAKE_BINARY_DIR}/googletest.zip"
+        WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
+    )
+    file(RENAME "${CMAKE_BINARY_DIR}/googletest-${GTEST_VERSION}" "${GTEST_DIR}")
+    file(REMOVE "${CMAKE_BINARY_DIR}/googletest.zip")
+endif()
+
+# Add Google Test
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+add_subdirectory(${GTEST_DIR} ${CMAKE_BINARY_DIR}/googletest-build EXCLUDE_FROM_ALL)
+
+# Include directories - adjust paths relative to tests directory
+include_directories(
+    ${CMAKE_SOURCE_DIR}/../Beat dungeon
+    ${CMAKE_SOURCE_DIR}/../dependencies/SDL/include
+    ${CMAKE_SOURCE_DIR}/../dependencies/SDL_ttf/include
+    ${CMAKE_SOURCE_DIR}/../dependencies/SDL_image-release-3.2.4/include
+    ${CMAKE_SOURCE_DIR}/../dependencies/irrKlang/include
+)
+
+# Test files
+add_executable(BeatDungeonTests
+    test_gameObject.cpp
+    test_playerObject.cpp
+    test_monsterObject.cpp
+    test_pathfinding.cpp
+    test_collision.cpp
+    test_base64.cpp
+    test_keyTime.cpp
+    test_button.cpp
+    test_particles.cpp
+    test_main.cpp
+)
+
+# Link libraries
+target_link_libraries(BeatDungeonTests
+    PRIVATE
+    gtest
+    gtest_main
+)
+
+# Enable testing
+enable_testing()
+include(GoogleTest)
+gtest_discover_tests(BeatDungeonTests)
+

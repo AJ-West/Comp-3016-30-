@@ -1,0 +1,19 @@
+Level key
+
+1 - wall
+2 - door
+3 - top left corner
+4 - top right corner
+5 - bottom left corner
+6 - bottom right corner
+7 - vertical wall
+8 - horizontal wall
+9 - trapdoor
+
+P - player
+M - minotaur
+S - skeleton
+
+K - new keys
+Q - 2x speed
+R - rotate keys

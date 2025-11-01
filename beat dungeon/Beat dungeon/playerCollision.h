@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h"
+#include "monsterObject.h"
 class playerCollisionComponent : public Component {
 public:
 	virtual void update(float deltatime) {//if can hit player end level

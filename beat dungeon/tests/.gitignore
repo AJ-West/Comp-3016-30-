@@ -1,0 +1,24 @@
+# Build directories
+build/
+cmake-build-*/
+
+# CMake cache
+CMakeCache.txt
+CMakeFiles/
+
+# Compiled files
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Visual Studio
+.vs/
+*.vcxproj.user
+*.sln.docstates
+
+# Google Test
+googletest/
+

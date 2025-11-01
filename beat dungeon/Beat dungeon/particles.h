@@ -33,7 +33,7 @@ struct Particle {
             b = 255;
         }
         a = 255;
-        lifetime = 60 + rand() % 30; // 1–1.5 seconds at 60 FPS
+        lifetime = 60 + rand() % 30; // 1ï¿½1.5 seconds at 60 FPS
         inUse = true;
     }
 
@@ -42,7 +42,11 @@ struct Particle {
             x += vx;
             y += vy;
             lifetime--;
-            if (lifetime < 0) inUse = false;
+            // Consider the particle expired when lifetime reaches 0 (tests expect expiration at 0)
+            if (lifetime <= 0) {
+                inUse = false;
+                lifetime = 0;
+            }
             a = static_cast<Uint8>(255 * (lifetime / 100.0f)); // Fade out
         }
     }

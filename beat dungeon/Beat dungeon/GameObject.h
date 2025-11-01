@@ -28,7 +28,7 @@ protected:
 
 class GameObject {
 public:
-	GameObject(SDL_FRect dim, float sp, vector<vector<int>> walkable_outline, int size) : dimensions(dim), speed(sp), w_outline(walkable_outline), cell_size(size) {}
+	GameObject(SDL_FRect dim, float sp, const vector<vector<int>>& walkable_outline, int size) : dimensions(dim), speed(sp), w_outline(const_cast<vector<vector<int>>&>(const_cast<const vector<vector<int>>&>(walkable_outline))), cell_size(size) {}
 
 	//add a component to the GameObject
 	template <typename T> void AddComponent(shared_ptr<T> component) {
@@ -58,7 +58,7 @@ public:
 	SDL_FRect getDimensions() { return dimensions; }
 	pair<float, float> getDirection() { return direction; }
 	int getSpeed() { return speed; }
-	vector<vector<int>> getWOutline() { return w_outline; }
+	vector<vector<int>>& getWOutline() { return w_outline; }
 	int getCellSize() { return cell_size; }
 	pair<int, int> getRemoveCell() { return removeCell; }
 	bool getCharging() { return charging; }
@@ -90,7 +90,7 @@ private:
 
 	pair<float, float> direction{0,0};
 	float speed;
-	vector<vector<int>> w_outline;
+	vector<vector<int>>& w_outline;
 
 	int cell_size;
 	pair<int, int> removeCell{ NULL,NULL };

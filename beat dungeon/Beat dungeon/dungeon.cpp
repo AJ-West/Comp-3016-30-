@@ -209,7 +209,6 @@ void Dungeon::render() {
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
-
 void Dungeon::updateMonsters(float deltaTime) {
 	for (const auto& monst : monsters) {
 		monst->Update(deltaTime);
@@ -276,21 +275,20 @@ void Dungeon::spawn_monsters() {
 	}
 }
 
-
 void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		/*if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
+		if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
 			keyHandler->keyDown(key);
 			current_Key = true;
 		}
 		else if (input.type == SDL_EVENT_KEY_UP && current_Key) {
 			keyHandler->keyUp(key);
 			current_Key = false;
-		}*/
+		}
 		// for testing purposes
-		player->change_direction(key, true);
+		//player->change_direction(key, true);
 	}
 }
 

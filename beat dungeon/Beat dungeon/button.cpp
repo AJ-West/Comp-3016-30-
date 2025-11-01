@@ -8,10 +8,11 @@ bool Button::checkClick() {
 }
 
 void Button::onClick() {
-	if (func)
+	if (func) {
 		func();
-	else 
+	} else if (level) {
 		level(num);
+	}
 }
 
 void Button::checkHover(int x, int y) {
@@ -20,9 +21,9 @@ void Button::checkHover(int x, int y) {
 
 bool Button::isWithinRect(int x, int y) {
 	if (x < rect.x) return false;
-	if (x > rect.x + rect.w) return false;
+	if (x >= rect.x + rect.w) return false;
 	if (y < rect.y) return false;
-	if (y > rect.y + rect.h) return false;
+	if (y >= rect.y + rect.h) return false;
 	return true;
 }
 
