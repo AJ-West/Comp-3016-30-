@@ -167,9 +167,7 @@ void KeyHandler::renderKeys() {
 		if(key != nullptr)
 			key->render(key_dot, renderer);
 	}
-	for (auto& p : particles) {
-		p.render(renderer);
-	}
+	particles.render(renderer);
 }
 
 void KeyHandler::checkTimes() {
@@ -182,7 +180,7 @@ void KeyHandler::checkTimes() {
 					int rand = std::rand() % 5;
 					sound->play2D(key_sounds[rand], false);
 					for (int i = 0; i < 25; i++) { // ai
-						particles.emplace_back(locations[index].first+50, locations[index].second+50, true);//keys have size 100 so 50 is centering the particles
+						particles.create(locations[index].first+50, locations[index].second+50, true);//keys have size 100 so 50 is centering the particles
 					}
 				}
 				delete key;
@@ -204,15 +202,7 @@ void KeyHandler::checkTimes() {
 }
 
 void KeyHandler::updateParticles(float deltaTime) {//ai from free copilot
-	// Update particles
-	for (size_t i = 0; i < particles.size();) {
-		if (!particles[i].update(deltaTime)) {
-			particles.erase(particles.begin() + i);
-		}
-		else {
-			i++;
-		}
-	}
+	particles.update();
 }
 
 void KeyHandler::keyDown(SDL_Keycode key) {
@@ -243,7 +233,7 @@ void KeyHandler::keyUp(SDL_Keycode key) {
 					sound->play2D(key_sounds[rand], false);
 					// Spawn multiple particles at mouse click
 					for (int i = 0; i < 25; i++) { // ai
-						particles.emplace_back(locations[index].first+50, locations[index].second+50, true);
+						particles.create(locations[index].first+50, locations[index].second+50, true);
 					}
 					break;
 				}

@@ -18,7 +18,7 @@ public:
 			async->detach();
 			// Spawn multiple particles at mouse click
 			for (int i = 0; i < 25; i++) { // ai
-				particles.emplace_back(dimensions.x + dimensions.w / 2, dimensions.y + dimensions.h / 2, false);
+				particles.create(dimensions.x + dimensions.w / 2, dimensions.y + dimensions.h / 2, false);
 			}
 			pair<float, float> direction = getDirection();
 			setDimensions({ dimensions.x - direction.first * deltaTime*getSpeed()*2 , dimensions.y - direction.second * deltaTime * getSpeed() * 2, dimensions.w, dimensions.h});
@@ -32,21 +32,12 @@ public:
 	}
 
 	void updateParticles(float deltaTime, SDL_Renderer* renderer) {
-		for (size_t i = 0; i < particles.size();) {
-			if (!particles[i].update(deltaTime)) {
-				particles.erase(particles.begin() + i);
-			}
-			else {
-				particles[i].render(renderer);
-				i++;
-			}
-		}
+		particles.update();
 	}
 
 	//getters
 	bool getCharging() { return charging; }
 	bool getStunned() { return stunned; }
-	vector<Particle> getParticles() { return particles; }
 
 	//setters
 	void setCharging(bool charge) { charging = charge; }
@@ -58,5 +49,5 @@ private:
 
 	thread* async;
 
-	vector<Particle> particles;
+	ParticlePool particles;
 };

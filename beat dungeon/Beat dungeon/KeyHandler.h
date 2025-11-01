@@ -57,7 +57,8 @@ private:
 	SDL_Texture* key_bad_outline;
 	SDL_Texture* key_dot;
 
-	vector<Particle> particles;
+	//vector<Particle> particles;
+	ParticlePool particles;
 
 	ISoundEngine* sound;
 };
