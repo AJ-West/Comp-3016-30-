@@ -2,13 +2,13 @@
 #include "GameObject.h"
 class playerCollisionComponent : public Component {
 public:
-	virtual void update(float deltatime) {
+	virtual void update(float deltatime) {//if can hit player end level
 		if (checkPlayerCollision(player->getDimensions())) {
-			cout << "levelfailed";
+			owner->setHit(true);
 		}
 	}
 
-	bool checkPlayerCollision(SDL_FRect player_dim) {
+	bool checkPlayerCollision(SDL_FRect player_dim) {// see if player is close enough to hit
 		SDL_FRect dim = owner->getDimensions();
 		int x_dist = dim.x - player_dim.x;
 		int y_dist = dim.y - player_dim.y;
@@ -18,9 +18,10 @@ public:
 		return false;
 	}
 
-	playerCollisionComponent(GameObject* obj, GameObject* play, int attackRange) : Component(obj), player(play), range(attackRange) {}
+	playerCollisionComponent(MonsterObj* obj, GameObject* play, int attackRange) : Component(obj), owner(obj), player(play), range(attackRange) {}
 	virtual ~playerCollisionComponent() {}
 private:
+	MonsterObj* owner;
 	GameObject* player;
 	int range;
 };

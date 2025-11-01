@@ -533,9 +533,9 @@ void Dungeon::render() {
 void Dungeon::updateMonsters(float deltaTime) {
 	for (const auto& monst : monsters) {
 		monst->Update(deltaTime);
-		//if (monst->getHit()) {
-			//restart = true;
-		//}
+		if (monst->getHit()) {
+			restart = true;
+		}
 	}
 }
 
@@ -577,7 +577,7 @@ void Dungeon::spawn_monsters() {
 				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/skeletonSS.png", 6));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<movementComponent>(monsters[i]));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<pathfindingComponent>(monsters[i], player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
-				monsters[i]->AddComponent(make_shared<playerCollisionComponent>(monsters[i], player, 50));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+				monsters[i]->AddComponent(make_shared<playerCollisionComponent>(monsters[i], player, 20));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				i++;
 			}
 			if (column == 'M') {
@@ -589,7 +589,7 @@ void Dungeon::spawn_monsters() {
 				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/minotaurSS.png",10));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<movementComponent>(monsters[i]));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<pathfindingComponent>(monsters[i], player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
-				monsters[i]->AddComponent(make_shared<playerCollisionComponent>(monsters[i], player, 80));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+				monsters[i]->AddComponent(make_shared<playerCollisionComponent>(monsters[i], player, 20));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<chargeCollisionComponent>(monsters[i], player, 800));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<environmentCollisionComponent>(monsters[i]));
 				monsters[i]->AddComponent(make_shared<particleComponent>(monsters[i], renderer));

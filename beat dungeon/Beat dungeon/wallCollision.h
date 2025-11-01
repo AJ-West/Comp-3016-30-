@@ -3,38 +3,32 @@
 
 class environmentCollisionComponent : public Component {
 public:
-	virtual void update(float deltatime) {
+	virtual void update(float deltatime) { // check what the owner is colliding with
 		SDL_FRect own_dim = owner->getDimensions();
 		pair<int, int> centre = owner->getCell();
 		vector<vector<int>> w_outline = owner->getWOutline();
-		if (w_outline[centre.second][centre.first] == 1) {
+		switch (w_outline[centre.second][centre.first]) {//colliding with
+		case 1: // wall
 			owner->wallCollision(deltatime);
-		}
-		if (w_outline[centre.second][centre.first] == 2) {
+			break;
+		case 2: // trapdoor
 			owner->setWin(true);
-			//levelComplete();
-			cout << "level complete";
-		}
-		else if (w_outline[centre.second][centre.first] == 3) {//speed
+			break;
+		case 3: // 2x modifier
 			owner->setWalkableCell(centre.second, centre.first, 0);
-			//w_outline[centre.second][centre.first] = 0;
-			//dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
-			//doubleSpeed();
-			owner->setRemoveCell(centre.first,centre.second);
-			owner->setSpeed(owner->getSpeed()*2);
-		}
-		else if (w_outline[centre.second][centre.first] == 4) {//new keys
+			owner->setRemoveCell(centre.first, centre.second);
+			owner->setSpeed(owner->getSpeed() * 2);
+			break;
+		case 4: // new keys modifier
 			owner->setWalkableCell(centre.second, centre.first, 0);
-			//dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
 			owner->setRemoveCell(centre.first, centre.second);
 			owner->newKeys();
-		}
-		else if (w_outline[centre.second][centre.first] == 5) {//rotate keys
+			break;
+		case 5: // rotate keys modifier
 			owner->setWalkableCell(centre.second, centre.first, 0);
-			//dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
 			owner->setRemoveCell(centre.first, centre.second);
 			owner->rotateKeys();
-
+			break;
 		}
 	}
 

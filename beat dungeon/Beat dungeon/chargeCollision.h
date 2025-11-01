@@ -4,9 +4,8 @@
 class chargeCollisionComponent : public Component {
 public:
 	virtual void update(float deltatime) {
-		if (!owner->getStunned() && !owner->getCharging()) {
-			if (checkPlayerCollision(player->getDimensions()) && checkLineOfSight()) {
-				cout << "charging";
+		if (!owner->getStunned() && !owner->getCharging()) { // if can charge
+			if (checkPlayerCollision(player->getDimensions()) && checkLineOfSight()) { // if can see player and is within range
 				owner->setCharging(true);
 				SDL_FRect target_dim = player->getDimensions();
 				SDL_FRect own_dim = owner->getDimensions();
@@ -93,7 +92,7 @@ public:
 
 	}
 
-	bool checkPlayerCollision(SDL_FRect player_dim) {
+	bool checkPlayerCollision(SDL_FRect player_dim) { // if player is within range to charge
 		SDL_FRect dim = owner->getDimensions();
 		int x_dist = dim.x - player_dim.x;
 		int y_dist = dim.y - player_dim.y;

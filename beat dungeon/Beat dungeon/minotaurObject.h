@@ -33,17 +33,21 @@ public:
 
 	void updateParticles(float deltaTime, SDL_Renderer* renderer) {
 		particles.update();
+		particles.render(renderer);
 	}
 
 	//getters
 	bool getStunned() { return stunned; }
+	bool getHit() { return hit; }
 
 	//setters
 	void setCharging(bool charge) { charging = charge; }
 	void setStunned(bool stun) { stunned = stun; }
+	void setHit(bool hasHit) { hit = hasHit; }
 
 private:
 	bool stunned = true;
+	bool hit = false;
 
 	thread* async;
 

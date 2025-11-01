@@ -3,7 +3,7 @@
 
 class movementComponent : public Component {
 public:
-	virtual void update(float deltatime) {
+	virtual void update(float deltatime) { // update position based off direction of movement
 		SDL_FRect dimensions = owner->getDimensions();
 		pair<float, float> direction = owner->getDirection();
 		float speed = owner->getSpeed() * deltatime;

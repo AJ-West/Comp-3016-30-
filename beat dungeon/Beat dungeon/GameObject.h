@@ -77,6 +77,9 @@ public:
 	virtual void newKeys() { cout << "newKeys"; }
 	virtual void rotateKeys() { cout << "rotateKeys"; }
 
+	//monster functions player doesn't need
+	virtual bool getHit() { return false; }
+
 protected:
 	SDL_FRect dimensions;
 

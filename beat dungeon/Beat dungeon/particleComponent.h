@@ -4,7 +4,7 @@
 
 class particleComponent : public Component {// renderers the object
 public:
-	virtual void update(float deltaTime) {
+	virtual void update(float deltaTime) { // update all particles
 		owner->updateParticles(deltaTime, renderer);
 	}
 
