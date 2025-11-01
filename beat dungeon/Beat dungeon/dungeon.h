@@ -199,9 +199,9 @@ private:
 
     int levelNum;
     //dungeon features
-    int dungeon_x = 100, dungeon_y = 100;
+    int dungeon_x = 0, dungeon_y = 0;
     int dungeon_width, dungeon_height;
-    int wall_size = 60;
+    int wall_size = 80;
 
     PlayerObj* player;
 

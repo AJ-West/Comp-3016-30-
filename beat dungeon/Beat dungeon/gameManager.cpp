@@ -89,7 +89,7 @@ void GameManager::setUpHome() {
         SDL_Quit();
         return;
     }
-    SDL_FRect rect{ 350,600,100,100 };
+    SDL_FRect rect{ screen_width/2-screen_width/10,screen_height - screen_height/10*3, screen_width/5, screen_height/5 };
 
     buttons.resize(1);
     Button button(true, renderer, button_texture, rect);
@@ -122,7 +122,7 @@ void GameManager::setUpLevelSelect() {
     int i = 1;
     for (auto& index : buttons) {
         div_t pos = div(i-1, 3);
-        SDL_FRect rect{ 80 + 240*pos.rem,80+240*pos.quot,160,160 };
+        SDL_FRect rect{ screen_width/10 + screen_width/10*3*pos.rem ,screen_height / 10 + screen_height / 10 * 3 *pos.quot ,screen_width / 10 * 2, screen_height / 10 * 2 };
         Button button(true, renderer, button_texture, rect);
         button.setLevel([&](int i) {loadLevel(i); },i);
         index = button;

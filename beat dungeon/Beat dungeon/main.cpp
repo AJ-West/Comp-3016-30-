@@ -9,27 +9,10 @@
 #include <vector>
 #include <irrKlang.h>
 #include "gameManager.h"
-//#include "minotaurObject.h"
-//#include "playerObject.h"
 #include <memory>
-
-
-//components
-//#include "pathfinding.h"
-//#include "Texture.h"
-//#include "playerCollision.h"
-//#include "chargeCollision.h"
-//#include "particleComponent.h"
-//#include "movement.h"
-//#include "wallCollision.h"
-
 
 using namespace std;
 using namespace irrklang;
-
-//screen size
-#define SCREEN_WIDTH 800
-#define SCREEN_HEIGHT 800
 
 SDL_Window* window;
 SDL_Renderer* renderer;
@@ -54,7 +37,7 @@ void init_environment() {
         isRunning = false;
         return;
     }
-    window = SDL_CreateWindow("Beat dungeon", SCREEN_WIDTH, SCREEN_HEIGHT, 0);
+    window = SDL_CreateWindow("Beat dungeon", screen_width, screen_height, 0);
     if (window == nullptr) {
         cerr << "Window cannot be created: SDL_ERROR" << SDL_GetError() << endl;
         isRunning = false;

@@ -8,6 +8,8 @@
 #include <cstdlib>
 #include <irrKlang.h>
 
+#include "globals.h"
+
 #include "button.h"
 #include "dungeon.h"
 #include "KeyTime.h"

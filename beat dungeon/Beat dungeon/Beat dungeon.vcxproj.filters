@@ -57,6 +57,9 @@
     <ClCompile Include="monster.cpp">
       <Filter>Source Files\monsters</Filter>
     </ClCompile>
+    <ClCompile Include="globals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dungeon.h">
@@ -121,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="wallCollision.h">
       <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="globals.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

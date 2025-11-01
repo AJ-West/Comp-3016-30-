@@ -1,100 +1,101 @@
-﻿  dungeon.cpp
+﻿  gameManager.cpp
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\GameObject.h(51,40): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\GameObject.h(51,94): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\GameObject.h(60,26): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\particles.h(48,45): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\particles.h(48,45): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\particles.h(48,66): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\particles.h(48,66): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\minotaurObject.h(14,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\pathfinding.h(105,44): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\pathfinding.h(121,56): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\pathfinding.h(158,23): warning C4244: 'return': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\playerCollision.h(13,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\playerCollision.h(14,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(11,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(18,39): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(44,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(45,31): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(49,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(50,12): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(89,18): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(89,22): warning C4244: 'argument': conversion from 'float' to 'const unsigned __int64', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(93,20): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(99,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(100,14): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(221,121): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(221,121): warning C4244:         with
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(221,121): warning C4244:         [
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(221,121): warning C4244:             _Rep=__int64
 C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.h(221,121): warning C4244:         ]
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(437,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(442,21): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(508,26): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(508,26): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(508,36): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(508,36): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(512,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(513,28): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(557,24): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(557,24): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(557,39): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(557,39): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(648,22): warning C4244: 'initializing': conversion from '_Rep' to 'double', possible loss of data
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(648,22): warning C4244:         with
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(648,22): warning C4244:         [
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(648,22): warning C4244:             _Rep=__int64
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\dungeon.cpp(648,22): warning C4244:         ]
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(92,35): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(92,35): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(92,66): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(92,66): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(92,100): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(92,100): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(92,117): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(92,117): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(125,41): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(125,41): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(125,89): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(125,89): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(125,143): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(125,143): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(125,167): warning C4838: conversion from 'int' to 'float' requires a narrowing conversion
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(125,167): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(264,59): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\gameManager.cpp(264,43): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         with
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
@@ -104,7 +105,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         [
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:             _Ty1=float
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16): warning C4244:         ]
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,16):
   the template instantiation context (the oldest one first) is
   	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\GameObject.h(77,30):
@@ -126,7 +127,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         [
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:             _Ty2=float
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(250,54): warning C4244:         ]
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,16): warning C4244: 'initializing': conversion from '_Ty' to '_Ty1', possible loss of data
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,16): warning C4244:         with
@@ -137,7 +138,7 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,16): warning C4244:         [
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,16): warning C4244:             _Ty1=int
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,16): warning C4244:         ]
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,16):
   the template instantiation context (the oldest one first) is
   	C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\playerObject.h(17,28):
@@ -154,7 +155,6 @@ C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.3313
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,61): warning C4244:         [
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,61): warning C4244:             _Ty2=int
 C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.38.33130\include\utility(278,61): warning C4244:         ]
-  (compiling source file 'dungeon.cpp')
+  (compiling source file 'gameManager.cpp')
   
-C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\chargeCollision.h(95): warning C4715: 'chargeCollisionComponent::checkLineOfSight': not all control paths return a value
   Beat dungeon.vcxproj -> C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\Beat dungeon.exe
