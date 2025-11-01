@@ -189,11 +189,9 @@ void Dungeon::render_tiles() {
 	SDL_FRect textRect{ 0,0,wall_size,wall_size };
 	for (const auto& row : tiles) {
 		for (const auto& column : row) {
-			//if (column.x != 100) {
-				textRect.x = dungeon_x + x * wall_size;
-				textRect.y = dungeon_y + y * wall_size;
-				SDL_RenderTexture(renderer, tileset, &column, &textRect);
-			//}
+			textRect.x = dungeon_x + x * wall_size;
+			textRect.y = dungeon_y + y * wall_size;
+			SDL_RenderTexture(renderer, tileset, &column, &textRect);
 			x++;
 		}
 		x = 0;
@@ -248,7 +246,7 @@ void Dungeon::spawn_monsters() {
 		for (const auto& column : row) {
 			if (column == 'S') {
 				SDL_FRect d_size{ x * wall_size, y*wall_size, 50, 50 }; // size for sprite to be draw as
-				monsters.push_back(new MonsterObj(d_size, 150, walkable_outline, wall_size));//draw size, speed, map, cell size
+				monsters.push_back(new MonsterObj(d_size, 25, walkable_outline, wall_size));//draw size, speed, map, cell size
 				SDL_FRect s_size{ 6,0,20,32 }; // size of sprite in png
 				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/skeletonSS.png", 6));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<movementComponent>(monsters[i]));// (&player, size, renderer, sprite)); // why is this causing LNK2019
@@ -279,16 +277,16 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		/*if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
+		if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
 			keyHandler->keyDown(key);
 			current_Key = true;
 		}
 		else if (input.type == SDL_EVENT_KEY_UP && current_Key) {
 			keyHandler->keyUp(key);
 			current_Key = false;
-		}*/
+		}
 		// for testing purposes
-		player->change_direction(key, true);
+		//player->change_direction(key, true);
 	}
 }
 
@@ -310,13 +308,13 @@ bool Dungeon::update(float deltaTime) {
 		}
 		keyHandler->setStun(false);
 	}
+	updateMonsters(deltaTime);
 	player->Update(deltaTime);
 	pair<int, int> cell = player->getRemoveCell();
-	if (cell != pair<int,int>{NULL, NULL}) {
+	if (cell != pair<int, int>{NULL, NULL}) {
 		setDungeonTile(cell.first, cell.second, { 300,300,32,32 });
 		player->setRemoveCell(NULL, NULL);
 	}
-	updateMonsters(deltaTime);
 	if (player->getWin()) {
 		cout << "level complete";
 		complete = true;

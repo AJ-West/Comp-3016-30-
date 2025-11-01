@@ -57,10 +57,15 @@ public:
 		movement_keys[1].push_back(potential_keys[1][pos]);
 		movement_keys[2].push_back(potential_keys[2][pos]);
 		movement_keys[3].push_back(potential_keys[3][pos]);
-		potential_keys[0].erase(potential_keys[0].begin() + pos - 1);
-		potential_keys[1].erase(potential_keys[1].begin() + pos - 1);
-		potential_keys[2].erase(potential_keys[2].begin() + pos - 1);
-		potential_keys[3].erase(potential_keys[3].begin() + pos - 1);
+		//used instead of erase to avoid indexing errors
+		remove(potential_keys[0].begin(), potential_keys[0].end(), potential_keys[0][pos]);
+		remove(potential_keys[1].begin(), potential_keys[1].end(), potential_keys[0][pos]);
+		remove(potential_keys[2].begin(), potential_keys[2].end(), potential_keys[0][pos]);
+		remove(potential_keys[3].begin(), potential_keys[3].end(), potential_keys[0][pos]);
+		potential_keys[0].pop_back();
+		potential_keys[1].pop_back();
+		potential_keys[2].pop_back();
+		potential_keys[3].pop_back();
 	}
 
 	void rotateKeys() {

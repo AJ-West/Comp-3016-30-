@@ -3,27 +3,27 @@
 KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play): renderer(SDL_renderer), player(play) {
 	//top row
 	locations.push_back(make_pair(0, 0));
-	locations.push_back(make_pair(screen_width/8, 0));
-	locations.push_back(make_pair(screen_width / 8*6, 0));
-	locations.push_back(make_pair(screen_width / 8*7, 0));
+	locations.push_back(make_pair(screen_width/12, 0));
+	locations.push_back(make_pair(screen_width / 12*9, 0));
+	locations.push_back(make_pair(screen_width / 12*10, 0));
 
 	//left column
-	locations.push_back(make_pair(0, 100));
-	locations.push_back(make_pair(0, 200));
-	locations.push_back(make_pair(0, 300));
-	locations.push_back(make_pair(0, 400));
-	locations.push_back(make_pair(0, 500));
-	locations.push_back(make_pair(0, 600));
-	locations.push_back(make_pair(0, 700));
+	locations.push_back(make_pair(0, screen_height / 12 ));
+	locations.push_back(make_pair(0, screen_height / 12 * 2));
+	locations.push_back(make_pair(0, screen_height / 12 * 3));
+	locations.push_back(make_pair(0, screen_height / 12 * 4));
+	locations.push_back(make_pair(0, screen_height / 12 * 5));
+	locations.push_back(make_pair(0, screen_height / 12 * 6));
+	locations.push_back(make_pair(0, screen_height / 12 * 7));
 
 	//right column
-	locations.push_back(make_pair(screen_width / 8*7, screen_height/8));
-	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*2));
-	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*3));
-	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*4));
-	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*5));
-	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*6));
-	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*7));
+	locations.push_back(make_pair(screen_width / 8*8, screen_height/12));
+	locations.push_back(make_pair(screen_width / 12 * 11, screen_height / 12*2));
+	locations.push_back(make_pair(screen_width / 12 * 11, screen_height / 12*3));
+	locations.push_back(make_pair(screen_width / 12 * 11, screen_height / 12*4));
+	locations.push_back(make_pair(screen_width / 12 * 11, screen_height / 12*5));
+	locations.push_back(make_pair(screen_width / 12 * 11, screen_height / 12*6));
+	locations.push_back(make_pair(screen_width / 12 * 11, screen_height / 12*7));
 
 	bad_keys.resize(18, nullptr);
 
@@ -133,7 +133,7 @@ void KeyHandler::spawnKey(){
 	}
 	
 	int random_direction = rand() % 5;
-	if (random_direction == 4) {
+	if (random_direction == 1) {
 		vector<vector<SDL_Keycode>> options = player->getMovementKeys();
 		bool good = false;
 		SDL_Keycode code = keyboard[rand() % size(keyboard)];
