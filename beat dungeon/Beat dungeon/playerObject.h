@@ -51,14 +51,51 @@ public:
 		}
 	}
 
+	void newKeys() {
+		int pos = rand() % potential_keys[0].size();
+		movement_keys[0].push_back(potential_keys[0][pos]);
+		movement_keys[1].push_back(potential_keys[1][pos]);
+		movement_keys[2].push_back(potential_keys[2][pos]);
+		movement_keys[3].push_back(potential_keys[3][pos]);
+		potential_keys[0].erase(potential_keys[0].begin() + pos - 1);
+		potential_keys[1].erase(potential_keys[1].begin() + pos - 1);
+		potential_keys[2].erase(potential_keys[2].begin() + pos - 1);
+		potential_keys[3].erase(potential_keys[3].begin() + pos - 1);
+	}
+
+	void rotateKeys() {
+		int dir = rand() % 2;
+		if (dir == 0) { // anti-clockwise
+			vector<SDL_Keycode> temp = movement_keys[0];
+			movement_keys[0] = movement_keys[1];
+			movement_keys[1] = movement_keys[2];
+			movement_keys[2] = movement_keys[3];
+			movement_keys[3] = temp;
+		}
+		else if (dir == 1) { // clockwise
+			vector<SDL_Keycode> temp = movement_keys[3];
+			movement_keys[3] = movement_keys[2];
+			movement_keys[2] = movement_keys[1];
+			movement_keys[1] = movement_keys[0];
+			movement_keys[0] = temp;
+		}
+	}
+
 	//getters
 	bool getWin() { return won; }
 	vector<vector<SDL_Keycode>> getMovementKeys() { return movement_keys; }
+	
 
 	//setters
 	void setWin(bool win) { won = win; }
+	
 private:
 	vector<vector<SDL_Keycode>> movement_keys;
 
+	pair<int, int> removeCell{ NULL,NULL };
+
 	bool won = false;
+
+	vector<vector<SDL_Keycode>> potential_keys{ {SDLK_I, SDLK_T, SDLK_UP},{SDLK_J, SDLK_F, SDLK_LEFT},{SDLK_K, SDLK_G, SDLK_DOWN},{SDLK_L, SDLK_H, SDLK_RIGHT} };
+
 };

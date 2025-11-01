@@ -16,22 +16,24 @@ public:
 			cout << "level complete";
 		}
 		else if (w_outline[centre.second][centre.first] == 3) {//speed
+			owner->setWalkableCell(centre.second, centre.first, 0);
 			//w_outline[centre.second][centre.first] = 0;
 			//dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
 			//doubleSpeed();
-			cout << "speed";
+			owner->setRemoveCell(centre.first,centre.second);
+			owner->setSpeed(owner->getSpeed()*2);
 		}
 		else if (w_outline[centre.second][centre.first] == 4) {//new keys
-			w_outline[centre.second][centre.first] = 0;
+			owner->setWalkableCell(centre.second, centre.first, 0);
 			//dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
-			//newKeys();
-			cout << "new keys";
+			owner->setRemoveCell(centre.first, centre.second);
+			owner->newKeys();
 		}
 		else if (w_outline[centre.second][centre.first] == 5) {//rotate keys
-			//w_outline[centre.second][centre.first] = 0;
+			owner->setWalkableCell(centre.second, centre.first, 0);
 			//dung->setDungeonTile(centre.first, centre.second, { 300,300,32,32 });
-			//rotateKeys();
-			cout << "rotate keys";
+			owner->setRemoveCell(centre.first, centre.second);
+			owner->rotateKeys();
 
 		}
 	}

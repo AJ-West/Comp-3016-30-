@@ -635,6 +635,11 @@ bool Dungeon::update(float deltaTime) {
 	keyHandler->checkTimes();
 	keyHandler->updateParticles(deltaTime);
 	player->Update(deltaTime);
+	pair<int, int> cell = player->getRemoveCell();
+	if (cell != pair<int,int>{NULL, NULL}) {
+		setDungeonTile(cell.first, cell.second, { 300,300,32,32 });
+		player->setRemoveCell(NULL, NULL);
+	}
 	updateMonsters(deltaTime);
 	if (player->getWin()) {
 		cout << "level complete";

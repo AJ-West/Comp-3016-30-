@@ -60,14 +60,21 @@ public:
 	int getSpeed() { return speed; }
 	vector<vector<int>> getWOutline() { return w_outline; }
 	int getCellSize() { return cell_size; }
+	pair<int, int> getRemoveCell() { return removeCell; }
 
 	//setters
 	//setters
 	void setDimensions(SDL_FRect dim) { dimensions = dim; }
 	void setDirection(pair<float, float> dir) { direction = dir; }
 	void setSpeed(float sp) { speed = sp; }
+	void setWalkableCell(int y, int x, int value) { w_outline[y][x] = value; }
+	void setRemoveCell(int x, int y) { removeCell.first = x; removeCell.second = y; }
 
+
+	//player function monsters dont have but required for GPP
 	virtual void setWin(bool win) { cout << "win"; }
+	virtual void newKeys() { cout << "newKeys"; }
+	virtual void rotateKeys() { cout << "rotateKeys"; }
 
 protected:
 	SDL_FRect dimensions;
@@ -80,6 +87,7 @@ private:
 	vector<vector<int>> w_outline;
 
 	int cell_size;
+	pair<int, int> removeCell{ NULL,NULL };
 };
 
 class animationComponent : public Component {
