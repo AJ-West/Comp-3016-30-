@@ -526,14 +526,6 @@ void Dungeon::render() {
 	int y = 0;
 	render_tiles();
 	keyHandler->renderKeys();
-	/*for (auto& key : current_keys) {
-		if (key->getGood()) {
-			key->render(renderer, key_outline, key_dot);
-		}
-		else {
-			key->render(renderer, key_bad_outline, key_dot);
-		}
-	}*/
 	SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
 }
 
@@ -557,7 +549,7 @@ void Dungeon::spawn_player() {
 				SDL_FRect start{ x * wall_size, y * wall_size,50,50 };
 				player = new PlayerObj(start, 150, walkable_outline, wall_size); //draw size, speed, map, cell size
 				SDL_FRect size{ 6, 0, 20, 23 };
-				player->AddComponent(make_shared<TextureComponent>(player, size, renderer, "images/Knight.png"));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+				player->AddComponent(make_shared<TextureComponent>(player, size, renderer, "images/KnightSS.png", 6));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				player->AddComponent(make_shared<movementComponent>(player));
 				player->AddComponent(make_shared<environmentCollisionComponent>(player));
 				break;
@@ -582,7 +574,7 @@ void Dungeon::spawn_monsters() {
 				SDL_FRect d_size{ x * wall_size, y*wall_size, 50, 50 }; // size for sprite to be draw as
 				monsters.push_back(new MonsterObj(d_size, 150, walkable_outline, wall_size));//draw size, speed, map, cell size
 				SDL_FRect s_size{ 6,0,20,32 }; // size of sprite in png
-				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/skeleton.png"));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/skeletonSS.png", 6));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<movementComponent>(monsters[i]));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<pathfindingComponent>(monsters[i], player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<playerCollisionComponent>(monsters[i], player, 50));// (&player, size, renderer, sprite)); // why is this causing LNK2019
@@ -594,7 +586,7 @@ void Dungeon::spawn_monsters() {
 				SDL_FRect d_size{ x * wall_size, y * wall_size, 50, 50 }; // size for sprite to be draw as
 				monsters.push_back(new MonsterObj(d_size, 150, walkable_outline, wall_size));//draw size, speed, map, cell size
 				SDL_FRect s_size{ 6,0,20,32 }; // size of sprite in png
-				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/minotaur.png"));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/minotaurSS.png",10));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<movementComponent>(monsters[i]));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<pathfindingComponent>(monsters[i], player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<playerCollisionComponent>(monsters[i], player, 80));// (&player, size, renderer, sprite)); // why is this causing LNK2019
@@ -614,16 +606,16 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
+		/*if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
 			keyHandler->keyDown(key);
 			current_Key = true;
 		}
 		else if (input.type == SDL_EVENT_KEY_UP && current_Key) {
 			keyHandler->keyUp(key);
 			current_Key = false;
-		}
+		}*/
 		// for testing purposes
-		//player->change_direction(key, true);
+		player->change_direction(key, true);
 	}
 }
 

@@ -36,7 +36,6 @@ public:
 	}
 
 	//getters
-	bool getCharging() { return charging; }
 	bool getStunned() { return stunned; }
 
 	//setters
@@ -44,7 +43,6 @@ public:
 	void setStunned(bool stun) { stunned = stun; }
 
 private:
-	bool charging = false;
 	bool stunned = true;
 
 	thread* async;

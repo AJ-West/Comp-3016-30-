@@ -61,6 +61,7 @@ public:
 	vector<vector<int>> getWOutline() { return w_outline; }
 	int getCellSize() { return cell_size; }
 	pair<int, int> getRemoveCell() { return removeCell; }
+	bool getCharging() { return charging; }
 
 	//setters
 	//setters
@@ -78,6 +79,8 @@ public:
 
 protected:
 	SDL_FRect dimensions;
+
+	bool charging = false;
 
 private:
 	unordered_map<string, shared_ptr<Component>> components;// Store components
