@@ -11,6 +11,7 @@ public:
 			owner->wallCollision(deltatime);
 		}
 		if (w_outline[centre.second][centre.first] == 2) {
+			owner->setWin(true);
 			//levelComplete();
 			cout << "level complete";
 		}

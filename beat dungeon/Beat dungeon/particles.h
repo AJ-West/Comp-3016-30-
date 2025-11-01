@@ -17,8 +17,8 @@ struct Particle {
         x = px;
         y = py;
         // Random velocity
-        vx = (rand() % 100 - 50) / 1000.0f;
-        vy = (rand() % 100 - 50) / 1000.0f;
+        vx = (rand() % 100 - 50) / 100.0f;
+        vy = (rand() % 100 - 50) / 100.0f;
         // Random color
         if (colour) {
             r = rand() % 256;
@@ -31,12 +31,12 @@ struct Particle {
             b = 255;
         }
         a = 255;
-        lifetime = 1000 + rand() % 400; // 1–1.5 seconds at 60 FPS
+        lifetime = 60 + rand() % 30; // 1–1.5 seconds at 60 FPS
     }
 
-    bool update() {
-        x += vx;
-        y += vy;
+    bool update(float deltaTime) {
+        x += vx ;
+        y += vy ;
         lifetime--;
         if (lifetime < 0) return false;
         a = static_cast<Uint8>(255 * (lifetime / 100.0f)); // Fade out

@@ -177,7 +177,7 @@ void GameManager::levelPaused() {
         SDL_Quit();
         return;
     }
-    SDL_FRect rect{ 220, 220 , 360,160 };//button size
+    SDL_FRect rect{ 11* screen_width / 40, 11 * screen_height / 40, 18 * screen_width / 40, 8 * screen_height /40 };//values to scale the art
     Button button(true, renderer, level_texture, rect);
     if (dung->getComplete()) {
         button.setFunc([&]() {nextLevel(); });
@@ -188,10 +188,10 @@ void GameManager::levelPaused() {
     else {
         button.setFunc([&]() {tryagain(); });
     }
-    rect.x = 220;
-    rect.y = 420;
-    rect.w = 360;
-    rect.h = 160;
+    rect.x = 11 * screen_width / 40;
+    rect.y = 21 * screen_height / 40;
+    rect.w = 18 * screen_width / 40;
+    rect.h = 8 * screen_height / 40;
     Button ebutton(true, renderer, exit_texture, rect);
     ebutton.setFunc([&]() {exitlevel(); });
     buttons.emplace_back(button);

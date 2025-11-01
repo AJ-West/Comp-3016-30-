@@ -12,6 +12,7 @@
 #include "KeyTime.h"
 #include "particles.h"
 
+#include "globals.h"
 using namespace std;
 using namespace irrklang;
 
@@ -25,7 +26,7 @@ public:
 	void spawnKey();
 	void renderKeys();
 	void checkTimes();
-	void updateParticles();
+	void updateParticles(float deltaTime);
 
 	void keyDown(SDL_Keycode key);
 	void keyUp(SDL_Keycode key);

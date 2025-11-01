@@ -559,6 +559,7 @@ void Dungeon::spawn_player() {
 				SDL_FRect size{ 6, 0, 20, 23 };
 				player->AddComponent(make_shared<TextureComponent>(player, size, renderer, "images/Knight.png"));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				player->AddComponent(make_shared<movementComponent>(player));
+				player->AddComponent(make_shared<environmentCollisionComponent>(player));
 				break;
 			}
 			x++;
@@ -578,7 +579,7 @@ void Dungeon::spawn_monsters() {
 				//monsters.resize(i + 1);
 				//Skeleton monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025);
 				//monsters.push_back(make_unique<MonsterObj>(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.005, walkable_outline, this));
-				SDL_FRect d_size{ 10, 500, 50, 50 }; // size for sprite to be draw as
+				SDL_FRect d_size{ x * wall_size, y*wall_size, 50, 50 }; // size for sprite to be draw as
 				monsters.push_back(new MonsterObj(d_size, 150, walkable_outline, wall_size));//draw size, speed, map, cell size
 				SDL_FRect s_size{ 6,0,20,32 }; // size of sprite in png
 				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/skeleton.png"));// (&player, size, renderer, sprite)); // why is this causing LNK2019
@@ -590,7 +591,7 @@ void Dungeon::spawn_monsters() {
 			if (column == 'M') {
 				//monsters.resize(i + 1);
 				//Minotaur monster(x * wall_size + dungeon_x, y * wall_size + dungeon_y, player, 0.0025, this);
-				SDL_FRect d_size{ 10, 500, 50, 50 }; // size for sprite to be draw as
+				SDL_FRect d_size{ x * wall_size, y * wall_size, 50, 50 }; // size for sprite to be draw as
 				monsters.push_back(new MonsterObj(d_size, 150, walkable_outline, wall_size));//draw size, speed, map, cell size
 				SDL_FRect s_size{ 6,0,20,32 }; // size of sprite in png
 				monsters[i]->AddComponent(make_shared<TextureComponent>(monsters[i], s_size, renderer, "images/minotaur.png"));// (&player, size, renderer, sprite)); // why is this causing LNK2019
@@ -598,6 +599,8 @@ void Dungeon::spawn_monsters() {
 				monsters[i]->AddComponent(make_shared<pathfindingComponent>(monsters[i], player));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<playerCollisionComponent>(monsters[i], player, 80));// (&player, size, renderer, sprite)); // why is this causing LNK2019
 				monsters[i]->AddComponent(make_shared<chargeCollisionComponent>(monsters[i], player, 800));// (&player, size, renderer, sprite)); // why is this causing LNK2019
+				monsters[i]->AddComponent(make_shared<environmentCollisionComponent>(monsters[i]));
+				monsters[i]->AddComponent(make_shared<particleComponent>(monsters[i], renderer));
 				i++;
 			}
 			x++;
@@ -630,7 +633,7 @@ bool Dungeon::update(float deltaTime) {
 	int index = 0;
 	vector<int> to_delete;
 	keyHandler->checkTimes();
-	keyHandler->updateParticles();
+	keyHandler->updateParticles(deltaTime);
 	player->Update(deltaTime);
 	updateMonsters(deltaTime);
 	if (player->getWin()) {

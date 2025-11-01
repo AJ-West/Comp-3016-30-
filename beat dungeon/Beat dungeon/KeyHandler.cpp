@@ -3,13 +3,13 @@
 KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play): renderer(SDL_renderer), player(play) {
 	//top row
 	locations.push_back(make_pair(0, 0));
-	locations.push_back(make_pair(100, 0));
-	locations.push_back(make_pair(200, 0));
-	locations.push_back(make_pair(300, 0));
-	locations.push_back(make_pair(400, 0));
-	locations.push_back(make_pair(500, 0));
-	locations.push_back(make_pair(600, 0));
-	locations.push_back(make_pair(700, 0));
+	locations.push_back(make_pair(screen_width/8, 0));
+	locations.push_back(make_pair(screen_width / 8*2, 0));
+	locations.push_back(make_pair(screen_width / 8*3, 0));
+	locations.push_back(make_pair(screen_width / 8*4, 0));
+	locations.push_back(make_pair(screen_width / 8*5, 0));
+	locations.push_back(make_pair(screen_width / 8*6, 0));
+	locations.push_back(make_pair(screen_width / 8*7, 0));
 
 	//left column
 	locations.push_back(make_pair(0, 100));
@@ -21,13 +21,13 @@ KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play): renderer(SD
 	locations.push_back(make_pair(0, 700));
 
 	//right column
-	locations.push_back(make_pair(700, 100));
-	locations.push_back(make_pair(700, 200));
-	locations.push_back(make_pair(700, 300));
-	locations.push_back(make_pair(700, 400));
-	locations.push_back(make_pair(700, 500));
-	locations.push_back(make_pair(700, 600));
-	locations.push_back(make_pair(700, 700));
+	locations.push_back(make_pair(screen_width / 8*7, screen_height/8));
+	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*2));
+	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*3));
+	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*4));
+	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*5));
+	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*6));
+	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*7));
 
 	all_keys.resize(22, nullptr);
 
@@ -203,10 +203,10 @@ void KeyHandler::checkTimes() {
 	}
 }
 
-void KeyHandler::updateParticles() {//ai from free copilot
+void KeyHandler::updateParticles(float deltaTime) {//ai from free copilot
 	// Update particles
 	for (size_t i = 0; i < particles.size();) {
-		if (!particles[i].update()) {
+		if (!particles[i].update(deltaTime)) {
 			particles.erase(particles.begin() + i);
 		}
 		else {

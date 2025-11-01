@@ -7,6 +7,8 @@
 #include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
 
+#include "globals.h"
+
 //#include "player.h"
 
 using namespace std;
@@ -41,7 +43,7 @@ private:
 	double time_made;
 	double time_expired;
 	pair<int, int> position;
-	int size = 80;
+	int size = screen_width/10;
 
 	bool good;
 	bool used = false;
