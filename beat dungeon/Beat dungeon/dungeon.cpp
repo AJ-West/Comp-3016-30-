@@ -54,7 +54,7 @@ void Dungeon::read_file() {
 	save_tiles();
 	createPWalkableOutline();
 	spawn_player();
-	createMWalkableOutline();
+	//createMWalkableOutline();
 	spawn_monsters();
 }
 
@@ -189,11 +189,11 @@ void Dungeon::render_tiles() {
 	SDL_FRect textRect{ 0,0,wall_size,wall_size };
 	for (const auto& row : tiles) {
 		for (const auto& column : row) {
-			if (column.x != 100) {
+			//if (column.x != 100) {
 				textRect.x = dungeon_x + x * wall_size;
 				textRect.y = dungeon_y + y * wall_size;
 				SDL_RenderTexture(renderer, tileset, &column, &textRect);
-			}
+			//}
 			x++;
 		}
 		x = 0;
@@ -279,16 +279,16 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
+		/*if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
 			keyHandler->keyDown(key);
 			current_Key = true;
 		}
 		else if (input.type == SDL_EVENT_KEY_UP && current_Key) {
 			keyHandler->keyUp(key);
 			current_Key = false;
-		}
+		}*/
 		// for testing purposes
-		//player->change_direction(key, true);
+		player->change_direction(key, true);
 	}
 }
 

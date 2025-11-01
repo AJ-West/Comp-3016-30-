@@ -5,7 +5,7 @@
 
 class MonsterObj : public GameObject {
 public:
-	MonsterObj(SDL_FRect dim, float sp, const vector<vector<int>>& walkable_outline, int size): GameObject(dim, sp, walkable_outline, size) {
+	MonsterObj(SDL_FRect dim, float sp, vector<vector<int>> walkable_outline, int size): GameObject(dim, sp, walkable_outline, size) {
 		async = new thread(&MonsterObj::stun, this); // delay on spawn
 	}
 	

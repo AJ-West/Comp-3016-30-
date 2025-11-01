@@ -7,7 +7,7 @@ public:
 		SDL_FRect own_dim = owner->getDimensions();
 		pair<int, int> centre = owner->getCell();
 		// Get the owner's walkable outline by reference to avoid copies
-		vector<vector<int>>& w_outline = owner->getWOutline();
+		vector<vector<int>> w_outline = owner->getWOutline();
 
 		// Bounds-check the computed cell before indexing the map to avoid crashes
 		if (centre.second < 0 || centre.first < 0 ||

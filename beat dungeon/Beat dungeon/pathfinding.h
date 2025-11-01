@@ -38,6 +38,14 @@ public:
 					else { owner->setDirection({ -1,-1 }); } // if below the player
 				}
 			}
+			else {
+				SDL_FRect player_dim = player->getDimensions();
+				SDL_FRect own_dim = owner->getDimensions();
+				pair<float, float> direction{ (player_dim.x + player_dim.w / 2) - (own_dim.x + own_dim.w / 2), (player_dim.y + player_dim.h / 2) - (own_dim.y + own_dim.h / 2) };
+				float magnitude = sqrt(direction.first * direction.first + direction.second * direction.second);
+				pair<float, float> dir_norm{ direction.first / magnitude, direction.second / magnitude };
+				owner->setDirection(dir_norm);
+			}
 		}
 	}
 
