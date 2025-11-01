@@ -8,7 +8,6 @@ public:
 			if (checkPlayerCollision(player->getDimensions()) && checkLineOfSight()) {
 				cout << "charging";
 				owner->setCharging(true);
-				owner->setSpeed(owner->getSpeed() * 2);
 				SDL_FRect target_dim = player->getDimensions();
 				SDL_FRect own_dim = owner->getDimensions();
 				pair<float, float>  charge_target_dir = { target_dim.x - own_dim.x, target_dim.y - own_dim.y };

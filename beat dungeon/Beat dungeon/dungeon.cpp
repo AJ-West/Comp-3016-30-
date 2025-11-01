@@ -540,7 +540,7 @@ void Dungeon::render() {
 
 void Dungeon::updateMonsters(float deltaTime) {
 	for (const auto& monst : monsters) {
-		monst->Update( deltaTime);
+		monst->Update(deltaTime);
 		//if (monst->getHit()) {
 			//restart = true;
 		//}

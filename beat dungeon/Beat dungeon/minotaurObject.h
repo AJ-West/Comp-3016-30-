@@ -9,21 +9,38 @@ public:
 		async = new thread(&MonsterObj::stun, this); // delay on spawn
 	}
 	
-	void wallCollision(float deltatime) {
-		stunned = true;
-		setSpeed(getSpeed() / 2);
-		charging = false;
-		async = new thread(&MonsterObj::stun, this);
-		async->detach();
-		// Spawn multiple particles at mouse click
-		for (int i = 0; i < 25; i++) { // ai
-			particles.emplace_back(dimensions.x + dimensions.w / 2, dimensions.y + dimensions.h / 2, false);
+	void wallCollision(float deltaTime) {
+		if (!stunned) {
+			stunned = true;
+			setSpeed(getSpeed() / 2);
+			charging = false;
+			async = new thread(&MonsterObj::stun, this);
+			async->detach();
+			// Spawn multiple particles at mouse click
+			for (int i = 0; i < 25; i++) { // ai
+				particles.emplace_back(dimensions.x + dimensions.w / 2, dimensions.y + dimensions.h / 2, false);
+			}
+			pair<float, float> direction = getDirection();
+			setDimensions({ dimensions.x - direction.first * deltaTime*getSpeed()*2 , dimensions.y - direction.second * deltaTime * getSpeed() * 2, dimensions.w, dimensions.h});
+			setDirection({ 0,0 });
 		}
 	}
 
 	void stun() {
 		this_thread::sleep_for(chrono::seconds(3));
 		stunned = false;
+	}
+
+	void updateParticles(float deltaTime, SDL_Renderer* renderer) {
+		for (size_t i = 0; i < particles.size();) {
+			if (!particles[i].update(deltaTime)) {
+				particles.erase(particles.begin() + i);
+			}
+			else {
+				particles[i].render(renderer);
+				i++;
+			}
+		}
 	}
 
 	//getters
