@@ -1,5 +1,5 @@
 #pragma once
-
+/*
 #include "monster.h"
 
 using namespace std;
@@ -21,4 +21,4 @@ public:
 
 private:
 	int range = 9;
-};
+};*/

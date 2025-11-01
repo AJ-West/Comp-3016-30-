@@ -68,29 +68,6 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
 }
 GameManager::~GameManager(){}
 
-void GameManager::render() {
-    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-    SDL_RenderClear(renderer);
-    switch (screen) {
-    case home:
-        SDL_RenderTexture(renderer, home_screen, NULL, NULL);
-        break;
-    case levels:
-        SDL_RenderTexture(renderer, level_screen, NULL, NULL);
-        break;
-    case inLevel:
-        dung->render();
-        break;
-    case pauseLevel:
-        SDL_RenderTexture(renderer, pause_screen, NULL, NULL);
-        break;
-    }
-    for (auto& button : buttons) {
-        button.render();
-    }
-    SDL_RenderPresent(renderer);
-}
-
 void GameManager::setUpHome() {
     screen = home;
 
@@ -301,12 +278,36 @@ void GameManager::handleInput(SDL_Event& event) {
     }
 }
 
-void GameManager::update() {
+void GameManager::update(float deltaTime) {
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
+    SDL_RenderClear(renderer);
+    render();
     if (dung && !paused) {
-        if (dung->update()) {
+        if (dung->update(deltaTime)) {
             paused = true;
             levelPaused();
         }
+    }
+    SDL_RenderPresent(renderer);
+}
+
+void GameManager::render() {
+    switch (screen) {
+    case home:
+        SDL_RenderTexture(renderer, home_screen, NULL, NULL);
+        break;
+    case levels:
+        SDL_RenderTexture(renderer, level_screen, NULL, NULL);
+        break;
+    case inLevel:
+        dung->render();
+        break;
+    case pauseLevel:
+        SDL_RenderTexture(renderer, pause_screen, NULL, NULL);
+        break;
+    }
+    for (auto& button : buttons) {
+        button.render();
     }
 }
 

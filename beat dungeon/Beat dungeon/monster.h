@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include <iostream>
 #include <SDL3/SDL.h>
 #include <vector>
@@ -106,4 +106,4 @@ private:
 	float heuristic(int x1, int y1, int x2, int y2) {
 		return abs(x1 - x2) + abs(y1 - y2);
 	}
-};
+};*/

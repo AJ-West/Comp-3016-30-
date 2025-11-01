@@ -7,7 +7,8 @@
 #include <irrKlang.h>
 #include <SDL3_image/SDL_image.h>
 
-#include "player.h"
+//#include "player.h"
+#include "playerObject.h"
 #include "KeyTime.h"
 #include "particles.h"
 
@@ -18,7 +19,7 @@ class KeyTime;
 
 class KeyHandler {
 public:
-	KeyHandler(SDL_Renderer* SDL_renderer, Player* play);
+	KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play);
 	~KeyHandler();
 
 	void spawnKey();
@@ -30,7 +31,7 @@ public:
 	void keyUp(SDL_Keycode key);
 
 private:
-	Player* player;
+	PlayerObj* player;
 
 	SDL_Renderer* renderer;
 

@@ -1,4 +1,4 @@
-#include "Skeleton.h"
+/*#include "Skeleton.h"
 
 //moves the monster towards the players position
 void Skeleton::move() {
@@ -25,4 +25,4 @@ void Skeleton::checkAttackCollision() {
 	if (checkPlayerCollision(player_corners, range) && canAttack) {
 		attack();
 	}
-}
+}*/

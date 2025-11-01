@@ -1,7 +1,7 @@
 #include "monster.h"
 #include "player.h"
 #include "dungeon.h"
-
+/*
 Monster::Monster(float start_x, float start_y, Player* player_point, float s_speed, vector<vector<int>> walkable_outline, Dungeon* dungeon) {
 	x = start_x;
 	y = start_y;
@@ -23,7 +23,7 @@ void Monster::updateTargetPos() {
 	}
 	else {
 		target_pos = player_pos;
-	}*/
+	}*//*
 	if (path.size() == 0) { //initiation
 		pair<int, int> player_cell = player->getCell();
 		path = aStar(w_outline, cell.first, cell.second, player_cell.first, player_cell.second); // incase player leaves the cell
@@ -203,4 +203,4 @@ vector<Node> Monster::aStar(const vector<vector<int>>& map, int startX, int star
 	// No path found: clean up and return empty path
 	for (auto& pair : allNodes) delete pair.second;
 	return {};
-}
+}*/

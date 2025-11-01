@@ -1,5 +1,5 @@
 #pragma once
-
+/*
 #include "monster.h"
 #include "particles.h"
 
@@ -48,4 +48,4 @@ private:
 	vector<Particle> particles;
 
 	thread* async;
-};
+};*/

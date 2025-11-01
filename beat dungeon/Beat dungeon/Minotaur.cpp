@@ -1,6 +1,6 @@
 #include "Minotaur.h"
 #include "dungeon.h"
-
+/*
 Minotaur::Minotaur(float start_x, float start_y, Player* player_point, float s_speed, vector<vector<int>> walkable_outline, Dungeon* dungeon): Monster(start_x, start_y, player_point, s_speed, walkable_outline, dungeon) {
 	async = new thread(&Minotaur::stun, this);
 }
@@ -191,4 +191,4 @@ bool Minotaur::checkLineOfSight() { // help from https://www.youtube.com/watch?v
 
 	int check_points = magnitude / 1;
 
-}
+}*/

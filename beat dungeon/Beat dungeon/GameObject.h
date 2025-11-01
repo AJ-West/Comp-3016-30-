@@ -67,6 +67,7 @@ public:
 	void setDirection(pair<float, float> dir) { direction = dir; }
 	void setSpeed(float sp) { speed = sp; }
 
+
 protected:
 	SDL_FRect dimensions;
 

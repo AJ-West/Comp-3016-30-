@@ -1,6 +1,6 @@
 #include "KeyHandler.h"
 
-KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, Player* play): renderer(SDL_renderer), player(play) {
+KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play): renderer(SDL_renderer), player(play) {
 	//top row
 	locations.push_back(make_pair(0, 0));
 	locations.push_back(make_pair(100, 0));

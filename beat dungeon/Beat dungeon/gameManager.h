@@ -23,7 +23,7 @@ public:
 	void render();
 
 	void handleInput(SDL_Event& event);
-	void update();
+	void update(float deltaTime);
 
 	void setUpHome();
 	void setUpLevelSelect();

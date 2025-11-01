@@ -4,9 +4,10 @@
 #include <chrono>
 #include <cmath>
 
+#include <SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
 
-#include "player.h"
+//#include "player.h"
 
 using namespace std;
 

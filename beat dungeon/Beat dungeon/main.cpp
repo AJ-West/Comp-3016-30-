@@ -8,20 +8,20 @@
 #include <SDL3_image/SDL_image.h>
 #include <vector>
 #include <irrKlang.h>
-//#include "gameManager.h"
-#include "minotaurObject.h"
-#include "playerObject.h"
+#include "gameManager.h"
+//#include "minotaurObject.h"
+//#include "playerObject.h"
 #include <memory>
 
 
 //components
-#include "pathfinding.h"
-#include "Texture.h"
-#include "playerCollision.h"
-#include "chargeCollision.h"
-#include "particleComponent.h"
-#include "movement.h"
-#include "wallCollision.h"
+//#include "pathfinding.h"
+//#include "Texture.h"
+//#include "playerCollision.h"
+//#include "chargeCollision.h"
+//#include "particleComponent.h"
+//#include "movement.h"
+//#include "wallCollision.h"
 
 
 using namespace std;
@@ -88,7 +88,7 @@ int main(int argc, char* argv[])
     system("pause");
     srand(time(0));
     init_environment();
-    SDL_Surface* scaleSurface = IMG_Load("images/Knight.png");
+    /*SDL_Surface* scaleSurface = IMG_Load("images/Knight.png");
     if (!scaleSurface) {
         std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
@@ -206,16 +206,20 @@ int main(int argc, char* argv[])
         if (frameTime < Frame_Delay) {
             SDL_Delay(Frame_Delay - frameTime);
         }
-    }
+    }*/
 
     //Current Game
     
-    /*GameManager manager(renderer, window);
+    GameManager manager(renderer, window);
 
     manager.setUpHome();
+
+    Uint32 lastTime = SDL_GetTicks();
    
     while (isRunning) {
-        manager.render();
+        Uint32 frameStart = SDL_GetTicks();
+        //manager.render();
+        
         //handle input
         SDL_Event event;
         while (SDL_PollEvent(&event) != 0) {
@@ -226,8 +230,17 @@ int main(int argc, char* argv[])
                 manager.handleInput(event);
             }
         }
-        manager.update();
-    }*/
+        Uint32 currentTime = SDL_GetTicks();
+        float deltaTime = (currentTime - lastTime) / 1000.0f;
+        lastTime = currentTime;
+        manager.update(deltaTime);
+
+        // Frame rate capping
+        Uint32 frameTime = SDL_GetTicks() - frameStart;
+        if (frameTime < Frame_Delay) {
+            SDL_Delay(Frame_Delay - frameTime);
+        }
+    }
     
     engine->drop(); // clean up
 
