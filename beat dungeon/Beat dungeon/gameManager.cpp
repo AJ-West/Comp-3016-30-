@@ -64,7 +64,7 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
         return;
     }
     music->play2D("background track.mp3", true); // looped playback
-    music->setSoundVolume(0.8f);
+    music->setSoundVolume(0.01f);
 }
 GameManager::~GameManager(){
     music->drop();

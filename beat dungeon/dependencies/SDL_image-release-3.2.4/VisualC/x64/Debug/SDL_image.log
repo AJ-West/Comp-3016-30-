@@ -1,2 +1,40 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Current\Bin\amd64\Microsoft.Common.CurrentVersion.targets(2146,5): warning : The referenced project '..\..\..\SDL\VisualC\SDL\SDL.vcxproj' does not exist.
+  Copying libavif-16.dll
+          1 file(s) copied.
+  Copying libtiff-6.dll
+          1 file(s) copied.
+  Copying libwebp-7.dll
+          1 file(s) copied.
+  Copying libwebpdemux-2.dll
+          1 file(s) copied.
+  Copying LICENSE.avif.txt
+          1 file(s) copied.
+  Copying LICENSE.dav1d.txt
+          1 file(s) copied.
+  Copying LICENSE.tiff.txt
+          1 file(s) copied.
+  Copying LICENSE.webp.txt
+          1 file(s) copied.
+  IMG.c
+  IMG_avif.c
+  IMG_bmp.c
+  IMG_gif.c
+  IMG_jpg.c
+  IMG_jxl.c
+  IMG_lbm.c
+  IMG_pcx.c
+  IMG_png.c
+  IMG_pnm.c
+  IMG_qoi.c
+  IMG_stb.c
+  IMG_svg.c
+  IMG_tga.c
+  IMG_tif.c
+  IMG_webp.c
+  IMG_WIC.c
+  IMG_xcf.c
+  IMG_xpm.c
+  IMG_xv.c
+  Generating Code...
+     Creating library C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\SDL3_image.lib and object C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\SDL3_image.exp
   SDL_image.vcxproj -> C:\Users\gamin\Documents\Final year uni\Comp-3016-30-\beat dungeon\Beat dungeon\x64\Debug\SDL3_image.dll

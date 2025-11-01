@@ -292,6 +292,11 @@ void Dungeon::handleInput(SDL_Event input) {
 	}
 }
 
+void stunDelay(MonsterObj* monst) {
+	this_thread::sleep_for(chrono::seconds(3));
+	monst->setStunned(false);
+};
+
 bool Dungeon::update(float deltaTime) {
 	spawn_key();
 	//removes used keys or timed out keys
@@ -299,6 +304,12 @@ bool Dungeon::update(float deltaTime) {
 	vector<int> to_delete;
 	keyHandler->checkTimes();
 	keyHandler->updateParticles(deltaTime);
+	if (keyHandler->getStun()) {
+		for (const auto& monst : monsters) {
+			monst->playerStun();
+		}
+		keyHandler->setStun(false);
+	}
 	player->Update(deltaTime);
 	pair<int, int> cell = player->getRemoveCell();
 	if (cell != pair<int,int>{NULL, NULL}) {

@@ -2,10 +2,7 @@
 
 KeyTime::KeyTime(SDL_Keycode KeyT, SDL_Texture* key_text, bool is_good, SDL_Texture* SDL_Texture, pair<int, int> pos): key(KeyT), text(key_text), good(is_good), texture(SDL_Texture), position(pos) {
 	time_made = chrono::duration_cast<chrono::milliseconds>(chrono::system_clock::now().time_since_epoch()).count(); // work out time key was made
-	time_expired = 1500 + (rand() % 3000); // when the key will expire
-	if (!good) {
-		time_expired -= 500;
-	}
+	time_expired = 2500 + (rand() % 3000); // when the key will expire
 }
 
 KeyTime::~KeyTime() {}

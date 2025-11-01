@@ -94,4 +94,6 @@ private:
 
 	int cell_size;
 	pair<int, int> removeCell{ NULL,NULL };
+
+	bool stunned = false;
 };

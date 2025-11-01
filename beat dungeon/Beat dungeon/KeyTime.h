@@ -43,7 +43,7 @@ private:
 	double time_made;
 	double time_expired;
 	pair<int, int> position;
-	int size = screen_width/10;
+	int size = 80;
 
 	bool good;
 	bool used = false;

@@ -4,10 +4,6 @@ KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play): renderer(SD
 	//top row
 	locations.push_back(make_pair(0, 0));
 	locations.push_back(make_pair(screen_width/8, 0));
-	locations.push_back(make_pair(screen_width / 8*2, 0));
-	locations.push_back(make_pair(screen_width / 8*3, 0));
-	locations.push_back(make_pair(screen_width / 8*4, 0));
-	locations.push_back(make_pair(screen_width / 8*5, 0));
 	locations.push_back(make_pair(screen_width / 8*6, 0));
 	locations.push_back(make_pair(screen_width / 8*7, 0));
 
@@ -29,7 +25,12 @@ KeyHandler::KeyHandler(SDL_Renderer* SDL_renderer, PlayerObj* play): renderer(SD
 	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*6));
 	locations.push_back(make_pair(screen_width / 8 * 7, screen_height / 8*7));
 
-	all_keys.resize(22, nullptr);
+	bad_keys.resize(18, nullptr);
+
+	good_locations.push_back(make_pair(screen_width / 8*2, 0));
+	good_locations.push_back(make_pair(screen_width / 8*3, 0));
+	good_locations.push_back(make_pair(screen_width / 8*4, 0));
+	good_locations.push_back(make_pair(screen_width / 8*5, 0));
 
 	createTextures();
 }
@@ -93,10 +94,10 @@ void KeyHandler::createTextures() {
 
 void KeyHandler::spawnKey(){
 	bool unique = false;
-	int pos = rand() % 22;
+	int pos = rand() % 18;
 	while (!unique) {
-		if (all_keys[pos] != nullptr) {
-			pos = rand() % 22;
+		if (bad_keys[pos] != nullptr) {
+			pos = rand() % 18;
 		}
 		else {
 			unique = true;
@@ -104,39 +105,39 @@ void KeyHandler::spawnKey(){
 	}
 
 	vector<vector<SDL_Keycode>> options = player->getMovementKeys();
-	int random_direction = rand() % 5;
-	bool good = false;
-	SDL_Keycode code = keyboard[rand() % size(keyboard)];
-	if (random_direction != 4) {
-		code = options[random_direction][rand() % size(options[random_direction])];
-		cout << code << '\n';
-		good = true;
+	for (int i = 0; i < good_keys.size(); i++) {
+		if (good_keys[i] == nullptr) {
+			SDL_Keycode code = options[i][rand() % size(options[i])];
+			char key_text = static_cast<char>(code);
+			SDL_Surface* surface;
+			switch (code) {
+			case SDLK_UP:
+				surface = IMG_Load("images/arrows/up.png");
+				break;
+			case SDLK_LEFT:
+				surface = IMG_Load("images/arrows/left.png");
+				break;
+			case SDLK_DOWN:
+				surface = IMG_Load("images/arrows/down.png");
+				break;
+			case SDLK_RIGHT:
+				surface = IMG_Load("images/arrows/right.png");
+				break;
+			default:
+				surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,255,255,0 });
+			}
+			text = SDL_CreateTextureFromSurface(renderer, surface);
+			SDL_DestroySurface(surface);
+			good_keys[i] = new KeyTime(code, text, true, key_outline, good_locations[i]);
+		}
 	}
 	
-	char key_text = static_cast<char>(code);
-	if (good) {
-		SDL_Surface* surface;
-		switch (code) {
-		case SDLK_UP:
-			surface = IMG_Load("images/arrows/up.png");
-			break;
-		case SDLK_LEFT:
-			surface = IMG_Load("images/arrows/left.png");
-			break;
-		case SDLK_DOWN:
-			surface = IMG_Load("images/arrows/down.png");
-			break;
-		case SDLK_RIGHT:
-			surface = IMG_Load("images/arrows/right.png");
-			break;
-		default:
-			surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,255,255,0 });
-		}
-		text = SDL_CreateTextureFromSurface(renderer, surface);
-		SDL_DestroySurface(surface);
-		all_keys[pos] = new KeyTime(code, text, true, key_outline, locations[pos]);
-	}
-	else {
+	int random_direction = rand() % 5;
+	if (random_direction == 4) {
+		vector<vector<SDL_Keycode>> options = player->getMovementKeys();
+		bool good = false;
+		SDL_Keycode code = keyboard[rand() % size(keyboard)];
+		char key_text = static_cast<char>(code);
 		SDL_Surface* surface;
 		switch (code) {
 		case SDLK_UP:
@@ -161,14 +162,45 @@ void KeyHandler::spawnKey(){
 		}
 		text = SDL_CreateTextureFromSurface(renderer, surface);
 		SDL_DestroySurface(surface);
-		all_keys[pos] = new KeyTime(code, text, false, key_bad_outline, locations[pos]);
+		bad_keys[pos] = new KeyTime(code, text, false, key_bad_outline, locations[pos]);
 	}
+}
+
+void KeyHandler::spawnGoodKey(int index) {
+	vector<vector<SDL_Keycode>> options = player->getMovementKeys();	
+	SDL_Keycode code = options[index][rand() % size(options[index])];
+	char key_text = static_cast<char>(code);
+	SDL_Surface* surface;
+	switch (code) {
+	case SDLK_UP:
+		surface = IMG_Load("images/arrows/up.png");
+		break;
+	case SDLK_LEFT:
+		surface = IMG_Load("images/arrows/left.png");
+		break;
+	case SDLK_DOWN:
+		surface = IMG_Load("images/arrows/down.png");
+		break;
+	case SDLK_RIGHT:
+		surface = IMG_Load("images/arrows/right.png");
+		break;
+	default:
+		surface = TTF_RenderText_Solid(font, &key_text, 1, { 255,255,255,0 });
+	}
+	text = SDL_CreateTextureFromSurface(renderer, surface);
+	SDL_DestroySurface(surface);
+	good_keys[index] = new KeyTime(code, text, true, key_outline, good_locations[index]);
+
 }
 
 
 void KeyHandler::renderKeys() {
-	for (auto& key : all_keys) {
+	for (auto& key : bad_keys) {
 		if(key != nullptr)
+			key->render(key_dot, renderer);
+	}
+	for (auto& key : good_keys) {
+		if (key != nullptr)
 			key->render(key_dot, renderer);
 	}
 	particles.render(renderer);
@@ -176,27 +208,35 @@ void KeyHandler::renderKeys() {
 
 void KeyHandler::checkTimes() { // see if any keys need removing
 	int index = 0;
-	for (auto& key : all_keys) {
+	for (auto& key : good_keys) {
 		if (key != nullptr) {
-			if ((key->time_elapsed() || key->getUsed()) && key->getGood()) { // if good key has been pressed or ran out
+			if ((key->time_elapsed() || key->getUsed())) { // if good key has been pressed or ran out
 				if (key->getIsDown()) { // if still pressing a key as it ran out act as though let go og good key
 					player->change_direction(key->getKey(), false);
 					int rand = std::rand() % 5;
 					sound->play2D(key_sounds[rand], false);
 					for (int i = 0; i < 25; i++) { // ai
-						particles.create(locations[index].first+ screen_width / 20, locations[index].second+ screen_width / 20, true);//keys have size screen_width/10 so halving is centering the particles
+						particles.create(good_locations[index].first+ 40, good_locations[index].second+ 40, true);
 					}
 				}
 				delete key;
 				key = nullptr;
+				spawnGoodKey(index);
 			}
-			else if (key->time_elapsed() && !key->getGood()) { // if bad key has ran out fail level
+		}
+		index++;
+	}
+	index = 0;
+	for (auto& key : bad_keys) {
+		if (key != nullptr) {
+			if (key->time_elapsed()) { // if bad key has ran out fail level
 				cout << "level failed";
 				sound->play2D("sound effects/missed.wav", false);
 				delete key;
 				key = nullptr;
 			}
-			else if (key->getUsed() && !key->getGood()) { // if pressed bad key before it ran out
+			else if (key->getUsed()) { // if pressed bad key before it ran out
+				stun = true;
 				delete key;
 				key = nullptr;
 			}
@@ -210,7 +250,7 @@ void KeyHandler::updateParticles(float deltaTime) {//ai from free copilot
 }
 
 void KeyHandler::keyDown(SDL_Keycode key) {
-	for (auto& keyT : all_keys) {
+	for (auto& keyT : good_keys) {
 		if (keyT != nullptr) {
 			if (keyT->getKey() == key) { // if key matches held down key
 				if (keyT->inZone()) { // if in correct zone
@@ -221,11 +261,21 @@ void KeyHandler::keyDown(SDL_Keycode key) {
 			}
 		}
 	}
+	for (auto& keyT : bad_keys) {
+		if (keyT != nullptr) {
+			if (keyT->getKey() == key) { // if key matches held down key
+				if (keyT->inZone()) { // if in correct zone
+					keyT->setIsDown(true);
+					break;
+				}
+			}
+		}
+	}
 }
 
 void KeyHandler::keyUp(SDL_Keycode key) { // on release of key
 	int index = 0;
-	for (auto& keyT : all_keys) {
+	for (auto& keyT : good_keys) {
 		if (keyT != nullptr) {
 			if (keyT->getKey() == key) { // if key just released
 				if (keyT->inZone()) { // if in correct zone
@@ -236,7 +286,26 @@ void KeyHandler::keyUp(SDL_Keycode key) { // on release of key
 					sound->play2D(key_sounds[rand], false);
 					// Spawn multiple particles at mouse click
 					for (int i = 0; i < 25; i++) { // ai
-						particles.create(locations[index].first+50, locations[index].second+50, true);
+						particles.create(good_locations[index].first+40, good_locations[index].second+40, true);
+					}
+					break;
+				}
+			}
+		}
+		index++;
+	}
+	index = 0;
+	for (auto& keyT : bad_keys) {
+		if (keyT != nullptr) {
+			if (keyT->getKey() == key) { // if key just released
+				if (keyT->inZone()) { // if in correct zone
+					keyT->setIsDown(false);
+					keyT->setUsed(true);
+					int rand = std::rand() % 5;
+					sound->play2D(key_sounds[rand], false);
+					// Spawn multiple particles at mouse click
+					for (int i = 0; i < 25; i++) { // ai
+						particles.create(locations[index].first + 40, locations[index].second + 40, true);
 					}
 					break;
 				}

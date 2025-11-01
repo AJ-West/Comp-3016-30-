@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <chrono>
 #include <memory>
+#include <queue>
 
 #include "KeyTime.h"
 #include "KeyHandler.h"
@@ -20,7 +21,6 @@ class PlayerObj;
 class MonsterObj;
 class KeyTime;
 class KeyHandler;
-//class Minotaur;
 
 
 //objects
@@ -123,4 +123,6 @@ private:
     bool restart = false;
 
     vector<char> wallTypes{ '1','2' ,'3' ,'4' ,'5' ,'6' ,'7' ,'8' };
+
+    thread* async;
 };

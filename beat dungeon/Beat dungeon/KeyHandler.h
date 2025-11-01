@@ -24,6 +24,7 @@ public:
 	~KeyHandler();
 
 	void spawnKey();
+	void spawnGoodKey(int index);
 	void renderKeys();
 	void checkTimes();
 	void updateParticles(float deltaTime);
@@ -33,13 +34,21 @@ public:
 	void keyDown(SDL_Keycode key);
 	void keyUp(SDL_Keycode key);
 
+	//getters
+	bool getStun() { return stun; }
+
+	//setters
+	void setStun(bool st) { stun = st; }
+
 private:
 	PlayerObj* player;
 
 	SDL_Renderer* renderer;
 
 	vector<pair<int, int>> locations;
-	vector<KeyTime*> all_keys;
+	vector<pair<int, int>> good_locations;
+	vector<KeyTime*> bad_keys;
+	vector<KeyTime*> good_keys{nullptr, nullptr, nullptr,nullptr};
 
 	vector<const char*> key_sounds{ "sound effects/keys/1.wav" ,"sound effects/keys/2.wav","sound effects/keys/3.wav","sound effects/keys/4.wav" ,"sound effects/keys/5.wav" };
 
@@ -63,4 +72,6 @@ private:
 	ParticlePool particles;
 
 	ISoundEngine* sound;
+
+	bool stun = false;
 };
