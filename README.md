@@ -1,8 +1,20 @@
 # Beat dungeon
 
+## Youtube link
+
+https://youtu.be/VUYOWhRdC1g
+
+## To run executable
+
+First you need to extract the folder titled debug from my hand in zip file. Then to run the execuatable open the extracted folder and double click or run the beat dungeon.exe file.
+
+To build the project from the Zip file you need to extract all folders and then build it in visual studio community 2022 Debug x64
+
 ## Project overview
 
 Beat dungeon (Originally called Rythm key) is a small 2D tile-based prototype game. The player controls a Knight that moves through dungeon levels but only when keys are available to press. They need to avoid monsters (minotaur, skeleton), and adapt to modifiers (speed boost, new keys, rotate-keys) to reach the trapdoor in each level and move on to the next one.
+
+Beat dungeon is a typing game where the goal is to help improve the user’s typing ability inspired by research into how gamifying learning to type can have positive effects on the process (https://www.researchgate.net/publication/347303961_Using_Gamification_to_Improve_Students'_Typing_Skills). My game is aimed at beginners and helping them learn keyboard layouts. This is through the key time events for movements aswell as the addition new keys that can be unlocked for movement. This is also the red keys that cause you to fail the game that appear. These are what makes use of the whole keyboard not just the movemnt keys.
 
 This repository contains the game source (Visual Studio solution and C++ source), dependent third-party libraries, assets (Aseprite files) and a unit test suite built with GoogleTest in Cursor (free).
 
