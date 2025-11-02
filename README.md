@@ -118,31 +118,8 @@ Finally I used copilot to created the template for this README. The template it 
 
 ## UML / Design diagram
 
-I haven't included a formal UML image in the repo. Below is a compact textual class diagram to help navigation — you can paste this into an online UML tool or draw it in a diagram editor.
-
-- GameObject
-	- +dimensions: SDL_FRect
-	- +speed: float
-	- +components: map<string, shared_ptr<Component>>
-	- +Update(delta)
-	- +wallCollision(delta) (virtual)
-
-- Component (abstract)
-	- +update(delta) (pure virtual)
-	- +owner: GameObject*
-
-- PlayerObj : GameObject
-	- +movement_keys: vector<vector<SDL_Keycode>>
-	- +newKeys(), rotateKeys(), change_direction()
-
-- MonsterObj : GameObject
-	- +stunned, hit, charging
-	- +stun(), wallCollision() overrides
-
-- environmentCollisionComponent : Component
-	- reads walkable_outline (map tiles) and applies tile effects (setSpeed, setWin, newKeys, rotateKeys)
-
-If you want I can generate a PlantUML diagram from these classes and add it to the repo.
+GameObjects class diagram:
+- <img width="320" height="320" alt="KnightSS" src="docs/UML.png" />
 
 ## Sample screens / assets
 
@@ -255,24 +232,24 @@ Notes: when linking on Windows you may need to add system import libraries to th
 - I also did some user testing at the same time as doing unit testing. With the feedback I recieved I then made some changes to the game to help improve upon it. A brief summary of the main points from user testing is below:
 
 ### Improvements/ feature suggestions
-- 1) Make enemies move in rhythm (can only move when the player is moving)
-- 2) Move movement-controls to top of screen and run indefinitely with varying times - implemented
-- 3) aAdd a timer for how long to complete all levels and add a leaderboard (could be a leaderboard liek old retro arcade games)
-- 4) In the level select add a animation on hovering over a level to slightly open door
-- 5) Add in subtitles for the Knight when you perfectly press a key e.g. "Aced it" (add some humor to the game)
-- 6) Cutscene to build upon the character and the world - partially implemented with start and end screens
-- 7) Small intro per level e.g. entering the room through a door or ladder
-- 8) Red (bad) keys should allow stunning enemies or shield the player briefly when pressed - implemented stun
-- 9) Red keys should be more of a debuff (like slowing down character speed | slow down movement modifiers) instead of losing the level for missing them
-- 10) Balance the game music to sound effects as currently cannot hear the sound effects - done
-- 11) Change music based on stage e.g. menu be slow music and a level be quicker
+1) Make enemies move in rhythm (can only move when the player is moving)
+2) Move movement-controls to top of screen and run indefinitely with varying times - implemented
+3) aAdd a timer for how long to complete all levels and add a leaderboard (could be a leaderboard liek old retro arcade games)
+4) In the level select add a animation on hovering over a level to slightly open door
+5) Add in subtitles for the Knight when you perfectly press a key e.g. "Aced it" (add some humor to the game)
+6) Cutscene to build upon the character and the world - partially implemented with start and end screens
+7) Small intro per level e.g. entering the room through a door or ladder
+8) Red (bad) keys should allow stunning enemies or shield the player briefly when pressed - implemented stun
+9) Red keys should be more of a debuff (like slowing down character speed | slow down movement modifiers) instead of losing the level for missing them
+10) Balance the game music to sound effects as currently cannot hear the sound effects - done
+11) Change music based on stage e.g. menu be slow music and a level be quicker
 
 ### Main positives from testing
-- 1) Rotate keys modifier adds a real level of fun and confusion to the game
-- 2) The games art style
-- 3) Character movement being done by key time events
-- 4) The games music and sound effects
-- 5) The Player speed feels appropriate
+1) Rotate keys modifier adds a real level of fun and confusion to the game
+2) The games art style
+3) Character movement being done by key time events
+4) The games music and sound effects
+5) The Player speed feels appropriate
 
 ## Short evaluation — what I achieved and what I'd change
 
