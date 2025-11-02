@@ -180,6 +180,7 @@
     <ClInclude Include="playerCollision.h" />
     <ClInclude Include="playerObject.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="tilemap.h" />
     <ClInclude Include="wallCollision.h" />
   </ItemGroup>
   <ItemGroup>

@@ -29,6 +29,8 @@ public:
 
 	void setUpHome();
 	void setUpLevelSelect();
+	void setUpStory();
+	void setUpEnd();
 
 	void levelPaused();
 	void nextLevel();
@@ -46,10 +48,8 @@ public:
 private:
 	SDL_Renderer* renderer;
 	SDL_Window* window;
-	SDL_Texture* home_screen = nullptr;
-	SDL_Texture* level_screen = nullptr;
-	SDL_Texture* pause_screen = nullptr;
-	enum screens{home = 1, levels = 2, inLevel = 3, pauseLevel = 4};
+	vector<SDL_Texture*> story_screens;
+	enum screens{home = 1, levels = 2, pauseLevel = 3, story = 4, end = 5, inLevel = 6};
 	screens screen = home;
 
 	vector<Button> buttons;

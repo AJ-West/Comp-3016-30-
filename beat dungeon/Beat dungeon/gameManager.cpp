@@ -10,9 +10,9 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
         return;
     }
 
-    home_screen = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+    story_screens.emplace_back(SDL_CreateTextureFromSurface(renderer, scaleSurface));
     SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
-    if (!home_screen) {
+    if (!story_screens[0]) {
         std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
@@ -29,9 +29,9 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
         return;
     }
 
-    level_screen = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+    story_screens.emplace_back(SDL_CreateTextureFromSurface(renderer, scaleSurface));
     SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
-    if (!level_screen) {
+    if (!story_screens[1]) {
         std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
@@ -48,15 +48,55 @@ GameManager::GameManager(SDL_Renderer* SDL_render, SDL_Window* SDL_window): rend
         return;
     }
 
-    pause_screen = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+    story_screens.emplace_back(SDL_CreateTextureFromSurface(renderer, scaleSurface));
     SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
-    if (!pause_screen) {
+    if (!story_screens[2]) {
         std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
         SDL_Quit();
         return;
     }
+
+    scaleSurface = IMG_Load("images/story.png");
+    if (!scaleSurface) {
+        std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+
+    story_screens.emplace_back(SDL_CreateTextureFromSurface(renderer, scaleSurface));
+    SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+    if (!story_screens[3]) {
+        std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+
+    scaleSurface = IMG_Load("images/end.png");
+    if (!scaleSurface) {
+        std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+
+    story_screens.emplace_back(SDL_CreateTextureFromSurface(renderer, scaleSurface));
+    SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+    if (!story_screens[4]) {
+        std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+
+    
 
     music = createIrrKlangDevice();
     if (!music) {
@@ -84,7 +124,7 @@ void GameManager::setUpHome() {
 
     SDL_Texture* button_texture = SDL_CreateTextureFromSurface(renderer, scaleSurface);
     SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
-    if (!level_screen) {
+    if (!button_texture) {
         std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
         SDL_DestroyRenderer(renderer);
         SDL_DestroyWindow(window);
@@ -95,7 +135,7 @@ void GameManager::setUpHome() {
 
     buttons.resize(1);
     Button button(true, renderer, button_texture, rect);
-    button.setFunc([&]() {setUpLevelSelect(); });
+    button.setFunc([&]() {setUpStory(); });
     buttons[0] = button;
 }
 
@@ -186,6 +226,10 @@ void GameManager::levelPaused() {
         if (currentLevel != 9) {
             unlockLevel();
         }
+        else {
+			setUpEnd();
+            return;
+        }
     }
     else {
         button.setFunc([&]() {tryagain(); });
@@ -198,6 +242,66 @@ void GameManager::levelPaused() {
     ebutton.setFunc([&]() {exitlevel(); });
     buttons.emplace_back(button);
     buttons.emplace_back(ebutton);
+
+}
+
+void GameManager::setUpStory() {
+    screen = story;
+
+    SDL_Surface* scaleSurface = IMG_Load("images/start.png");
+    if (!scaleSurface) {
+        std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+
+    SDL_Texture* button_texture = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+    SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+    if (!button_texture) {
+        std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+    SDL_FRect rect{ screen_width / 2 - screen_width / 10,screen_height - screen_height / 10 * 3, screen_width / 5, screen_height / 5 };
+
+    buttons.resize(1);
+    Button button(true, renderer, button_texture, rect);
+    button.setFunc([&]() {setUpLevelSelect(); });
+    buttons[0] = button;
+
+}
+
+void GameManager::setUpEnd() {
+    screen = end;
+
+    SDL_Surface* scaleSurface = IMG_Load("images/start.png");
+    if (!scaleSurface) {
+        std::cerr << "Unable to load image! IMG_Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+
+    SDL_Texture* button_texture = SDL_CreateTextureFromSurface(renderer, scaleSurface);
+    SDL_DestroySurface(scaleSurface); // Free the surface after creating the texture
+    if (!button_texture) {
+        std::cerr << "Unable to create texture! SDL_Error: " << SDL_GetError() << std::endl;
+        SDL_DestroyRenderer(renderer);
+        SDL_DestroyWindow(window);
+        SDL_Quit();
+        return;
+    }
+    SDL_FRect rect{ screen_width / 2 - screen_width / 10,screen_height - screen_height / 10 * 2, screen_width / 5, screen_height / 5 };
+
+    buttons.resize(1);
+    Button button(true, renderer, button_texture, rect);
+    button.setFunc([&]() {setUpLevelSelect(); });
+    buttons[0] = button;
 
 }
 
@@ -296,16 +400,22 @@ void GameManager::update(float deltaTime) {
 void GameManager::render() {
     switch (screen) {
     case home:
-        SDL_RenderTexture(renderer, home_screen, NULL, NULL);
+        SDL_RenderTexture(renderer, story_screens[static_cast<int>(screen)-1], NULL, NULL);
         break;
     case levels:
-        SDL_RenderTexture(renderer, level_screen, NULL, NULL);
+        SDL_RenderTexture(renderer, story_screens[static_cast<int>(screen) - 1], NULL, NULL);
         break;
     case inLevel:
         dung->render();
         break;
     case pauseLevel:
-        SDL_RenderTexture(renderer, pause_screen, NULL, NULL);
+        SDL_RenderTexture(renderer, story_screens[static_cast<int>(screen) - 1], NULL, NULL);
+        break;
+    case story:
+        SDL_RenderTexture(renderer, story_screens[static_cast<int>(screen) - 1], NULL, NULL);
+        break;
+    case end:
+        SDL_RenderTexture(renderer, story_screens[static_cast<int>(screen) - 1], NULL, NULL);
         break;
     }
     for (auto& button : buttons) {

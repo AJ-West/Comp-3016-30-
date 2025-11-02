@@ -1,4 +1,5 @@
 #include "dungeon.h"
+#include "tilemap.h"
 
 Dungeon::Dungeon(SDL_Renderer* sdlRenderer, int levelNumber) : renderer(sdlRenderer), levelNum(levelNumber) {
 	read_file();
@@ -51,10 +52,10 @@ void Dungeon::read_file() {
 		}
 	}
 	outline.push_back(row);
-	save_tiles();
 	createPWalkableOutline();
 	spawn_player();
-	//createMWalkableOutline();
+	save_tiles();
+	createMWalkableOutline();
 	spawn_monsters();
 }
 
@@ -78,95 +79,29 @@ string Dungeon::base64_decode(const string& input) { // ai copilot free
 }
 
 void Dungeon::save_tiles() {
-	vector<SDL_FRect> tile_row;
-	SDL_FRect tile_loc{ 0,0,32,32 };
-	for (const auto& row : outline) {
-		for (const auto& column : row) {
-			//match each value in the vector (respresents parts of the board)
-			switch (column) {
-			case '1': //wall
-				tile_loc.x = 0;
-				tile_loc.y = 0;
-				tile_row.push_back(tile_loc);
-				break;
-			case '2': //door
-				tile_loc.x = 0;
-				tile_loc.y = 32;
-				tile_row.push_back(tile_loc);
-				break;
-			case '3': //corner 1
-				tile_loc.x = 64;
-				tile_loc.y = 32;
-				tile_row.push_back(tile_loc);
-				break;
-			case '4': //corner 2
-				tile_loc.x = 96;
-				tile_loc.y = 32;
-				tile_row.push_back(tile_loc);
-				break;
-			case '5': //corner 3
-				tile_loc.x = 64;
-				tile_loc.y = 64;
-				tile_row.push_back(tile_loc);
-				break;
-			case '6': //corner 4
-				tile_loc.x = 96;
-				tile_loc.y = 64;
-				tile_row.push_back(tile_loc);
-				break;
-			case '7': //vertical wall
-				tile_loc.x = 0 + 32 * (rand() % 2);
-				tile_loc.y = 96;
-				tile_row.push_back(tile_loc);
-				break;
-			case '8': //horizontal wall
-				tile_loc.x = 96 + 32 * (rand() % 2);
-				tile_loc.y = 0;
-				tile_row.push_back(tile_loc);
-				break;
-			case '9': //trapdoor
-				tile_loc.x = 32;
-				tile_loc.y = 64;
-				tile_row.push_back(tile_loc);
-				break;
-			case 'Q': //2x modifier
-				tile_loc.x = 144;
-				tile_loc.y = 32;
-				tile_row.push_back(tile_loc);
-				break;
-			case 'K': //new keys modifier
-				tile_loc.x = 176;
-				tile_loc.y = 32;
-				tile_row.push_back(tile_loc);
-				break;
-			case 'R': //rotate modifier
-				tile_loc.x = 144;
-				tile_loc.y = 64;
-				tile_row.push_back(tile_loc);
-				break;
-			default:
-				tile_loc.x = 300;
-				tile_loc.y = 300;
-				tile_row.push_back(tile_loc);
-			}
-		}
-		tiles.push_back(tile_row);
-		tile_row.clear();
-	}
+	Tilemap tilemap(walkable_outline[0].size(), walkable_outline.size(), walkable_outline);
+	tiles = tilemap.identifyWalls();
+	//cout << "temp";
 }
 
 void Dungeon::createPWalkableOutline() {
 	vector<int> tile_row;
 	for (const auto& row : outline) {
 		for (const auto& column : row) {
-			if (find(wallTypes.begin(), wallTypes.end(), column) != wallTypes.end()) {
+			if (column == 'P' || column == 'M' || column == 'S') {
+				tile_row.push_back(0);
+			}
+			else {
+				tile_row.push_back(column - '0');
+			}
+			/*if (find(wallTypes.begin(), wallTypes.end(), column) != wallTypes.end()) {
 				tile_row.push_back(1);
 			}
 			else if (column == '9') { tile_row.push_back(2); }
 			else if (column == 'Q') { tile_row.push_back(3); }
 			else if (column == 'K') { tile_row.push_back(4); }
 			else if (column == 'R') { tile_row.push_back(5); }
-			else { tile_row.push_back(0); }
+			else { tile_row.push_back(0); }*/
 		}
 		walkable_outline.push_back(tile_row);
 		tile_row.clear();
@@ -277,16 +212,16 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
+		/*if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
 			keyHandler->keyDown(key);
 			current_Key = true;
 		}
 		else if (input.type == SDL_EVENT_KEY_UP && current_Key) {
 			keyHandler->keyUp(key);
 			current_Key = false;
-		}
+		}*/
 		// for testing purposes
-		//player->change_direction(key, true);
+		player->change_direction(key, true);
 	}
 }
 
@@ -308,6 +243,7 @@ bool Dungeon::update(float deltaTime) {
 		}
 		keyHandler->setStun(false);
 	}
+	if (keyHandler->getFailed()) {restart = true;}
 	updateMonsters(deltaTime);
 	player->Update(deltaTime);
 	pair<int, int> cell = player->getRemoveCell();

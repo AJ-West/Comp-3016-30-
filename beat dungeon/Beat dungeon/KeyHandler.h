@@ -36,6 +36,7 @@ public:
 
 	//getters
 	bool getStun() { return stun; }
+	bool getFailed() { return failed; }
 
 	//setters
 	void setStun(bool st) { stun = st; }
@@ -74,4 +75,5 @@ private:
 	ISoundEngine* sound;
 
 	bool stun = false;
+	bool failed = false;
 };

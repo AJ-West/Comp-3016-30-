@@ -190,9 +190,7 @@ void KeyHandler::spawnGoodKey(int index) {
 	text = SDL_CreateTextureFromSurface(renderer, surface);
 	SDL_DestroySurface(surface);
 	good_keys[index] = new KeyTime(code, text, true, key_outline, good_locations[index]);
-
 }
-
 
 void KeyHandler::renderKeys() {
 	for (auto& key : bad_keys) {
@@ -230,8 +228,8 @@ void KeyHandler::checkTimes() { // see if any keys need removing
 	for (auto& key : bad_keys) {
 		if (key != nullptr) {
 			if (key->time_elapsed()) { // if bad key has ran out fail level
-				cout << "level failed";
 				sound->play2D("sound effects/missed.wav", false);
+				failed = true;
 				delete key;
 				key = nullptr;
 			}
