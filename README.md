@@ -117,7 +117,7 @@ The repository contains Aseprite source files under `Beat dungeon/images/` for t
 ### Entities
 
 Knight Sprite Sheet:
-![Knight](beat dungeon\Beat dungeon\images\knightspritesheet.png)
+<img src=beat dungeon\Beat dungeon\images\knightspritesheet.png>
 
 ### Tileset
 
