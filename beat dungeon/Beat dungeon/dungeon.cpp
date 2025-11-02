@@ -94,14 +94,6 @@ void Dungeon::createPWalkableOutline() {
 			else {
 				tile_row.push_back(column - '0');
 			}
-			/*if (find(wallTypes.begin(), wallTypes.end(), column) != wallTypes.end()) {
-				tile_row.push_back(1);
-			}
-			else if (column == '9') { tile_row.push_back(2); }
-			else if (column == 'Q') { tile_row.push_back(3); }
-			else if (column == 'K') { tile_row.push_back(4); }
-			else if (column == 'R') { tile_row.push_back(5); }
-			else { tile_row.push_back(0); }*/
 		}
 		walkable_outline.push_back(tile_row);
 		tile_row.clear();
@@ -212,16 +204,16 @@ void Dungeon::handleInput(SDL_Event input) {
 	SDL_Keycode key = input.key.key;
 	// if a key for movement
 	if (key != SDLK_SPACE) {
-		/*if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
+		if (input.type == SDL_EVENT_KEY_DOWN && !current_Key) {
 			keyHandler->keyDown(key);
 			current_Key = true;
 		}
 		else if (input.type == SDL_EVENT_KEY_UP && current_Key) {
 			keyHandler->keyUp(key);
 			current_Key = false;
-		}*/
+		}
 		// for testing purposes
-		player->change_direction(key, true);
+		//player->change_direction(key, true);
 	}
 }
 

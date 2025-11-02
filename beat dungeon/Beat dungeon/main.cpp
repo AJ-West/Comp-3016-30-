@@ -21,7 +21,7 @@ ISoundEngine* engine;
 int FONT_SIZE = 30;
 bool isRunning;
 
-//for consistency (from ai)
+//for consistency (from ai creating the frame rate handling)
 const int FPS = 60;
 const int Frame_Delay = 1000 / FPS; // milliseconds per frame
 
@@ -62,7 +62,6 @@ void init_environment() {
 
 int main(int argc, char* argv[])
 {
-    system("pause");
     srand(time(0));
     init_environment();
         
@@ -74,7 +73,6 @@ int main(int argc, char* argv[])
    
     while (isRunning) {
         Uint32 frameStart = SDL_GetTicks();
-        //manager.render();
         
         //handle input
         SDL_Event event;

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Tilemap {
+class Tilemap { //github copilot generated class
 public:
     Tilemap(int width, int height, vector<vector<int>> outline) : width(width), height(height), tiles(outline) {}
     int getTile(int x, int y) const;
