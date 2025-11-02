@@ -10,23 +10,20 @@ public:
 	}
 	
 	void wallCollision(float deltaTime) {
-		// Always respond to wall collisions by reducing speed and stopping movement.
-		// If not currently stunned, also set stunned and start the stun timer.
 		if (!stunned) {
 			stunned = true;
+			setSpeed(getSpeed() / 2);
+			charging = false;
 			async = new thread(&MonsterObj::stun, this);
 			async->detach();
+			// Spawn multiple particles at mouse click
+			for (int i = 0; i < 25; i++) { // ai
+				particles.create(dimensions.x + dimensions.w / 2, dimensions.y + dimensions.h / 2, false);
+			}
+			pair<float, float> direction = getDirection();
+			setDimensions({ dimensions.x - direction.first * deltaTime*getSpeed()*2 , dimensions.y - direction.second * deltaTime * getSpeed() * 2, dimensions.w, dimensions.h});
+			setDirection({ 0,0 });
 		}
-		// Reduce speed (tests expect speed to be reduced when colliding)
-		setSpeed(getSpeed() / 2);
-		charging = false;
-		// Spawn particles (visual effect) - harmless for tests
-		for (int i = 0; i < 25; i++) {
-			particles.create(dimensions.x + dimensions.w / 2, dimensions.y + dimensions.h / 2, false);
-		}
-		pair<float, float> direction = getDirection();
-		setDimensions({ dimensions.x - direction.first * deltaTime * getSpeed() * 2 , dimensions.y - direction.second * deltaTime * getSpeed() * 2, dimensions.w, dimensions.h});
-		setDirection({ 0,0 });
 	}
 
 	void playerStun() {

@@ -3,7 +3,7 @@
 
 class PlayerObj : public GameObject {
 public:
-	PlayerObj(SDL_FRect dim, float sp, const vector<vector<int>>& walkable_outline, int size) : GameObject(dim, sp, walkable_outline, size) {
+	PlayerObj(SDL_FRect dim, float sp, vector<vector<int>> walkable_outline, int size) : GameObject(dim, sp, walkable_outline, size) {
 		// Sets up the default movement keys for the player
 		movement_keys.resize(4, vector<SDL_Keycode>(1, 0));
 		movement_keys[0][0] = SDLK_W;

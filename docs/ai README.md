@@ -2,25 +2,18 @@
 
 ## Project overview
 
-Beat dungeon (Originally called Rythm key) is a small 2D tile-based prototype game. The player controls a Knight that moves through dungeon levels but only when keys are available to press. They need to avoid monsters (minotaur, skeleton), and adapt to modifiers (speed boost, new keys, rotate-keys) to reach the trapdoor in each level and move on to the next one.
+"Beat dungeon" is a small 2D tile-based prototype game created as a final-year project. The player controls a Knight that moves through dungeon levels, collecting and rotating movement keys, avoiding monsters (minotaur, skeleton), using powerups (speed boost, new keys, rotate-keys) and reaching trapdoors / exits.
 
-This repository contains the game source (Visual Studio solution and C++ source), dependent third-party libraries, assets (Aseprite files) and a unit test suite built with GoogleTest in Cursor (free).
+This repository contains the game source (Visual Studio solution and C++ source), dependent third-party libraries, assets (Aseprite files) and a unit test suite built with GoogleTest.
 
 ## Gameplay description
 
-- Top-down 2D dungeon with discrete tile grid (cell size ~80px). The player and monsters move in the grid and the player interacts with special tiles.
-- Player movement is driven by configurable movement key groups (up/left/down/right). Powerups on the map may spawn additional movement keys or rotate existing key groups. These keys can only be pressed when in the green zone challenging the player to adapt to their limited movement.
-- The limited movement creates a difficult challenge as an element of randomness is added to each level.
-- Correct key presses create a colourful particle effect as you progress towards your goal
-- There are red key time events aswell which missing causes you to lose the level but pressing stun the enemies 
-- Levels are designed to be frustrating and difficult but not impossible. 
-- Monsters use simple AI: they chase or charge at the player (chargeCollision), get stunned on wall collisions with a small particle effect.
-- Environment tiles include walls, trapdoors (win condition), speed-boost tiles (double player speed temporarily) and key-related tiles (rotate and new keys).
-- The tile map is rough in places but is generated based off surrounding cells. 
-- Comepleting levels unlock future levels
-- Levels are encoded using base64 encoding for storate to avoid easy file manipulation of players
+- Top-down 2D dungeon with discrete tile grid (cell size ~80px). The player and monsters move in the grid and interact with special tiles.
+- Player movement is driven by configurable movement key groups (up/left/down/right). Powerups on the map may spawn additional movement keys or rotate existing key groups.
+- Monsters use simple AI: they chase or charge the player (chargeCollision), can stun on wall collisions, and spawn particle effects on events.
+- Environment tiles include walls, trapdoors (win condition), speed-boost tiles (double player speed temporarily) and keys-related tiles.
 
-Controls: WASD by default (but can include more such as the arrow keys or IJKL).
+Controls: WASD by default (configurable in code via PlayerObj movement keys).
 
 ## Dependencies used
 
@@ -38,17 +31,11 @@ If building with CMake, add those libraries to your target_link_libraries line f
 
 ## Use of AI
 
-I have used AI throughout my work. Initially I compiled Dalle-mini and ran it through docker with the intention of using this for the games artwork however it's outputs were not what I was after. This is because Dallle-mini focuses on realistic photo generation not pixelart. I also set up Ollama for use within Visual studio using the EntwineLLM extension. This issue with this was it was incredibly slow and inefficient especially given it was a local LLM.
+This project was developed by the student; the game itself does not embed machine learning or AI models. If this repository was assisted by automated tools (code helpers, linters or automated edits), list them here. If you (the author) used any automated assistants during development, add a short note explaining what they helped with (for example: automated test harness, CMake fixes, small bug patches to make unit tests pass).
 
-I ended up using microsoft copilot free for code assist. Throughout my code I have marked off where it was used to generate the code. Most of the code it generated I then modified to help ensure consistency and that it worked within my project. One of the key functions I used it for was the A* pathfinding algorithm of the monsters. Although I used AI for code generation I did not use it for code generation that I have not done in a past project before. I had created A* path finding before in Godot so used it for that but for example I have not used it for the line of sight code. I used online tutorials for these (Linked in code) as I wanted to gain a proper understanding behind what the code is doing and why.
-
-I used https://pixelartgenerator.app for generation of the artwork of the different entities being the knight, minotaur and skeleton. I tried to use it for the tile map and although it could come up with a basic design it would not generate the required tiles I wanted. I ended up creating all animations, the tilemap and the different screens myself. I did you AI to generate the drawing of the kingdom at the start and end of the game.
-
-I used Cursor (free version) to generate the user tests for my project as well as walking me through how to run them. Cursor free has only so many prompts I could give it and having used most for a personal project it meant I was quite limited. When running out of free cursor prompts I moved over to github copilot student. Copilot helped me run the usertests further and adjust my code to help it pass the user tests. There is a git commit titled "added unit tests which were AI generated by cursor and fixed by github copilot" this is the version I ran the tests on. 
-
-The music used in the game is not AI generated but rather downloaded from https://pixabay.com/music/search/game%20background/ which is royalty free and eligible for use in commercial products.
-
-Finally I used copilot to created the template for this README. The template it generated can be found in docs/ai README.md
+Template (fill in if applicable):
+- Tools / assistants used: [e.g. ChatGPT, Copilot, clang-tidy]
+- Tasks done by assistant: [e.g. test CMake fixes, small source fixes, PR suggestions]
 
 ## Game programming patterns used
 

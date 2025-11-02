@@ -42,11 +42,7 @@ struct Particle {
             x += vx;
             y += vy;
             lifetime--;
-            // Consider the particle expired when lifetime reaches 0 (tests expect expiration at 0)
-            if (lifetime <= 0) {
-                inUse = false;
-                lifetime = 0;
-            }
+            if (lifetime < 0) inUse = false;
             a = static_cast<Uint8>(255 * (lifetime / 100.0f)); // Fade out
         }
     }
