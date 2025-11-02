@@ -52,12 +52,22 @@ Finally I used copilot to created the template for this README. The template it 
 
 ## Game programming patterns used
 
-- Component-based GameObject: `GameObject` holds a collection of `Component`s (e.g., collision, particle, pathfinding) and forwards Update calls.
-- Tile-based world: a 2D grid (walkable outline) describes map tiles and special tile effects.
-- Object-oriented polymorphism: `PlayerObj` and `MonsterObj` inherit from `GameObject` and override behaviour such as `wallCollision`.
-- Particle pool: reusable particle instances to avoid frequent allocations and to implement particle effects efficiently.
+- Command Pattern - Component-based GameObject: `GameObject` holds a collection of `Component`s (e.g., collision, particle, pathfinding). There is also a PlayerObj and a MonsterObj to help account for differences between them. 
+- The different components I made are:
+    - chargeCollision - used to see if the minotaur can charge
+    - movement - moves the game object its attached to
+    - particle - handles the particle creation of an object
+    - pathfinding - generates the direction for the monster to move along the optimal path to the player
+    - playerCollision - handles monsters colliding with the player (level failed)
+    - texture - renders the object and handles animation
+    - wallCollision - handles the colliding between the object and the tilemap
+- Object Pool pattern - Particle pool: reusable particle instances to avoid frequent allocations and to implement particle effects efficiently.
+
+### Other techniques I used/ made
+- Tile-based world: a 2D grid (walkable outline) which autogenerates based off provides wall positions
+- Object-oriented polymorphism e.g. `PlayerObj` and `MonsterObj` inherit from `GameObject` 
 - Pathfinding: A* / neighbor graph implemented under `pathfinding.h` and used by pathfinding component.
-- Component-driven collision and behaviour separation: collision responsibilities are in `playerCollision.h`, `chargeCollision.h`, `wallCollision.h`.
+- Raycasting: line of sight from the minotaur to the player in `chargeCollision.h`
 
 ## Game mechanics and how they are coded (high-level)
 
@@ -103,6 +113,17 @@ If you want I can generate a PlantUML diagram from these classes and add it to t
 
 The repository contains Aseprite source files under `Beat dungeon/images/` for the art used by the prototype, including:
 - `Knight.aseprite`, `minotaur.aseprite`, `skeleton.aseprite`, `walls.aseprite`, level screens and UI frames.
+
+### Entities
+
+Knight Sprite Sheet:
+![Knight](beat dungeon\Beat dungeon\images\knightspritesheet.png)
+
+### Tileset
+
+### Buttons
+
+### Screens
 
 Add rendered PNGs here (example placeholders):
 - docs/screens/main_menu.png (placeholder)
