@@ -89,18 +89,16 @@ public:
 	//getters
 	bool getWin() { return won; }
 	vector<vector<SDL_Keycode>> getMovementKeys() { return movement_keys; }
-	
 
 	//setters
 	void setWin(bool win) { won = win; }
 	
 private:
-	vector<vector<SDL_Keycode>> movement_keys;
-
 	pair<int, int> removeCell{ NULL,NULL };
 
 	bool won = false;
 
+	vector<vector<SDL_Keycode>> movement_keys;
 	vector<vector<SDL_Keycode>> potential_keys{ {SDLK_I, SDLK_T, SDLK_UP},{SDLK_J, SDLK_F, SDLK_LEFT},{SDLK_K, SDLK_G, SDLK_DOWN},{SDLK_L, SDLK_H, SDLK_RIGHT} };
 
 };

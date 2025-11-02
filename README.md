@@ -73,19 +73,48 @@ Finally I used copilot to created the template for this README. The template it 
 
 - Keys: The PlayerObj has a list of keys and the direction they correspond to. The keyHandler then uses this list to generate the keys at the top of the screen. These keys upon reaching the end will restart with a different speed. Pressing these keys in the green zone will move in that direction. There is also red keys that appear randomly around the dungeon at different random time intervals. Missing these cause you to lose the level but pressing the stuns all enemies. 
 
-- TileMap - The tilemap generates the map based off the provided level file. It generates the type of wall to be displayed based off of the surrounding tile and whether or not they are walls.
+- How keys are stored:
+- <img width="320" height="320" alt="KnightSS" src="code snippets/MovementKeys.png" />
+
+- Change direction code:
+- <img width="320" height="320" alt="KnightSS" src="code snippets/changeDirection.png" />
+
+- TileMap - The tilemap generates the map based off the provided level file. It generates the type of wall to be displayed based off of the surrounding tile and whether or not they are walls. The locations in the tileset are hardcoded
+
+- Part of Tilemap code with example check for wall
+- <img width="320" height="320" alt="KnightSS" src="code snippets/Tilemap.png" />
 
 - Minotaur - The Minotaur will continuously move towards the player (A* pathfinding) until it has line of sight of the player. Once it has line of sight it will charge towards the player. If it hits the player the player loses the level if it misses it will continue until it hits a wall. Upon wall collision the minotaur will be stunned for 3 seconds with a small particle animation. 
 
+- Line of sight code
+- <img width="320" height="320" alt="KnightSS" src="code snippets/Line of sight.png" />
+
 - Skeleton - The skeleton continuously moves towards the player (A* pathfinding) and if it collides with the player the player loses the level
+
+- A* pathfinding code
+- <img width="320" height="320" alt="KnightSS" src="code snippets/Pathinding.png" />
 
 - Modifiers: 2x modifier will double the players speed. NK modifier adds a new set of movement keys from the potential movement key variable into the players movement keys. RK will move all keys either left on or right one wrapping around for changing the direction of a set of keys in the players potential movement keys
 
+- Modifier code (no speed as that code is just player speed = speed*2)
+- <img width="320" height="320" alt="KnightSS" src="code snippets/Modifier code.png" />
+
 - Level completion: Upon reaching the end of the level the game writes to a file storing what level you have completed up to. It only does this when you have completed a new level. It clears the memory of the current level and loads the next one
+
+- No screenshot due to how spread out this code is
 
 - Animation: The game uses sprite frames for animation. It is also capped at 60 FPS so using this as a bases in the Texture component is a counter so every 30 frames it moves onto the next frame on the sprite sheet
 
+- Animation code
+- <img width="320" height="320" alt="KnightSS" src="code snippets/animation.png" />
+
 - Particles: The particle system spawns small temporary sprites with lifetime and color, updated by a particle pool.
+
+-Particle Pool
+- <img width="320" height="320" alt="KnightSS" src="code snippets/Particle.png" />
+
+-Particle
+- <img width="320" height="320" alt="KnightSS" src="code snippets/Particle pool.png" />
 
 ## UML / Design diagram
 
