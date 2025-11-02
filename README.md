@@ -176,7 +176,8 @@ End screen:
 
 ## Exception handling and test cases
 
-- Basic defensive checks and guards occur in places such as bounds-checking of tile indices in `environmentCollisionComponent::update` to avoid out-of-range access.
+- Basic defensive checks and guards occur in places such as bounds-checking of tile indices in `environmentCollisionComponent::update` to avoid out-of-range access. OR in Pathfinding a rare out of range error occurs for which return false
+- Creating texture or SDL_assets such as the window also has checks that they have been created before continuing to avoid errors at a later date.
 - There is a GoogleTest-based unit test suite in `beat dungeon/tests/`. It covers:
 	- GameObject basics (dimensions, direction, speed, component management)
 	- PlayerObj behaviour (movement keys, key rotation, wall collision)

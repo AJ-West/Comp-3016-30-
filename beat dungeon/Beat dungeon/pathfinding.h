@@ -129,16 +129,21 @@ public:
 				int id = hash(neighbor->x, neighbor->y, map[0].size());
 				float tentativeG = current->gCost + 1; // Assume uniform cost between tiles
 
-				// If this neighbor is new or we found a shorter path to it
-				if (allNodes.find(id) == allNodes.end() || tentativeG < allNodes[id]->gCost) {
-					neighbor->gCost = tentativeG;
-					neighbor->hCost = heuristic(neighbor->x, neighbor->y, endX, endY);
-					neighbor->parent = current;
-					openSet.push(neighbor);
-					allNodes[id] = neighbor; // Store or update the node
+				try {
+					// If this neighbor is new or we found a shorter path to it
+					if (allNodes.find(id) == allNodes.end() || tentativeG < allNodes[id]->gCost) {
+						neighbor->gCost = tentativeG;
+						neighbor->hCost = heuristic(neighbor->x, neighbor->y, endX, endY);
+						neighbor->parent = current;
+						openSet.push(neighbor);
+						allNodes[id] = neighbor; // Store or update the node
+					}
+					else {
+						delete neighbor; // Discard duplicate or worse path
+					}
 				}
-				else {
-					delete neighbor; // Discard duplicate or worse path
+				catch(const runtime_error e){
+					break;
 				}
 			}
 		}
