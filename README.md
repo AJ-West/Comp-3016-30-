@@ -117,47 +117,49 @@ The repository contains Aseprite source files under `Beat dungeon/images/` for t
 ### Entities
 
 Knight Sprite Sheet:
-<img width="192" height="32" alt="KnightSS" src="https://github.com/user-attachments/assets/365f3154-0128-47de-9f1c-5d7eb15d5ef7" />
+- <img width="192" height="32" alt="KnightSS" src="https://github.com/user-attachments/assets/365f3154-0128-47de-9f1c-5d7eb15d5ef7" />
 
 Skeleton Sprite Sheet:
-<img width="192" height="32" alt="skeletonSS" src="https://github.com/user-attachments/assets/4ae166aa-e945-42bd-8c7b-b597d33027ac" />
+- <img width="192" height="32" alt="skeletonSS" src="https://github.com/user-attachments/assets/4ae166aa-e945-42bd-8c7b-b597d33027ac" />
 
 Minotaur Sprite Sheet:
-<img width="320" height="32" alt="minotaurSS" src="https://github.com/user-attachments/assets/77777eb3-f2cc-4829-8291-82c50db0d66b" />
+- <img width="320" height="32" alt="minotaurSS" src="https://github.com/user-attachments/assets/77777eb3-f2cc-4829-8291-82c50db0d66b" />
 
 ### Buttons
 
 Start:
-<img width="64" height="64" alt="start" src="https://github.com/user-attachments/assets/857cba8b-5184-4075-9289-bcb30a84db45" />
+- <img width="64" height="64" alt="start" src="https://github.com/user-attachments/assets/857cba8b-5184-4075-9289-bcb30a84db45" />
 
 Try again:
-<img width="288" height="128" alt="tryagain" src="https://github.com/user-attachments/assets/c3ac18d4-5af5-4c42-a187-3b10e8d039c0" />
+- <img width="288" height="128" alt="tryagain" src="https://github.com/user-attachments/assets/c3ac18d4-5af5-4c42-a187-3b10e8d039c0" />
 
 Next level:
-<img width="288" height="128" alt="next" src="https://github.com/user-attachments/assets/39ace7b3-1bf2-40fd-a9a0-4eeeb2414c42" />
+- <img width="288" height="128" alt="next" src="https://github.com/user-attachments/assets/39ace7b3-1bf2-40fd-a9a0-4eeeb2414c42" />
 
 Exit level:
-<img width="288" height="128" alt="exit level" src="https://github.com/user-attachments/assets/d71f4ed2-c046-434b-b8ca-845c114332d8" />
+- <img width="288" height="128" alt="exit level" src="https://github.com/user-attachments/assets/d71f4ed2-c046-434b-b8ca-845c114332d8" />
 
 Level select:
-<img width="128" height="128" alt="level" src="https://github.com/user-attachments/assets/0d1dd4da-4699-48b4-8f9f-3e21fb82ddf2" />
+- <img width="128" height="128" alt="level" src="https://github.com/user-attachments/assets/0d1dd4da-4699-48b4-8f9f-3e21fb82ddf2" />
 
 ### Screens
 
+Screens contain templates where other sprites e.g. buttons will go during runtime
+
 Home screen:
-<img width="640" height="640" alt="title screen" src="https://github.com/user-attachments/assets/52ce0edc-042c-4c8b-bbbd-13d6c05752db" />
+- <img width="640" height="640" alt="title screen" src="https://github.com/user-attachments/assets/52ce0edc-042c-4c8b-bbbd-13d6c05752db" />
 
 Story intro:
-<img width="640" height="640" alt="story" src="https://github.com/user-attachments/assets/7cc638bf-bc3e-41c9-bd8b-de5f2343de56" />
+- <img width="640" height="640" alt="story" src="https://github.com/user-attachments/assets/7cc638bf-bc3e-41c9-bd8b-de5f2343de56" />
 
 Level select:
-<img width="640" height="640" alt="level screen" src="https://github.com/user-attachments/assets/b00625cc-9bd1-4f94-812d-3156bb028bfc" />
+- <img width="640" height="640" alt="level screen" src="https://github.com/user-attachments/assets/b00625cc-9bd1-4f94-812d-3156bb028bfc" />
 
 Paused screen:
-<img width="640" height="640" alt="pause" src="https://github.com/user-attachments/assets/7edb8fd4-35f5-43d7-8f2e-e91cc57b9484" />
+- <img width="640" height="640" alt="pause" src="https://github.com/user-attachments/assets/7edb8fd4-35f5-43d7-8f2e-e91cc57b9484" />
 
 End screen:
-<img width="640" height="640" alt="end" src="https://github.com/user-attachments/assets/54074d1a-6d0f-4cdc-82d0-903e4a72ec89" />
+- <img width="640" height="640" alt="end" src="https://github.com/user-attachments/assets/54074d1a-6d0f-4cdc-82d0-903e4a72ec89" />
 
 
 ## Exception handling and test cases
@@ -193,6 +195,8 @@ Notes: when linking on Windows you may need to add system import libraries to th
 
 ## Build notes / known platform issues
 
+- I have included the dependencies within my github repository so on cloning it should be ready to be built
+
 - On Windows linking with the prebuilt `SDL3_ttf.lib` may require additional system import libraries:
 	- `Rpcrt4.lib` (resolves UuidCreate used by HarfBuzz inside SDL_ttf)
 	- `usp10.lib` (Uniscribe functions used by HarfBuzz)
@@ -201,29 +205,38 @@ Notes: when linking on Windows you may need to add system import libraries to th
 
 ## Tests: status and how I validated fixes
 
-- A unit test run (local dev) currently shows a majority of tests passing; a few were fixed by small source changes to `GameObject`, `monsterObject`, `button.cpp`, and `wallCollision.h` to ensure correct semantics and avoid crashes.
+- A unit test run (local dev) currently shows a majority of tests passing; a few were fixed by copilot `GameObject`, `monsterObject`, `button.cpp`, and `wallCollision.h` to ensure correct semantics and avoid crashes. In the docs are the test passed before and after copilots changes. Although not all tests passed in the end I feel most the failed tests are either near or are impossible to occur during gameplay. There is also some (like line of sight) which I am aware of and tried to fix but ran out of time.
 - Tests are useful to validate behavior of wall collisions, particle lifetimes, key rotation and other deterministic systems. Tests that rely on an SDL renderer may be skipped in headless CI.
+
+- I also did some user testing at the same time as doing unit testing. With the feedback I recieved I then made some changes to the game to help improve upon it. A brief summary of the main points from user testing is below:
+
+### Improvements/ feature suggestions
+- 1) Make enemies move in rhythm (can only move when the player is moving)
+- 2) Move movement-controls to top of screen and run indefinitely with varying times - implemented
+- 3) aAdd a timer for how long to complete all levels and add a leaderboard (could be a leaderboard liek old retro arcade games)
+- 4) In the level select add a animation on hovering over a level to slightly open door
+- 5) Add in subtitles for the Knight when you perfectly press a key e.g. "Aced it" (add some humor to the game)
+- 6) Cutscene to build upon the character and the world - partially implemented with start and end screens
+- 7) Small intro per level e.g. entering the room through a door or ladder
+- 8) Red (bad) keys should allow stunning enemies or shield the player briefly when pressed - implemented stun
+- 9) Red keys should be more of a debuff (like slowing down character speed | slow down movement modifiers) instead of losing the level for missing them
+- 10) Balance the game music to sound effects as currently cannot hear the sound effects - done
+- 11) Change music based on stage e.g. menu be slow music and a level be quicker
+
+### Main positives from testing
+- 1) Rotate keys modifier adds a real level of fun and confusion to the game
+- 2) The games art style
+- 3) Character movement being done by key time events
+- 4) The games music and sound effects
+- 5) The Player speed feels appropriate
 
 ## Short evaluation — what I achieved and what I'd change
 
 What I achieved:
-- A working prototype with player and monster behaviors, tile-based powerups, particle effects, and a unit test suite that covers most non-renderer logic.
+- A working prototype with player and monster behaviors, tile-based maps, particle effects, game modifiers and collision and a unit test suite that covers most non-renderer logic.
+
+- I beleive my work has at least partially acomplished what I set out to do. The game does encourage the player to learn a keyboard layout as to get further in the game you must know where keys are. The game although difficult I believe is an enjoyable experience especially considering it is more of a prototype than a finalised polished game. There is minimal bugs I have found through testing although one known major issue to do with the line of sight calculation. Although the line of sight doesn't work perfectly I believe it doesn't take away too much from the game. On a personal note I achieved a greater understanding of SDL and plan to use that knowledge going forward with my final year project and beyond.
+
+- If I could change one thing it is the scope of the game. I beleieved I took on too much for the time I had. This has resulted in some aspects not being as refined as I would of liked. The tilemap system could be more intricate and programmed in a more efficient way. I also would of liked to add the little details like hovering on a level in level select opens the door and transitions between levels. 
+
 - Automated test CMake glue to build tests together with the game's implementation files so unit tests can run without a separate library build step.
-
-What I'd do differently / next steps:
-- Build the game code as a proper static library (or set of libraries) and link the test target against that instead of re-globbing/sourcing .cpp into the test target. This improves modularity and compile times.
-- Add a minimal headless renderer or a renderer abstraction that can be stubbed for unit tests so no tests need to skip when a real GPU/renderer isn't available.
-- Improve error handling and replace ad-hoc cout fallbacks (e.g., GameObject::setWin prints "win" by default) with proper logging and testable behavior.
-- Add CI configuration (GitHub Actions) that builds and runs tests on Windows and Linux and uploads test artifacts/screenshots.
-
-If you want I can:
-- Generate a PlantUML file describing the core classes and add an SVG to `docs/`.
-- Add a simple `docs/screens/` folder and copy a few in-repo exported screenshots into it.
-- Patch the CMakeLists to link `Rpcrt4` and `usp10` automatically so Visual Studio linking issues are avoided.
-
-## Contact / next steps
-
-Tell me which of the optional follow-ups you'd like me to do now and I will implement them (PlantUML, screenshot insertion, CMake patch to add system libs, or continue fixing the remaining failing tests).
-
-# Comp-3016-30-
-AJ West's work for the comp 3016 30% coursework
