@@ -117,19 +117,48 @@ The repository contains Aseprite source files under `Beat dungeon/images/` for t
 ### Entities
 
 Knight Sprite Sheet:
-![knightspritesheet](beat dungeon/Beat dungeon/images/knightspritesheet.png)
+<img width="192" height="32" alt="KnightSS" src="https://github.com/user-attachments/assets/365f3154-0128-47de-9f1c-5d7eb15d5ef7" />
 
-### Tileset
+Skeleton Sprite Sheet:
+<img width="192" height="32" alt="skeletonSS" src="https://github.com/user-attachments/assets/4ae166aa-e945-42bd-8c7b-b597d33027ac" />
+
+Minotaur Sprite Sheet:
+<img width="320" height="32" alt="minotaurSS" src="https://github.com/user-attachments/assets/77777eb3-f2cc-4829-8291-82c50db0d66b" />
 
 ### Buttons
 
+Start:
+<img width="64" height="64" alt="start" src="https://github.com/user-attachments/assets/857cba8b-5184-4075-9289-bcb30a84db45" />
+
+Try again:
+<img width="288" height="128" alt="tryagain" src="https://github.com/user-attachments/assets/c3ac18d4-5af5-4c42-a187-3b10e8d039c0" />
+
+Next level:
+<img width="288" height="128" alt="next" src="https://github.com/user-attachments/assets/39ace7b3-1bf2-40fd-a9a0-4eeeb2414c42" />
+
+Exit level:
+<img width="288" height="128" alt="exit level" src="https://github.com/user-attachments/assets/d71f4ed2-c046-434b-b8ca-845c114332d8" />
+
+Level select:
+<img width="128" height="128" alt="level" src="https://github.com/user-attachments/assets/0d1dd4da-4699-48b4-8f9f-3e21fb82ddf2" />
+
 ### Screens
 
-Add rendered PNGs here (example placeholders):
-- docs/screens/main_menu.png (placeholder)
-- docs/screens/level1.png (placeholder)
+Home screen:
+<img width="640" height="640" alt="title screen" src="https://github.com/user-attachments/assets/52ce0edc-042c-4c8b-bbbd-13d6c05752db" />
 
-If you provide exported screenshots I can add them to `docs/screens/` and update this README to include thumbnails.
+Story intro:
+<img width="640" height="640" alt="story" src="https://github.com/user-attachments/assets/7cc638bf-bc3e-41c9-bd8b-de5f2343de56" />
+
+Level select:
+<img width="640" height="640" alt="level screen" src="https://github.com/user-attachments/assets/b00625cc-9bd1-4f94-812d-3156bb028bfc" />
+
+Paused screen:
+<img width="640" height="640" alt="pause" src="https://github.com/user-attachments/assets/7edb8fd4-35f5-43d7-8f2e-e91cc57b9484" />
+
+End screen:
+<img width="640" height="640" alt="end" src="https://github.com/user-attachments/assets/54074d1a-6d0f-4cdc-82d0-903e4a72ec89" />
+
 
 ## Exception handling and test cases
 
