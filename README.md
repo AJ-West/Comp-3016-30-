@@ -4,11 +4,11 @@
 
 https://youtu.be/VUYOWhRdC1g
 
-## To run executable
+## To run executable/ or build solution
 
 First you need to extract the folder titled debug from my hand in zip file. Then to run the execuatable open the extracted folder and double click or run the beat dungeon.exe file.
 
-To build the project from the Zip file you need to extract all folders and then build it in visual studio community 2022 Debug x64
+To build the project from the Zip file you need to extract all folders and then build it in visual studio community 2022 Debug x64. Ensure when extracting files duplicate files aren't created e.g. extracting dependencies becomes dependencies/dependencies/ as this will cause erros with the relative paths
 
 ## Project overview
 
